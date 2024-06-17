@@ -1,0 +1,1147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schemaMapping xmlns="http://www.3dcitydb.org/database/schema/1.0">
+    <metadata>
+        <name>energy</name>
+        <version>1.0</version>
+        <description>Energy ADE for CityGML </description>
+        <dbPrefix>engy</dbPrefix>
+    </metadata>
+    <applicationSchemas>
+        <schema id="engy" isADERoot="true">
+            <namespace context="citygml-2.0">http://www.sig3d.org/citygml/2.0/energy/1.0</namespace>
+        </schema>
+    </applicationSchemas>
+    <complexTypes>
+        <complexType id="engy_EnergyPerformanceCertificationType" table="engy_energyperformancecer" objectClassId="10000" path="EnergyPerformanceCertification" schema="engy">
+            <attribute column="rating" type="string" minOccurs="1" maxOccurs="1" path="rating" schema="engy"/>
+            <attribute column="name" type="string" minOccurs="1" maxOccurs="1" path="name" schema="engy"/>
+            <attribute column="certificationid" type="string" maxOccurs="1" path="certificationId" schema="engy"/>
+        </complexType>
+        <complexType id="engy_VolumeTypeType" table="engy_volumetype" objectClassId="10001" path="VolumeType" schema="engy">
+            <attribute column="type" type="string" minOccurs="1" maxOccurs="1" path="type" schema="engy"/>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="value" schema="engy">
+                <attribute column="value_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="value" type="double" path="." schema="engy"/>
+            </complexAttribute>
+        </complexType>
+        <complexType id="engy_RefurbishmentMeasureType" table="engy_refurbishmentmeasure" objectClassId="10002" path="RefurbishmentMeasure" schema="engy">
+            <complexProperty refType="engy_DateOfEventType" minOccurs="1" maxOccurs="1" path="date" schema="engy">
+                <join table="engy_dateofevent" fromColumn="date_id" toColumn="id" toRole="parent"/>
+            </complexProperty>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="level" schema="engy">
+                <attribute column="level_codespace" type="string" path="@codespace" schema="engy"/>
+                <attribute column="level_" type="string" path="." schema="engy"/>
+            </complexAttribute>
+            <attribute column="description" type="string" maxOccurs="1" path="description" schema="engy"/>
+        </complexType>
+        <complexType id="engy_FloorAreaType" table="engy_floorarea" objectClassId="10005" path="FloorArea" schema="engy">
+            <attribute column="type" type="string" minOccurs="1" maxOccurs="1" path="type" schema="engy"/>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="value" schema="engy">
+                <attribute column="value_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="value" type="double" path="." schema="engy"/>
+            </complexAttribute>
+        </complexType>
+        <complexType id="engy_HeightAboveGroundType" table="engy_heightaboveground" objectClassId="10006" path="HeightAboveGround" schema="engy">
+            <attribute column="heightreference" type="string" minOccurs="1" maxOccurs="1" path="heightReference" schema="engy"/>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="value" schema="engy">
+                <attribute column="value_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="value" type="double" path="." schema="engy"/>
+            </complexAttribute>
+        </complexType>
+        <complexType id="engy_DateOfEventType" table="engy_dateofevent" objectClassId="10008" path="DateOfEvent" schema="engy">
+            <complexAttribute minOccurs="1" maxOccurs="1" path="instant" schema="engy">
+                <attribute column="instant_frame" type="string" path="@frame" schema="engy"/>
+                <attribute column="instant_calendareraname" type="string" path="@calendarEraName" schema="engy"/>
+                <attribute column="instant_indeterminatepositio" type="string" path="@indeterminatePosition" schema="engy"/>
+                <attribute column="instant" type="string" path="." schema="engy"/>
+            </complexAttribute>
+            <complexProperty minOccurs="1" maxOccurs="1" path="period" schema="engy">
+                <type path="TimePeriod" schema="engy">
+                    <attribute column="timeperiodprop_beginposition" type="timestamp" minOccurs="1" maxOccurs="1" path="beginPosition" schema="engy"/>
+                    <attribute column="timeperiodproper_endposition" type="timestamp" minOccurs="1" maxOccurs="1" path="endPosition" schema="engy"/>
+                </type>
+            </complexProperty>
+        </complexType>
+        <complexType id="engy_HeatExchangeTypeType" table="engy_heatexchangetype" objectClassId="10014" path="HeatExchangeType" schema="engy">
+            <complexAttribute maxOccurs="1" path="convectiveFraction" schema="engy">
+                <attribute column="convectivefraction_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="convectivefraction" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="latentFraction" schema="engy">
+                <attribute column="latentfraction_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="latentfraction" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="radiantFraction" schema="engy">
+                <attribute column="radiantfraction_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="radiantfraction" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="totalValue" schema="engy">
+                <attribute column="totalvalue_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="totalvalue" type="double" path="." schema="engy"/>
+            </complexAttribute>
+        </complexType>
+        <complexType id="engy_ShadingTypeType" table="engy_shadingtype" objectClassId="10015" path="ShadingType" schema="engy">
+            <complexAttribute minOccurs="1" maxOccurs="1" path="maximumCoverRatio" schema="engy">
+                <attribute column="maximumcoverratio_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="maximumcoverratio" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <attribute column="name" type="string" maxOccurs="1" path="name" schema="engy"/>
+            <complexProperty refType="engy_TransmittanceType" minOccurs="1" maxOccurs="1" path="transmittance" schema="engy">
+                <join table="engy_transmittance" fromColumn="transmittance_id" toColumn="id" toRole="parent"/>
+            </complexProperty>
+        </complexType>
+        <complexType id="engy_TransmittanceType" table="engy_transmittance" objectClassId="10016" path="Transmittance" schema="engy">
+            <complexAttribute minOccurs="1" maxOccurs="1" path="fraction" schema="engy">
+                <attribute column="fraction_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="fraction" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <attribute column="wavelengthrange" type="string" minOccurs="1" maxOccurs="1" path="wavelengthRange" schema="engy"/>
+        </complexType>
+        <complexType id="engy_OpticalPropertiesType" table="engy_opticalproperties" objectClassId="10048" path="OpticalProperties" schema="engy">
+            <complexProperty refType="engy_EmissivityType" path="emissivity" schema="engy">
+                <join table="engy_emissivity" fromColumn="id" toColumn="opticalpropert_emissivity_id" toRole="child"/>
+            </complexProperty>
+            <complexProperty refType="engy_ReflectanceType" path="reflectance" schema="engy">
+                <join table="engy_reflectance" fromColumn="id" toColumn="opticalproper_reflectance_id" toRole="child"/>
+            </complexProperty>
+            <complexProperty refType="engy_TransmittanceType" path="transmittance" schema="engy">
+                <join table="engy_transmittance" fromColumn="id" toColumn="opticalprope_transmittanc_id" toRole="child"/>
+            </complexProperty>
+            <complexAttribute maxOccurs="1" path="glazingRatio" schema="engy">
+                <attribute column="glazingratio_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="glazingratio" type="double" path="." schema="engy"/>
+            </complexAttribute>
+        </complexType>
+        <complexType id="engy_EmissivityType" table="engy_emissivity" objectClassId="10050" path="Emissivity" schema="engy">
+            <complexAttribute minOccurs="1" maxOccurs="1" path="fraction" schema="engy">
+                <attribute column="fraction_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="fraction" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <attribute column="surface" type="string" minOccurs="1" maxOccurs="1" path="surface" schema="engy"/>
+        </complexType>
+        <complexType id="engy_ReflectanceType" table="engy_reflectance" objectClassId="10051" path="Reflectance" schema="engy">
+            <complexAttribute minOccurs="1" maxOccurs="1" path="fraction" schema="engy">
+                <attribute column="fraction_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="fraction" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <attribute column="surface" type="string" minOccurs="1" maxOccurs="1" path="surface" schema="engy"/>
+            <attribute column="wavelengthrange" type="string" minOccurs="1" maxOccurs="1" path="wavelengthRange" schema="engy"/>
+        </complexType>
+        <complexType id="engy_TimeValuesPropertiesType" table="engy_timevaluesproperties" objectClassId="10064" path="TimeValuesProperties" schema="engy">
+            <attribute column="acquisitionmethod" type="string" minOccurs="1" maxOccurs="1" path="acquisitionMethod" schema="engy"/>
+            <attribute column="interpolationtype" type="string" minOccurs="1" maxOccurs="1" path="interpolationType" schema="engy"/>
+            <attribute column="qualitydescription" type="string" maxOccurs="1" path="qualityDescription" schema="engy"/>
+            <attribute column="source" type="string" maxOccurs="1" path="source" schema="engy"/>
+            <attribute column="thematicdescription" type="string" maxOccurs="1" path="thematicDescription" schema="engy"/>
+        </complexType>
+        <complexType id="engy_PeriodOfYearType" table="engy_periodofyear" objectClassId="10067" path="PeriodOfYear" schema="engy">
+            <complexProperty refType="engy_DailyScheduleType" minOccurs="1" path="dailySchedule" schema="engy">
+                <join table="engy_dailyschedule" fromColumn="id" toColumn="periodofyear_dailyschedul_id" toRole="child"/>
+            </complexProperty>
+            <complexProperty minOccurs="1" maxOccurs="1" path="period" schema="engy">
+                <type path="TimePeriod" schema="engy">
+                    <attribute column="timeperiodprop_beginposition" type="timestamp" minOccurs="1" maxOccurs="1" path="beginPosition" schema="engy"/>
+                    <attribute column="timeperiodproper_endposition" type="timestamp" minOccurs="1" maxOccurs="1" path="endPosition" schema="engy"/>
+                </type>
+            </complexProperty>
+        </complexType>
+        <complexType id="engy_DailyScheduleType" table="engy_dailyschedule" objectClassId="10068" path="DailySchedule" schema="engy">
+            <attribute column="daytype" type="string" minOccurs="1" maxOccurs="1" path="dayType" schema="engy"/>
+            <objectProperty target="engy_AbstractTimeSeriesType" minOccurs="1" maxOccurs="1" path="schedule" schema="engy">
+                <join table="engy_timeseries" fromColumn="schedule_id" toColumn="id" toRole="parent">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </objectProperty>
+        </complexType>
+        <complexType id="engy_MeasurementPointType" table="engy_measurementpoint" objectClassId="10071" path="MeasurementPoint" schema="engy">
+            <complexAttribute minOccurs="1" maxOccurs="1" path="time" schema="engy">
+                <attribute column="time_frame" type="string" path="@frame" schema="engy"/>
+                <attribute column="time_calendareraname" type="string" path="@calendarEraName" schema="engy"/>
+                <attribute column="time_indeterminateposition" type="string" path="@indeterminatePosition" schema="engy"/>
+                <attribute column="time" type="string" path="." schema="engy"/>
+            </complexAttribute>
+            <attribute column="value" type="double" minOccurs="1" maxOccurs="1" path="value" schema="engy"/>
+        </complexType>
+    </complexTypes>
+    <objectTypes>
+        <objectType id="engy_WeatherDataType" table="engy_weatherdata" objectClassId="10009" path="WeatherData" schema="engy">
+            <extension base="AbstractGMLType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="weatherdatatype" type="string" minOccurs="1" maxOccurs="1" path="weatherDataType" schema="engy"/>
+            <objectProperty target="engy_AbstractTimeSeriesType" minOccurs="1" maxOccurs="1" path="values" schema="engy">
+                <join table="engy_timeseries" fromColumn="values_id" toColumn="id" toRole="parent">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </objectProperty>
+            <geometryProperty inlineColumn="position" type="Point" maxOccurs="1" path="position" schema="engy"/>
+        </objectType>
+        <objectType abstract="true" id="engy_AbstractTimeSeriesType" table="engy_timeseries" objectClassId="10011" path="AbstractTimeSeries" schema="engy">
+            <extension base="AbstractGMLType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <complexProperty minOccurs="1" maxOccurs="1" path="variableProperties" schema="engy">
+                <type path="TimeValuesProperties" schema="engy">
+                    <attribute column="timevaluesprop_acquisitionme" type="string" minOccurs="1" maxOccurs="1" path="acquisitionMethod" schema="engy"/>
+                    <attribute column="timevaluesprop_interpolation" type="string" minOccurs="1" maxOccurs="1" path="interpolationType" schema="engy"/>
+                    <attribute column="timevaluesprop_qualitydescri" type="string" maxOccurs="1" path="qualityDescription" schema="engy"/>
+                    <attribute column="timevaluespropertiest_source" type="string" maxOccurs="1" path="source" schema="engy"/>
+                    <attribute column="timevaluesprop_thematicdescr" type="string" maxOccurs="1" path="thematicDescription" schema="engy"/>
+                </type>
+            </complexProperty>
+        </objectType>
+        <objectType id="engy_ServiceLifeType" table="engy_servicelife" objectClassId="10013" path="ServiceLife" schema="engy">
+            <extension base="AbstractGMLType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <complexAttribute maxOccurs="1" path="startOfLife" schema="engy">
+                <attribute column="startoflife_frame" type="string" path="@frame" schema="engy"/>
+                <attribute column="startoflife_calendareraname" type="string" path="@calendarEraName" schema="engy"/>
+                <attribute column="startoflife_indeterminatepos" type="string" path="@indeterminatePosition" schema="engy"/>
+                <attribute column="startoflife" type="string" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="lifeExpectancy" schema="engy">
+                <attribute column="lifeexpectancy_unit" type="string" path="@unit" schema="engy"/>
+                <attribute column="lifeexpectancy_radix" type="integer" path="@radix" schema="engy"/>
+                <attribute column="lifeexpectancy_factor" type="integer" path="@factor" schema="engy"/>
+                <attribute column="lifeexpectancy" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="mainMaintenanceInterval" schema="engy">
+                <attribute column="mainmaintenanceinterval_unit" type="string" path="@unit" schema="engy"/>
+                <attribute column="mainmaintenanceinterva_radix" type="integer" path="@radix" schema="engy"/>
+                <attribute column="mainmaintenanceinterv_factor" type="integer" path="@factor" schema="engy"/>
+                <attribute column="mainmaintenanceinterval" type="double" path="." schema="engy"/>
+            </complexAttribute>
+        </objectType>
+        <objectType abstract="true" id="engy_AbstractScheduleType" table="engy_schedule" objectClassId="10023" path="AbstractSchedule" schema="engy">
+            <extension base="AbstractGMLType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+        </objectType>
+        <objectType id="engy_ConstantValueScheduleType" table="engy_schedule" objectClassId="10065" path="ConstantValueSchedule" schema="engy">
+            <extension base="engy_AbstractScheduleType"/>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="averageValue" schema="engy">
+                <attribute column="averagevalue_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="averagevalue" type="double" path="." schema="engy"/>
+            </complexAttribute>
+        </objectType>
+        <objectType id="engy_DailyPatternScheduleType" table="engy_schedule" objectClassId="10066" path="DailyPatternSchedule" schema="engy">
+            <extension base="engy_AbstractScheduleType"/>
+            <complexProperty refType="engy_PeriodOfYearType" minOccurs="1" path="periodOfYear" schema="engy">
+                <join table="engy_periodofyear" fromColumn="id" toColumn="schedule_periodofyear_id" toRole="child"/>
+            </complexProperty>
+        </objectType>
+        <objectType id="engy_DualValueScheduleType" table="engy_dualvalueschedule" objectClassId="10069" path="DualValueSchedule" schema="engy">
+            <extension base="engy_AbstractScheduleType">
+                <join table="engy_schedule" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="usagehoursperday" type="double" maxOccurs="1" path="usageHoursPerDay" schema="engy"/>
+            <attribute column="usagedaysperyear" type="double" maxOccurs="1" path="usageDaysPerYear" schema="engy"/>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="usageValue" schema="engy">
+                <attribute column="usagevalue_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="usagevalue" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="idleValue" schema="engy">
+                <attribute column="idlevalue_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="idlevalue" type="double" path="." schema="engy"/>
+            </complexAttribute>
+        </objectType>
+        <objectType id="engy_IrregularTimeSeriesType" table="engy_irregulartimeseries" objectClassId="10070" path="IrregularTimeSeries" schema="engy">
+            <extension base="engy_AbstractTimeSeriesType">
+                <join table="engy_timeseries" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="uom" type="string" minOccurs="1" maxOccurs="1" path="uom" schema="engy"/>
+            <complexProperty refType="engy_MeasurementPointType" path="contains" schema="engy">
+                <join table="engy_measurementpoint" fromColumn="id" toColumn="irregulartimeser_contains_id" toRole="child"/>
+            </complexProperty>
+        </objectType>
+        <objectType id="engy_IrregularTimeSeriesFileType" table="engy_irregulartimeseriesf" objectClassId="10072" path="IrregularTimeSeriesFile" schema="engy">
+            <extension base="engy_AbstractTimeSeriesType">
+                <join table="engy_timeseries" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="uom" type="string" minOccurs="1" maxOccurs="1" path="uom" schema="engy"/>
+            <attribute column="file_" type="string" minOccurs="1" maxOccurs="1" path="file" schema="engy"/>
+            <attribute column="numberofheaderlines" type="integer" maxOccurs="1" path="numberOfHeaderLines" schema="engy"/>
+            <attribute column="fieldseparator" type="string" minOccurs="1" maxOccurs="1" path="fieldSeparator" schema="engy"/>
+            <attribute column="recordseparator" type="string" maxOccurs="1" path="recordSeparator" schema="engy"/>
+            <attribute column="decimalsymbol" type="string" maxOccurs="1" path="decimalSymbol" schema="engy"/>
+            <attribute column="timecolumnnumber" type="integer" maxOccurs="1" path="timeColumnNumber" schema="engy"/>
+            <attribute column="valuecolumnnumber" type="integer" maxOccurs="1" path="valueColumnNumber" schema="engy"/>
+        </objectType>
+        <objectType id="engy_RegularTimeSeriesType" table="engy_regulartimeseries" objectClassId="10073" path="RegularTimeSeries" schema="engy">
+            <extension base="engy_AbstractTimeSeriesType">
+                <join table="engy_timeseries" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="timeInterval" schema="engy">
+                <attribute column="timeinterval_unit" type="string" path="@unit" schema="engy"/>
+                <attribute column="timeinterval_radix" type="integer" path="@radix" schema="engy"/>
+                <attribute column="timeinterval_factor" type="integer" path="@factor" schema="engy"/>
+                <attribute column="timeinterval" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="values" schema="engy">
+                <attribute column="values_" type="clob" path="." schema="engy"/>
+                <attribute column="values_uom" type="string" path="@uom" schema="engy"/>
+            </complexAttribute>
+            <complexProperty minOccurs="1" maxOccurs="1" path="temporalExtent" schema="engy">
+                <type path="TimePeriod" schema="engy">
+                    <attribute column="timeperiodprop_beginposition" type="timestamp" minOccurs="1" maxOccurs="1" path="beginPosition" schema="engy"/>
+                    <attribute column="timeperiodproper_endposition" type="timestamp" minOccurs="1" maxOccurs="1" path="endPosition" schema="engy"/>
+                </type>
+            </complexProperty>
+        </objectType>
+        <objectType id="engy_RegularTimeSeriesFileType" table="engy_regulartimeseriesfil" objectClassId="10074" path="RegularTimeSeriesFile" schema="engy">
+            <extension base="engy_AbstractTimeSeriesType">
+                <join table="engy_timeseries" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="uom" type="string" minOccurs="1" maxOccurs="1" path="uom" schema="engy"/>
+            <attribute column="file_" type="string" minOccurs="1" maxOccurs="1" path="file" schema="engy"/>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="timeInterval" schema="engy">
+                <attribute column="timeinterval_unit" type="string" path="@unit" schema="engy"/>
+                <attribute column="timeinterval_radix" type="integer" path="@radix" schema="engy"/>
+                <attribute column="timeinterval_factor" type="integer" path="@factor" schema="engy"/>
+                <attribute column="timeinterval" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <attribute column="numberofheaderlines" type="integer" maxOccurs="1" path="numberOfHeaderLines" schema="engy"/>
+            <attribute column="fieldseparator" type="string" minOccurs="1" maxOccurs="1" path="fieldSeparator" schema="engy"/>
+            <attribute column="recordseparator" type="string" maxOccurs="1" path="recordSeparator" schema="engy"/>
+            <attribute column="decimalsymbol" type="string" maxOccurs="1" path="decimalSymbol" schema="engy"/>
+            <attribute column="valuecolumnnumber" type="integer" maxOccurs="1" path="valueColumnNumber" schema="engy"/>
+            <complexProperty minOccurs="1" maxOccurs="1" path="temporalExtent" schema="engy">
+                <type path="TimePeriod" schema="engy">
+                    <attribute column="timeperiodprop_beginposition" type="timestamp" minOccurs="1" maxOccurs="1" path="beginPosition" schema="engy"/>
+                    <attribute column="timeperiodproper_endposition" type="timestamp" minOccurs="1" maxOccurs="1" path="endPosition" schema="engy"/>
+                </type>
+            </complexProperty>
+        </objectType>
+        <objectType id="engy_TimeSeriesScheduleType" table="engy_schedule" objectClassId="10075" path="TimeSeriesSchedule" schema="engy">
+            <extension base="engy_AbstractScheduleType"/>
+            <objectProperty target="engy_AbstractTimeSeriesType" minOccurs="1" maxOccurs="1" path="timeDependingValues" schema="engy">
+                <join table="engy_timeseries" fromColumn="timedependingvalues_id" toColumn="id" toRole="parent">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </objectProperty>
+        </objectType>
+    </objectTypes>
+    <featureTypes>
+        <featureType abstract="true" id="engy_AbstractThermalZoneType" table="engy_thermalzone" objectClassId="10003" path="AbstractThermalZone" schema="engy">
+            <extension base="AbstractCityObjectType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <featureProperty target="engy_AbstractUsageZoneType" path="contains" schema="engy">
+                <join table="engy_usagezone" fromColumn="id" toColumn="thermalzone_contains_id" toRole="child"/>
+            </featureProperty>
+        </featureType>
+        <featureType abstract="true" id="engy_AbstractUsageZoneType" table="engy_usagezone" objectClassId="10004" path="AbstractUsageZone" schema="engy">
+            <extension base="AbstractCityObjectType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+        </featureType>
+        <featureType abstract="true" id="engy_AbstractConstructionType" table="engy_construction" objectClassId="10007" path="AbstractConstruction" schema="engy">
+            <extension base="AbstractFeatureType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+        </featureType>
+        <featureType id="engy_EnergyDemandType" table="engy_energydemand" objectClassId="10010" path="EnergyDemand" schema="engy">
+            <extension base="AbstractFeatureType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <objectProperty target="engy_AbstractTimeSeriesType" minOccurs="1" maxOccurs="1" path="energyAmount" schema="engy">
+                <join table="engy_timeseries" fromColumn="energyamount_id" toColumn="id" toRole="parent">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </objectProperty>
+            <attribute column="enduse" type="string" minOccurs="1" maxOccurs="1" path="endUse" schema="engy"/>
+            <complexAttribute maxOccurs="1" path="maximumLoad" schema="engy">
+                <attribute column="maximumload_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="maximumload" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="energyCarrierType" schema="engy">
+                <attribute column="energycarriertype_codespace" type="string" path="@codespace" schema="engy"/>
+                <attribute column="energycarriertype" type="string" path="." schema="engy"/>
+            </complexAttribute>
+            <featureProperty target="AbstractCityObjectType" path="demandedBy" schema="engy">
+                <joinTable table="engy_energyde_to_cityobje">
+                    <join table="engy_energydemand" fromColumn="energydemand_id" toColumn="id" toRole="parent"/>
+                    <inverseJoin table="cityobject" fromColumn="cityobject_id" toColumn="id" toRole="parent">
+                        <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                    </inverseJoin>
+                </joinTable>
+            </featureProperty>
+        </featureType>
+        <featureType abstract="true" id="engy_AbstractEnergySystemType" table="engy_energysystem" objectClassId="10012" path="AbstractEnergySystem" schema="engy">
+            <extension base="AbstractCityObjectType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="numberofdevices" type="integer" maxOccurs="1" path="numberOfDevices" schema="engy"/>
+            <attribute column="model" type="string" maxOccurs="1" path="model" schema="engy"/>
+            <objectProperty target="engy_ServiceLifeType" maxOccurs="1" path="serviceLife" schema="engy">
+                <join table="engy_servicelife" fromColumn="servicelife_id" toColumn="id" toRole="parent"/>
+            </objectProperty>
+            <attribute column="yearofmanufacure" type="date" maxOccurs="1" path="yearOfManufacure" schema="engy"/>
+            <featureProperty target="AbstractCityObjectType" path="installedIn" schema="engy">
+                <joinTable table="engy_energysy_to_cityobje">
+                    <join table="engy_energysystem" fromColumn="energysystem_id" toColumn="id" toRole="parent">
+                        <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                    </join>
+                    <inverseJoin table="cityobject" fromColumn="cityobject_id" toColumn="id" toRole="parent">
+                        <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                    </inverseJoin>
+                </joinTable>
+            </featureProperty>
+        </featureType>
+        <featureType id="engy_ThermalBoundaryType" table="engy_thermalboundary" objectClassId="10017" path="ThermalBoundary" schema="engy">
+            <extension base="AbstractCityObjectType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="thermalboundarytype" type="string" minOccurs="1" maxOccurs="1" path="thermalBoundaryType" schema="engy"/>
+            <complexAttribute maxOccurs="1" path="azimuth" schema="engy">
+                <attribute column="azimuth_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="azimuth" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="inclination" schema="engy">
+                <attribute column="inclination_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="inclination" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="area" schema="engy">
+                <attribute column="area_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="area" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <geometryProperty refColumn="surfacegeometry_id" type="MultiSurface" maxOccurs="1" path="surfaceGeometry" schema="engy"/>
+            <complexProperty refType="engy_RefurbishmentMeasureType" path="refurbishmentMeasure" schema="engy">
+                <join table="engy_refurbishmentmeasure" fromColumn="id" toColumn="thermalbound_refurbishmen_id" toRole="child"/>
+            </complexProperty>
+            <featureProperty target="engy_AbstractConstructionType" maxOccurs="1" path="construction" schema="engy">
+                <join table="engy_construction" fromColumn="construction_id" toColumn="id" toRole="parent"/>
+            </featureProperty>
+            <featureProperty target="engy_ThermalOpeningType" path="contains" schema="engy">
+                <join table="engy_thermalopening" fromColumn="id" toColumn="thermalboundary_contains_id" toRole="child"/>
+            </featureProperty>
+            <featureProperty target="engy_ThermalZoneType" minOccurs="1" maxOccurs="2" path="delimits" schema="engy">
+                <joinTable table="engy_ther_deli_to_the_bou">
+                    <join table="engy_thermalboundary" fromColumn="thermalboundary_delimits_id" toColumn="id" toRole="parent"/>
+                    <inverseJoin table="engy_thermalzone" fromColumn="thermalzone_boundedby_id" toColumn="id" toRole="parent"/>
+                </joinTable>
+            </featureProperty>
+            <featureProperty target="AbstractBoundarySurfaceType" path="relatesTo" schema="engy">
+                <joinTable table="engy_therm_to_thema_surfa">
+                    <join table="engy_thermalboundary" fromColumn="thermalboundary_id" toColumn="id" toRole="parent"/>
+                    <inverseJoin table="thematic_surface" fromColumn="thematic_surface_id" toColumn="id" toRole="parent"/>
+                </joinTable>
+            </featureProperty>
+        </featureType>
+        <featureType id="engy_ThermalOpeningType" table="engy_thermalopening" objectClassId="10018" path="ThermalOpening" schema="engy">
+            <extension base="AbstractCityObjectType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <complexAttribute maxOccurs="1" path="area" schema="engy">
+                <attribute column="area_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="area" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <featureProperty target="engy_AbstractConstructionType" maxOccurs="1" path="construction" schema="engy">
+                <join table="engy_construction" fromColumn="construction_id" toColumn="id" toRole="parent"/>
+            </featureProperty>
+            <complexProperty refType="engy_ShadingTypeType" maxOccurs="1" path="indoorShading" schema="engy">
+                <join table="engy_shadingtype" fromColumn="indoorshading_id" toColumn="id" toRole="parent"/>
+            </complexProperty>
+            <complexProperty refType="engy_ShadingTypeType" maxOccurs="1" path="outdoorShading" schema="engy">
+                <join table="engy_shadingtype" fromColumn="outdoorshading_id" toColumn="id" toRole="parent"/>
+            </complexProperty>
+            <complexAttribute maxOccurs="1" path="openableRatio" schema="engy">
+                <attribute column="openableratio_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="openableratio" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <geometryProperty refColumn="surfacegeometry_id" type="MultiSurface" maxOccurs="1" path="surfaceGeometry" schema="engy"/>
+            <featureProperty target="AbstractOpeningType" path="relatesTo" schema="engy">
+                <joinTable table="engy_thermalop_to_opening">
+                    <join table="engy_thermalopening" fromColumn="thermalopening_id" toColumn="id" toRole="parent"/>
+                    <inverseJoin table="opening" fromColumn="opening_id" toColumn="id" toRole="parent"/>
+                </joinTable>
+            </featureProperty>
+        </featureType>
+        <featureType id="engy_ThermalZoneType" table="engy_thermalzone" objectClassId="10019" path="ThermalZone" schema="engy">
+            <extension base="engy_AbstractThermalZoneType"/>
+            <complexAttribute maxOccurs="1" path="additionalThermalBridgeUValue" schema="engy">
+                <attribute column="additionalthermalbridgeu_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="additionalthermalbridgeuvalu" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="effectiveThermalCapacity" schema="engy">
+                <attribute column="effectivethermalcapacity_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="effectivethermalcapacity" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexProperty refType="engy_FloorAreaType" path="floorArea" schema="engy">
+                <join table="engy_floorarea" fromColumn="id" toColumn="thermalzone_floorarea_id" toRole="child"/>
+            </complexProperty>
+            <complexProperty refType="engy_VolumeTypeType" path="volume" schema="engy">
+                <join table="engy_volumetype" fromColumn="id" toColumn="thermalzone_volume_id" toRole="child"/>
+            </complexProperty>
+            <complexAttribute maxOccurs="1" path="indirectlyHeatedAreaRatio" schema="engy">
+                <attribute column="indirectlyheatedarearati_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="indirectlyheatedarearatio" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="infiltrationRate" schema="engy">
+                <attribute column="infiltrationrate_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="infiltrationrate" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <attribute column="iscooled" type="boolean" minOccurs="1" maxOccurs="1" path="isCooled" schema="engy"/>
+            <attribute column="isheated" type="boolean" minOccurs="1" maxOccurs="1" path="isHeated" schema="engy"/>
+            <geometryProperty refColumn="volumegeometry_id" type="AbstractSolid" maxOccurs="1" path="volumeGeometry" schema="engy"/>
+            <featureProperty target="RoomType" path="interiorRoom" schema="engy">
+                <joinTable table="engy_thermalzone_to_room">
+                    <join table="engy_thermalzone" fromColumn="thermalzone_id" toColumn="id" toRole="parent"/>
+                    <inverseJoin table="room" fromColumn="room_id" toColumn="id" toRole="parent"/>
+                </joinTable>
+            </featureProperty>
+            <featureProperty target="engy_ThermalBoundaryType" path="boundedBy" schema="engy">
+                <joinTable table="engy_ther_deli_to_the_bou">
+                    <join table="engy_thermalzone" fromColumn="thermalzone_boundedby_id" toColumn="id" toRole="parent"/>
+                    <inverseJoin table="engy_thermalboundary" fromColumn="thermalboundary_delimits_id" toColumn="id" toRole="parent"/>
+                </joinTable>
+            </featureProperty>
+        </featureType>
+        <featureType abstract="true" id="engy_AbstractEnergyConversionSystemType" table="engy_energyconversionsyst" objectClassId="10020" path="AbstractEnergyConversionSystem" schema="engy">
+            <extension base="engy_AbstractEnergySystemType">
+                <join table="engy_energysystem" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="efficiencyindicator" type="string" maxOccurs="1" path="efficiencyIndicator" schema="engy"/>
+            <complexAttribute maxOccurs="1" path="installedPower" schema="engy">
+                <attribute column="installedpower_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="installedpower" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="nominalEfficiency" schema="engy">
+                <attribute column="nominalefficiency_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="nominalefficiency" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <featureProperty target="engy_SystemOperationType" path="has" schema="engy">
+                <join table="engy_systemoperation" fromColumn="id" toColumn="energyconversionsyste_has_id" toRole="child"/>
+            </featureProperty>
+            <featureProperty target="engy_EnergyFlowType" path="provides" schema="engy">
+                <joinTable table="engy_ener_prov_to_ene_isp">
+                    <join table="engy_energyconversionsyst" fromColumn="energyconversion_provides_id" toColumn="id" toRole="parent">
+                        <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                    </join>
+                    <inverseJoin table="engy_energyflow" fromColumn="energyflow_isprovidedby_id" toColumn="id" toRole="parent"/>
+                </joinTable>
+            </featureProperty>
+        </featureType>
+        <featureType id="engy_SystemOperationType" table="engy_systemoperation" objectClassId="10021" path="SystemOperation" schema="engy">
+            <extension base="AbstractFeatureType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="enduse" type="string" minOccurs="1" maxOccurs="1" path="endUse" schema="engy"/>
+            <objectProperty target="engy_AbstractScheduleType" maxOccurs="1" path="operationTime" schema="engy">
+                <join table="engy_schedule" fromColumn="operationtime_id" toColumn="id" toRole="parent">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </objectProperty>
+            <attribute column="yearlyglobalefficiency" type="double" maxOccurs="1" path="yearlyGlobalEfficiency" schema="engy"/>
+        </featureType>
+        <featureType id="engy_EnergyFlowType" table="engy_energyflow" objectClassId="10022" path="EnergyFlow" schema="engy">
+            <extension base="AbstractFeatureType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <objectProperty target="engy_AbstractTimeSeriesType" minOccurs="1" maxOccurs="1" path="energyAmount" schema="engy">
+                <join table="engy_timeseries" fromColumn="energyamount_id" toColumn="id" toRole="parent">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </objectProperty>
+            <complexAttribute maxOccurs="1" path="energyCarrierType" schema="engy">
+                <attribute column="energycarriertype_codespace" type="string" path="@codespace" schema="engy"/>
+                <attribute column="energycarriertype" type="string" path="." schema="engy"/>
+            </complexAttribute>
+            <featureProperty target="engy_AbstractEnergyConversionSystemType" path="isProvidedBy" schema="engy">
+                <joinTable table="engy_ener_prov_to_ene_isp">
+                    <join table="engy_energyflow" fromColumn="energyflow_isprovidedby_id" toColumn="id" toRole="parent"/>
+                    <inverseJoin table="engy_energyconversionsyst" fromColumn="energyconversion_provides_id" toColumn="id" toRole="parent">
+                        <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                    </inverseJoin>
+                </joinTable>
+            </featureProperty>
+            <featureProperty target="engy_AbstractEnergyDistributionSystemType" path="isDistributedBy" schema="engy">
+                <joinTable table="engy_ener_dist_to_ene_isd">
+                    <join table="engy_energyflow" fromColumn="energyflow_isdistributedb_id" toColumn="id" toRole="parent"/>
+                    <inverseJoin table="engy_energydistributionsy" fromColumn="energydistrib_distributes_id" toColumn="id" toRole="parent">
+                        <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                    </inverseJoin>
+                </joinTable>
+            </featureProperty>
+            <featureProperty target="engy_EmitterSystemType" path="isEmittedBy" schema="engy">
+                <joinTable table="engy_emit_emit_to_ene_ise">
+                    <join table="engy_energyflow" fromColumn="energyflow_isemittedby_id" toColumn="id" toRole="parent"/>
+                    <inverseJoin table="engy_emittersystem" fromColumn="emittersystem_emitts_id" toColumn="id" toRole="parent"/>
+                </joinTable>
+            </featureProperty>
+            <featureProperty target="engy_AbstractStorageSystemType" path="isStoredBy" schema="engy">
+                <joinTable table="engy_ener_isst_to_sto_sto">
+                    <join table="engy_energyflow" fromColumn="energyflow_isstoredby_id" toColumn="id" toRole="parent"/>
+                    <inverseJoin table="engy_storagesystem" fromColumn="storagesystem_stores_id" toColumn="id" toRole="parent">
+                        <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                    </inverseJoin>
+                </joinTable>
+            </featureProperty>
+        </featureType>
+        <featureType abstract="true" id="engy_AbstractEnergyDistributionSystemType" table="engy_energydistributionsy" objectClassId="10024" path="AbstractEnergyDistributionSystem" schema="engy">
+            <extension base="engy_AbstractEnergySystemType">
+                <join table="engy_energysystem" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="distributionperimeter" type="string" maxOccurs="1" path="distributionPerimeter" schema="engy"/>
+            <featureProperty target="engy_EnergyFlowType" path="distributes" schema="engy">
+                <joinTable table="engy_ener_dist_to_ene_isd">
+                    <join table="engy_energydistributionsy" fromColumn="energydistrib_distributes_id" toColumn="id" toRole="parent">
+                        <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                    </join>
+                    <inverseJoin table="engy_energyflow" fromColumn="energyflow_isdistributedb_id" toColumn="id" toRole="parent"/>
+                </joinTable>
+            </featureProperty>
+        </featureType>
+        <featureType id="engy_EmitterSystemType" table="engy_emittersystem" objectClassId="10025" path="EmitterSystem" schema="engy">
+            <extension base="engy_AbstractEnergySystemType">
+                <join table="engy_energysystem" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="emittertype" type="string" maxOccurs="1" path="emitterType" schema="engy"/>
+            <complexAttribute maxOccurs="1" path="installedPower" schema="engy">
+                <attribute column="installedpower_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="installedpower" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexProperty refType="engy_HeatExchangeTypeType" maxOccurs="1" path="thermalExchange" schema="engy">
+                <join table="engy_heatexchangetype" fromColumn="thermalexchange_id" toColumn="id" toRole="parent"/>
+            </complexProperty>
+            <featureProperty target="engy_EnergyFlowType" path="emitts" schema="engy">
+                <joinTable table="engy_emit_emit_to_ene_ise">
+                    <join table="engy_emittersystem" fromColumn="emittersystem_emitts_id" toColumn="id" toRole="parent"/>
+                    <inverseJoin table="engy_energyflow" fromColumn="energyflow_isemittedby_id" toColumn="id" toRole="parent"/>
+                </joinTable>
+            </featureProperty>
+        </featureType>
+        <featureType abstract="true" id="engy_AbstractStorageSystemType" table="engy_storagesystem" objectClassId="10026" path="AbstractStorageSystem" schema="engy">
+            <extension base="engy_AbstractEnergySystemType">
+                <join table="engy_energysystem" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <featureProperty target="engy_EnergyFlowType" path="stores" schema="engy">
+                <joinTable table="engy_ener_isst_to_sto_sto">
+                    <join table="engy_storagesystem" fromColumn="storagesystem_stores_id" toColumn="id" toRole="parent">
+                        <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                    </join>
+                    <inverseJoin table="engy_energyflow" fromColumn="energyflow_isstoredby_id" toColumn="id" toRole="parent"/>
+                </joinTable>
+            </featureProperty>
+        </featureType>
+        <featureType abstract="true" id="engy_AbstractSolarEnergySystemType" table="engy_solarenergysystem" objectClassId="10027" path="AbstractSolarEnergySystem" schema="engy">
+            <extension base="engy_AbstractEnergyConversionSystemType">
+                <join table="engy_energyconversionsyst" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <geometryProperty refColumn="surfacegeometry_id" type="MultiSurface" maxOccurs="1" path="surfaceGeometry" schema="engy"/>
+            <featureProperty target="AbstractBoundarySurfaceType" maxOccurs="1" path="installedOnBoundarySurface" schema="engy">
+                <join table="thematic_surface" fromColumn="installedonboundarysurfac_id" toColumn="id" toRole="parent"/>
+            </featureProperty>
+            <featureProperty target="BuildingInstallationType" maxOccurs="1" path="installedOnBuildingInstallation" schema="engy">
+                <join table="building_installation" fromColumn="installedonbuildinginstal_id" toColumn="id" toRole="parent"/>
+            </featureProperty>
+        </featureType>
+        <featureType id="engy_AirCompressorType" table="engy_aircompressor" objectClassId="10028" path="AirCompressor" schema="engy">
+            <extension base="engy_AbstractEnergyConversionSystemType">
+                <join table="engy_energyconversionsyst" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="compressortype" type="string" minOccurs="1" maxOccurs="1" path="compressorType" schema="engy"/>
+            <complexAttribute maxOccurs="1" path="pressure" schema="engy">
+                <attribute column="pressure_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="pressure" type="double" path="." schema="engy"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="engy_BoilerType" table="engy_energyconversionsyst" objectClassId="10029" path="Boiler" schema="engy">
+            <extension base="engy_AbstractEnergyConversionSystemType"/>
+            <attribute column="hascondensation" type="boolean" minOccurs="1" maxOccurs="1" path="hasCondensation" schema="engy"/>
+        </featureType>
+        <featureType id="engy_ChillerType" table="engy_chiller" objectClassId="10030" path="Chiller" schema="engy">
+            <extension base="engy_AbstractEnergyConversionSystemType">
+                <join table="engy_energyconversionsyst" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="condensationtype" type="string" minOccurs="1" maxOccurs="1" path="condensationType" schema="engy"/>
+            <attribute column="compressortype" type="string" minOccurs="1" maxOccurs="1" path="compressorType" schema="engy"/>
+            <attribute column="refrigerant" type="string" maxOccurs="1" path="refrigerant" schema="engy"/>
+        </featureType>
+        <featureType id="engy_CombinedHeatPowerType" table="engy_combinedheatpower" objectClassId="10031" path="CombinedHeatPower" schema="engy">
+            <extension base="engy_AbstractEnergyConversionSystemType">
+                <join table="engy_energyconversionsyst" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="technologytype" type="string" minOccurs="1" maxOccurs="1" path="technologyType" schema="engy"/>
+            <complexAttribute maxOccurs="1" path="thermalEfficiency" schema="engy">
+                <attribute column="thermalefficiency_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="thermalefficiency" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="electricalEfficiency" schema="engy">
+                <attribute column="electricalefficiency_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="electricalefficiency" type="double" path="." schema="engy"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="engy_ElectricalResistanceType" table="engy_energyconversionsyst" objectClassId="10032" path="ElectricalResistance" schema="engy">
+            <extension base="engy_AbstractEnergyConversionSystemType"/>
+        </featureType>
+        <featureType id="engy_EnergySourceType" table="engy_energysource" objectClassId="10033" path="EnergySource" schema="engy">
+            <extension base="engy_EnergyFlowType">
+                <join table="engy_energyflow" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="co2EmissionFactor" schema="engy">
+                <attribute column="co2emissionfactor_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="co2emissionfactor" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="energyDensity" schema="engy">
+                <attribute column="energydensity_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="energydensity" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="primaryEnergyFactor" schema="engy">
+                <attribute column="primaryenergyfactor_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="primaryenergyfactor" type="double" path="." schema="engy"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="engy_GenericConversionSystemType" table="engy_energyconversionsyst" objectClassId="10034" path="GenericConversionSystem" schema="engy">
+            <extension base="engy_AbstractEnergyConversionSystemType"/>
+        </featureType>
+        <featureType id="engy_HeatExchangerType" table="engy_heatexchanger" objectClassId="10035" path="HeatExchanger" schema="engy">
+            <extension base="engy_AbstractEnergyConversionSystemType">
+                <join table="engy_energyconversionsyst" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="networkid" type="string" minOccurs="1" maxOccurs="1" path="networkId" schema="engy"/>
+            <attribute column="networknodeid" type="string" minOccurs="1" maxOccurs="1" path="networkNodeId" schema="engy"/>
+            <attribute column="primaryheatsupplier" type="string" maxOccurs="1" path="primaryHeatSupplier" schema="engy"/>
+        </featureType>
+        <featureType id="engy_HeatPumpType" table="engy_heatpump" objectClassId="10036" path="HeatPump" schema="engy">
+            <extension base="engy_AbstractEnergyConversionSystemType">
+                <join table="engy_energyconversionsyst" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="heatsource" type="string" minOccurs="1" maxOccurs="1" path="heatSource" schema="engy"/>
+            <complexAttribute maxOccurs="1" path="copSourceTemperature" schema="engy">
+                <attribute column="copsourcetemperature_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="copsourcetemperature" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="copOperationTemperature" schema="engy">
+                <attribute column="copoperationtemperature_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="copoperationtemperature" type="double" path="." schema="engy"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="engy_MechanicalVentilationType" table="engy_mechanicalventilatio" objectClassId="10037" path="MechanicalVentilation" schema="engy">
+            <extension base="engy_AbstractEnergyConversionSystemType">
+                <join table="engy_energyconversionsyst" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="hasheatrecovery" type="boolean" minOccurs="1" maxOccurs="1" path="hasHeatRecovery" schema="engy"/>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="recuperationFactor" schema="engy">
+                <attribute column="recuperationfactor_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="recuperationfactor" type="double" path="." schema="engy"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="engy_PhotovoltaicSystemType" table="engy_photovoltaicsystem" objectClassId="10038" path="PhotovoltaicSystem" schema="engy">
+            <extension base="engy_AbstractSolarEnergySystemType">
+                <join table="engy_solarenergysystem" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="celltype" type="string" minOccurs="1" maxOccurs="1" path="cellType" schema="engy"/>
+            <complexAttribute maxOccurs="1" path="moduleArea" schema="engy">
+                <attribute column="modulearea_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="modulearea" type="double" path="." schema="engy"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="engy_PhotovoltaicThermalSystemType" table="engy_photovoltaicthermals" objectClassId="10039" path="PhotovoltaicThermalSystem" schema="engy">
+            <extension base="engy_AbstractSolarEnergySystemType">
+                <join table="engy_solarenergysystem" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="celltype" type="string" minOccurs="1" maxOccurs="1" path="cellType" schema="engy"/>
+            <attribute column="collectortype" type="string" minOccurs="1" maxOccurs="1" path="collectorType" schema="engy"/>
+            <complexAttribute maxOccurs="1" path="moduleArea" schema="engy">
+                <attribute column="modulearea_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="modulearea" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="apertureArea" schema="engy">
+                <attribute column="aperturearea_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="aperturearea" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="opticalEfficiency" schema="engy">
+                <attribute column="opticalefficiency_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="opticalefficiency" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <attribute column="linearheatlosscoefficient" type="double" maxOccurs="1" path="linearHeatLossCoefficient" schema="engy"/>
+            <attribute column="quadraticheatlosscoefficient" type="double" maxOccurs="1" path="quadraticHeatLossCoefficient" schema="engy"/>
+        </featureType>
+        <featureType id="engy_PowerDistributionSystemType" table="engy_powerdistributionsys" objectClassId="10040" path="PowerDistributionSystem" schema="engy">
+            <extension base="engy_AbstractEnergyDistributionSystemType">
+                <join table="engy_energydistributionsy" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <complexAttribute maxOccurs="1" path="current" schema="engy">
+                <attribute column="current_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="current_" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="voltage" schema="engy">
+                <attribute column="voltage_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="voltage" type="double" path="." schema="engy"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="engy_PowerStorageSystemType" table="engy_powerstoragesystem" objectClassId="10041" path="PowerStorageSystem" schema="engy">
+            <extension base="engy_AbstractStorageSystemType">
+                <join table="engy_storagesystem" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="batterytechnology" type="string" maxOccurs="1" path="batteryTechnology" schema="engy"/>
+            <complexAttribute maxOccurs="1" path="powerCapacity" schema="engy">
+                <attribute column="powercapacity_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="powercapacity" type="double" path="." schema="engy"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="engy_SolarThermalSystemType" table="engy_solarthermalsystem" objectClassId="10042" path="SolarThermalSystem" schema="engy">
+            <extension base="engy_AbstractSolarEnergySystemType">
+                <join table="engy_solarenergysystem" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="collectortype" type="string" minOccurs="1" maxOccurs="1" path="collectorType" schema="engy"/>
+            <complexAttribute maxOccurs="1" path="apertureArea" schema="engy">
+                <attribute column="aperturearea_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="aperturearea" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <attribute column="eta0" type="double" maxOccurs="1" path="eta0" schema="engy"/>
+            <attribute column="a1" type="double" maxOccurs="1" path="a1" schema="engy"/>
+            <attribute column="a2" type="double" maxOccurs="1" path="a2" schema="engy"/>
+        </featureType>
+        <featureType id="engy_ThermalDistributionSystemType" table="engy_thermaldistributions" objectClassId="10043" path="ThermalDistributionSystem" schema="engy">
+            <extension base="engy_AbstractEnergyDistributionSystemType">
+                <join table="engy_energydistributionsy" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="iscirculation" type="boolean" maxOccurs="1" path="isCirculation" schema="engy"/>
+            <attribute column="medium" type="string" maxOccurs="1" path="medium" schema="engy"/>
+            <complexAttribute maxOccurs="1" path="nominalFlow" schema="engy">
+                <attribute column="nominalflow_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="nominalflow" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="returnTemperature" schema="engy">
+                <attribute column="returntemperature_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="returntemperature" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="supplyTemperature" schema="engy">
+                <attribute column="supplytemperature_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="supplytemperature" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="thermalLossesFactor" schema="engy">
+                <attribute column="thermallossesfactor_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="thermallossesfactor" type="double" path="." schema="engy"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="engy_ThermalStorageSystemType" table="engy_thermalstoragesystem" objectClassId="10044" path="ThermalStorageSystem" schema="engy">
+            <extension base="engy_AbstractStorageSystemType">
+                <join table="engy_storagesystem" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <complexAttribute maxOccurs="1" path="preparationTemperature" schema="engy">
+                <attribute column="preparationtemperature_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="preparationtemperature" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <attribute column="medium" type="string" maxOccurs="1" path="medium" schema="engy"/>
+            <complexAttribute maxOccurs="1" path="thermalLossesFactor" schema="engy">
+                <attribute column="thermallossesfactor_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="thermallossesfactor" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="volume" schema="engy">
+                <attribute column="volume_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="volume" type="double" path="." schema="engy"/>
+            </complexAttribute>
+        </featureType>
+        <featureType abstract="true" id="engy_AbstractMaterialType" table="engy_material" objectClassId="10045" path="AbstractMaterial" schema="engy">
+            <extension base="AbstractFeatureType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <featureProperty target="engy_ImageTextureType" maxOccurs="1" path="imageTexture" schema="engy">
+                <join table="engy_imagetexture" fromColumn="imagetexture_id" toColumn="id" toRole="parent"/>
+            </featureProperty>
+        </featureType>
+        <featureType id="engy_ImageTextureType" table="engy_imagetexture" objectClassId="10046" path="ImageTexture" schema="engy">
+            <extension base="AbstractFeatureType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="url" type="string" minOccurs="1" maxOccurs="1" path="url" schema="engy"/>
+            <attribute column="repeats" type="boolean" minOccurs="1" maxOccurs="1" path="repeatS" schema="engy"/>
+            <attribute column="repeatt" type="boolean" minOccurs="1" maxOccurs="1" path="repeatT" schema="engy"/>
+        </featureType>
+        <featureType id="engy_ConstructionType" table="engy_construction_1" objectClassId="10047" path="Construction" schema="engy">
+            <extension base="engy_AbstractConstructionType">
+                <join table="engy_construction" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <complexAttribute maxOccurs="1" path="uValue" schema="engy">
+                <attribute column="uvalue_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="uvalue" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexProperty refType="engy_OpticalPropertiesType" maxOccurs="1" path="opticalProperties" schema="engy">
+                <join table="engy_opticalproperties" fromColumn="opticalproperties_id" toColumn="id" toRole="parent"/>
+            </complexProperty>
+            <objectProperty target="engy_ServiceLifeType" maxOccurs="1" path="serviceLife" schema="engy">
+                <join table="engy_servicelife" fromColumn="servicelife_id" toColumn="id" toRole="parent"/>
+            </objectProperty>
+            <featureProperty target="engy_LayerType" path="layer" schema="engy">
+                <join table="engy_layer" fromColumn="id" toColumn="construction_layer_id" toRole="child"/>
+            </featureProperty>
+        </featureType>
+        <featureType id="engy_LayerType" table="engy_layer" objectClassId="10049" path="Layer" schema="engy">
+            <extension base="AbstractFeatureType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <featureProperty target="engy_LayerComponentType" minOccurs="1" path="layerComponent" schema="engy">
+                <join table="engy_layercomponent" fromColumn="id" toColumn="layer_layercomponent_id" toRole="child"/>
+            </featureProperty>
+        </featureType>
+        <featureType id="engy_LayerComponentType" table="engy_layercomponent" objectClassId="10052" path="LayerComponent" schema="engy">
+            <extension base="AbstractFeatureType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <complexAttribute maxOccurs="1" path="areaFraction" schema="engy">
+                <attribute column="areafraction_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="areafraction" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="thickness" schema="engy">
+                <attribute column="thickness_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="thickness" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <objectProperty target="engy_ServiceLifeType" maxOccurs="1" path="serviceLife" schema="engy">
+                <join table="engy_servicelife" fromColumn="servicelife_id" toColumn="id" toRole="parent"/>
+            </objectProperty>
+            <featureProperty target="engy_AbstractMaterialType" minOccurs="1" maxOccurs="1" path="material" schema="engy">
+                <join table="engy_material" fromColumn="material_id" toColumn="id" toRole="parent">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </featureProperty>
+        </featureType>
+        <featureType id="engy_GasType" table="engy_gas" objectClassId="10053" path="Gas" schema="engy">
+            <extension base="engy_AbstractMaterialType">
+                <join table="engy_material" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="isventilated" type="boolean" maxOccurs="1" path="isVentilated" schema="engy"/>
+            <complexAttribute maxOccurs="1" path="rValue" schema="engy">
+                <attribute column="rvalue_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="rvalue" type="double" path="." schema="engy"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="engy_ReverseConstructionType" table="engy_construction" objectClassId="10054" path="ReverseConstruction" schema="engy">
+            <extension base="engy_AbstractConstructionType"/>
+            <featureProperty target="engy_ConstructionType" minOccurs="1" maxOccurs="1" path="baseConstruction" schema="engy">
+                <join table="engy_construction_1" fromColumn="baseconstruction_id" toColumn="id" toRole="parent"/>
+            </featureProperty>
+        </featureType>
+        <featureType id="engy_SolidMaterialType" table="engy_solidmaterial" objectClassId="10055" path="SolidMaterial" schema="engy">
+            <extension base="engy_AbstractMaterialType">
+                <join table="engy_material" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <complexAttribute maxOccurs="1" path="conductivity" schema="engy">
+                <attribute column="conductivity_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="conductivity" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="density" schema="engy">
+                <attribute column="density_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="density" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="permeance" schema="engy">
+                <attribute column="permeance_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="permeance" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="porosity" schema="engy">
+                <attribute column="porosity_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="porosity" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="specificHeat" schema="engy">
+                <attribute column="specificheat_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="specificheat" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="embodiedCarbon" schema="engy">
+                <attribute column="embodiedcarbon_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="embodiedcarbon" type="double" path="." schema="engy"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="embodiedEnergy" schema="engy">
+                <attribute column="embodiedenergy_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="embodiedenergy" type="double" path="." schema="engy"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="engy_BuildingUnitType" table="engy_buildingunit" objectClassId="10056" path="BuildingUnit" schema="engy">
+            <extension base="AbstractCityObjectType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="numberofrooms" type="integer" maxOccurs="1" path="numberOfRooms" schema="engy"/>
+            <attribute column="ownername" type="string" maxOccurs="1" path="ownerName" schema="engy"/>
+            <complexAttribute maxOccurs="1" path="ownershipType" schema="engy">
+                <attribute column="ownershiptype_codespace" type="string" path="@codespace" schema="engy"/>
+                <attribute column="ownershiptype" type="string" path="." schema="engy"/>
+            </complexAttribute>
+            <complexProperty refType="engy_FloorAreaType" path="floorArea" schema="engy">
+                <join table="engy_floorarea" fromColumn="id" toColumn="buildingunit_floorarea_id" toRole="child"/>
+            </complexProperty>
+            <complexProperty refType="engy_EnergyPerformanceCertificationType" path="energyPerformanceCertification" schema="engy">
+                <join table="engy_energyperformancecer" fromColumn="id" toColumn="buildingunit_energyperfor_id" toRole="child"/>
+            </complexProperty>
+            <featureProperty target="engy_OccupantsType" path="occupiedBy" schema="engy">
+                <join table="engy_occupants" fromColumn="id" toColumn="buildingunit_occupiedby_id" toRole="child"/>
+            </featureProperty>
+            <featureProperty target="AddressType" path="address" schema="engy">
+                <joinTable table="engy_buildingu_to_address">
+                    <join table="engy_buildingunit" fromColumn="buildingunit_id" toColumn="id" toRole="parent"/>
+                    <inverseJoin table="address" fromColumn="address_id" toColumn="id" toRole="parent"/>
+                </joinTable>
+            </featureProperty>
+            <featureProperty target="engy_FacilitiesType" path="equippedWith" schema="engy">
+                <join table="engy_facilities" fromColumn="id" toColumn="buildingunit_equippedwith_id" toRole="child">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </featureProperty>
+        </featureType>
+        <featureType id="engy_OccupantsType" table="engy_occupants" objectClassId="10057" path="Occupants" schema="engy">
+            <extension base="AbstractFeatureType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <complexProperty refType="engy_HeatExchangeTypeType" maxOccurs="1" path="heatDissipation" schema="engy">
+                <join table="engy_heatexchangetype" fromColumn="heatdissipation_id" toColumn="id" toRole="parent"/>
+            </complexProperty>
+            <attribute column="numberofoccupants" type="integer" maxOccurs="1" path="numberOfOccupants" schema="engy"/>
+            <objectProperty target="engy_AbstractScheduleType" maxOccurs="1" path="occupancyRate" schema="engy">
+                <join table="engy_schedule" fromColumn="occupancyrate_id" toColumn="id" toRole="parent">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </objectProperty>
+            <complexAttribute maxOccurs="1" path="occupantType" schema="engy">
+                <attribute column="occupanttype_codespace" type="string" path="@codespace" schema="engy"/>
+                <attribute column="occupanttype" type="string" path="." schema="engy"/>
+            </complexAttribute>
+            <featureProperty target="engy_HouseholdType" path="household" schema="engy">
+                <join table="engy_household" fromColumn="id" toColumn="occupants_household_id" toRole="child"/>
+            </featureProperty>
+        </featureType>
+        <featureType id="engy_FacilitiesType" table="engy_facilities" objectClassId="10058" path="Facilities" schema="engy">
+            <extension base="AbstractCityObjectType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <objectProperty target="engy_AbstractScheduleType" maxOccurs="1" path="operationSchedule" schema="engy">
+                <join table="engy_schedule" fromColumn="operationschedule_id" toColumn="id" toRole="parent">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </objectProperty>
+            <complexProperty refType="engy_HeatExchangeTypeType" maxOccurs="1" path="heatDissipation" schema="engy">
+                <join table="engy_heatexchangetype" fromColumn="heatdissipation_id" toColumn="id" toRole="parent"/>
+            </complexProperty>
+        </featureType>
+        <featureType id="engy_HouseholdType" table="engy_household" objectClassId="10059" path="Household" schema="engy">
+            <extension base="AbstractFeatureType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="residencetype" type="string" maxOccurs="1" path="residenceType" schema="engy"/>
+            <attribute column="householdtype" type="string" maxOccurs="1" path="householdType" schema="engy"/>
+        </featureType>
+        <featureType id="engy_DHWFacilitiesType" table="engy_dhwfacilities" objectClassId="10060" path="DHWFacilities" schema="engy">
+            <extension base="engy_FacilitiesType">
+                <join table="engy_facilities" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="numberofbaths" type="integer" maxOccurs="1" path="numberOfBaths" schema="engy"/>
+            <attribute column="numberofshowers" type="integer" maxOccurs="1" path="numberOfShowers" schema="engy"/>
+            <attribute column="numberofwashbasins" type="integer" maxOccurs="1" path="numberOfWashBasins" schema="engy"/>
+            <complexAttribute maxOccurs="1" path="waterStorageVolume" schema="engy">
+                <attribute column="waterstoragevolume_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="waterstoragevolume" type="double" path="." schema="engy"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="engy_ElectricalAppliancesType" table="engy_facilities" objectClassId="10061" path="ElectricalAppliances" schema="engy">
+            <extension base="engy_FacilitiesType"/>
+            <complexAttribute maxOccurs="1" path="electricalPower" schema="engy">
+                <attribute column="electricalpower_uom" type="string" path="@uom" schema="engy"/>
+                <attribute column="electricalpower" type="double" path="." schema="engy"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="engy_LightingFacilitiesType" table="engy_facilities" objectClassId="10062" path="LightingFacilities" schema="engy">
+            <extension base="engy_FacilitiesType"/>
+            <complexAttribute maxOccurs="1" path="electricalPower" schema="engy">
+                <attribute column="electricalpower_uom_1" type="string" path="@uom" schema="engy"/>
+                <attribute column="electricalpower_1" type="double" path="." schema="engy"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="engy_UsageZoneType" table="engy_usagezone" objectClassId="10063" path="UsageZone" schema="engy">
+            <extension base="engy_AbstractUsageZoneType"/>
+            <objectProperty target="engy_AbstractScheduleType" maxOccurs="1" path="coolingSchedule" schema="engy">
+                <join table="engy_schedule" fromColumn="coolingschedule_id" toColumn="id" toRole="parent">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </objectProperty>
+            <objectProperty target="engy_AbstractScheduleType" maxOccurs="1" path="heatingSchedule" schema="engy">
+                <join table="engy_schedule" fromColumn="heatingschedule_id" toColumn="id" toRole="parent">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </objectProperty>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="usageZoneType" schema="engy">
+                <attribute column="usagezonetype_codespace" type="string" path="@codespace" schema="engy"/>
+                <attribute column="usagezonetype" type="string" path="." schema="engy"/>
+            </complexAttribute>
+            <attribute column="usedfloors" type="string" maxOccurs="1" path="usedFloors" schema="engy"/>
+            <objectProperty target="engy_AbstractScheduleType" maxOccurs="1" path="ventilationSchedule" schema="engy">
+                <join table="engy_schedule" fromColumn="ventilationschedule_id" toColumn="id" toRole="parent">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </objectProperty>
+            <complexProperty refType="engy_FloorAreaType" path="floorArea" schema="engy">
+                <join table="engy_floorarea" fromColumn="id" toColumn="usagezone_floorarea_id" toRole="child"/>
+            </complexProperty>
+            <geometryProperty refColumn="volumegeometry_id" type="AbstractSolid" maxOccurs="1" path="volumeGeometry" schema="engy"/>
+            <complexProperty refType="engy_HeatExchangeTypeType" maxOccurs="1" path="averageInternalGains" schema="engy">
+                <join table="engy_heatexchangetype" fromColumn="averageinternalgains_id" toColumn="id" toRole="parent"/>
+            </complexProperty>
+            <featureProperty target="engy_BuildingUnitType" path="contains" schema="engy">
+                <join table="engy_buildingunit" fromColumn="id" toColumn="usagezone_contains_id" toRole="child"/>
+            </featureProperty>
+            <featureProperty target="engy_OccupantsType" path="occupiedBy" schema="engy">
+                <join table="engy_occupants" fromColumn="id" toColumn="usagezone_occupiedby_id" toRole="child"/>
+            </featureProperty>
+            <featureProperty target="engy_FacilitiesType" path="equippedWith" schema="engy">
+                <join table="engy_facilities" fromColumn="id" toColumn="usagezone_equippedwith_id" toRole="child">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </featureProperty>
+        </featureType>
+        <featureType id="engy_WeatherStationType" table="engy_weatherstation" objectClassId="10076" path="WeatherStation" schema="engy">
+            <extension base="AbstractCityObjectType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="stationname" type="string" maxOccurs="1" path="stationName" schema="engy"/>
+            <geometryProperty inlineColumn="position" type="Point" maxOccurs="1" path="position" schema="engy"/>
+            <objectProperty target="engy_WeatherDataType" path="parameter" schema="engy">
+                <join table="engy_weatherdata" fromColumn="id" toColumn="weatherstation_parameter_id" toRole="child"/>
+            </objectProperty>
+            <attribute column="genericapplicationpropertyof" type="clob" path="_GenericApplicationPropertyOfWeatherStation" schema="engy"/>
+        </featureType>
+    </featureTypes>
+    <propertyInjections>
+        <propertyInjection table="engy_building" defaultBase="AbstractBuildingType">
+            <join table="engy_building" fromColumn="ID" toColumn="ID" toRole="child"/>
+            <complexAttribute path="buildingType" schema="engy">
+                <attribute column="buildingtype_codespace" type="string" path="@codespace" schema="engy"/>
+                <attribute column="buildingtype" type="string" path="." schema="engy"/>
+            </complexAttribute>
+            <attribute column="constructionweight" type="string" path="constructionWeight" schema="engy"/>
+            <complexProperty refType="engy_EnergyPerformanceCertificationType" path="energyPerformanceCertification" schema="engy">
+                <join table="engy_energyperformancecer" fromColumn="id" toColumn="building_energyperformanc_id" toRole="child"/>
+            </complexProperty>
+            <complexProperty refType="engy_VolumeTypeType" path="volume" schema="engy">
+                <join table="engy_volumetype" fromColumn="id" toColumn="building_volume_id" toRole="child"/>
+            </complexProperty>
+            <attribute column="islandmarked" type="boolean" path="isLandmarked" schema="engy"/>
+            <geometryProperty inlineColumn="referencepoint" type="Point" path="referencePoint" schema="engy"/>
+            <complexProperty refType="engy_RefurbishmentMeasureType" path="refurbishmentMeasure" schema="engy">
+                <join table="engy_refurbishmentmeasure" fromColumn="id" toColumn="building_refurbishmentmea_id" toRole="child"/>
+            </complexProperty>
+            <featureProperty target="engy_AbstractThermalZoneType" relationType="association" path="thermalZone" schema="engy">
+                <join table="engy_thermalzone" fromColumn="id" toColumn="building_thermalzone_id" toRole="child"/>
+            </featureProperty>
+            <featureProperty target="engy_AbstractUsageZoneType" relationType="association" path="usageZone" schema="engy">
+                <join table="engy_usagezone" fromColumn="id" toColumn="building_usagezone_id" toRole="child"/>
+            </featureProperty>
+            <complexProperty refType="engy_FloorAreaType" path="floorArea" schema="engy">
+                <join table="engy_floorarea" fromColumn="id" toColumn="building_floorarea_id" toRole="child"/>
+            </complexProperty>
+            <complexProperty refType="engy_HeightAboveGroundType" path="heightAboveGround" schema="engy">
+                <join table="engy_heightaboveground" fromColumn="id" toColumn="building_heightabovegroun_id" toRole="child"/>
+            </complexProperty>
+            <featureProperty target="engy_AbstractConstructionType" relationType="association" path="aggregatedBuildingConstruction" schema="engy">
+                <join table="engy_construction" fromColumn="id" toColumn="building_aggregatedbuildi_id" toRole="child"/>
+            </featureProperty>
+        </propertyInjection>
+        <propertyInjection table="engy_cityobject" defaultBase="AbstractCityObjectType">
+            <join table="engy_cityobject" fromColumn="ID" toColumn="ID" toRole="child"/>
+            <objectProperty target="engy_WeatherDataType" relationType="association" path="weatherData" schema="engy">
+                <join table="engy_weatherdata" fromColumn="id" toColumn="cityobject_weatherdata_id" toRole="child"/>
+            </objectProperty>
+            <featureProperty target="engy_EnergyDemandType" relationType="association" path="demands" schema="engy">
+                <join table="engy_energydemand" fromColumn="id" toColumn="cityobject_demands_id" toRole="child"/>
+            </featureProperty>
+        </propertyInjection>
+    </propertyInjections>
+</schemaMapping>

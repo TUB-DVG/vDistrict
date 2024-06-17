@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schemaMapping xmlns="http://www.3dcitydb.org/database/schema/1.0">
+    <metadata>
+        <name>Utility Networks ADE</name>
+        <version>0.9.2</version>
+        <description>Utility Networks ADE for CityGML</description>
+        <dbPrefix>util</dbPrefix>
+    </metadata>
+    <applicationSchemas>
+        <schema id="util" isADERoot="true">
+            <namespace context="citygml-2.0">http://www.citygml.org/ade/utility/0.9.2</namespace>
+        </schema>
+    </applicationSchemas>
+    <complexTypes>
+        <complexType id="util_HazardClassType" table="util_hazardclass" objectClassId="20017" path="HazardClass" schema="util">
+            <attribute column="hazardclass" type="string" maxOccurs="1" path="hazardClass" schema="util"/>
+            <attribute column="categorycode" type="string" maxOccurs="1" path="categoryCode" schema="util"/>
+            <attribute column="statementcode" type="string" maxOccurs="1" path="statementCode" schema="util"/>
+            <attribute column="pictogramcode" type="string" maxOccurs="1" path="pictogramCode" schema="util"/>
+            <attribute column="pictogramuri" type="string" maxOccurs="1" path="pictogramURI" schema="util"/>
+        </complexType>
+        <complexType abstract="true" id="util_AbstractLinkControlType" table="util_linkcontrol" objectClassId="20020" path="AbstractLinkControl" schema="util"/>
+        <complexType abstract="true" id="util_AbstractSignatureType" table="util_signature" objectClassId="20022" path="AbstractSignature" schema="util"/>
+        <complexType id="util_AbstractMediumSupplyType" table="util_mediumsupply" objectClassId="20023" path="AbstractMediumSupply" schema="util">
+            <complexProperty refType="util_SupplyType" maxOccurs="1" path="potentialSupply" schema="util">
+                <join table="util_supply" fromColumn="potentialsupply_id" toColumn="id" toRole="parent"/>
+            </complexProperty>
+            <complexProperty refType="util_SupplyType" maxOccurs="1" path="currentSupply" schema="util">
+                <join table="util_supply" fromColumn="currentsupply_id" toColumn="id" toRole="parent"/>
+            </complexProperty>
+            <complexProperty refType="util_StorageType" path="storage" schema="util">
+                <join table="util_storage" fromColumn="id" toColumn="mediumsupply_storage_id" toRole="child"/>
+            </complexProperty>
+        </complexType>
+        <complexType id="util_SupplyType" table="util_supply" objectClassId="20024" path="Supply" schema="util">
+            <complexAttribute maxOccurs="1" path="flowRate" schema="util">
+                <attribute column="flowrate_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="flowrate" type="double" path="." schema="util"/>
+            </complexAttribute>
+            <attribute column="status" type="string" maxOccurs="1" path="status" schema="util"/>
+        </complexType>
+        <complexType id="util_StorageType" table="util_storage" objectClassId="20025" path="Storage" schema="util">
+            <complexAttribute maxOccurs="1" path="type" schema="util">
+                <attribute column="type_codespace" type="string" path="@codespace" schema="util"/>
+                <attribute column="type" type="string" path="." schema="util"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="maxCapacity" schema="util">
+                <attribute column="maxcapacity_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="maxcapacity" type="double" path="." schema="util"/>
+            </complexAttribute>
+            <attribute column="filllevel" type="double" maxOccurs="1" path="fillLevel" schema="util"/>
+            <complexAttribute maxOccurs="1" path="inflowRate" schema="util">
+                <attribute column="inflowrate_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="inflowrate" type="double" path="." schema="util"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="outflowRate" schema="util">
+                <attribute column="outflowrate_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="outflowrate" type="double" path="." schema="util"/>
+            </complexAttribute>
+        </complexType>
+        <complexType id="util_ElectricalMediumSupplyType" table="util_mediumsupply" objectClassId="20049" path="ElectricalMediumSupply" schema="util">
+            <extension base="util_AbstractMediumSupplyType"/>
+            <attribute column="type" type="string" minOccurs="1" maxOccurs="1" path="type" schema="util"/>
+        </complexType>
+        <complexType id="util_GaseousMediumSupplyType" table="util_mediumsupply" objectClassId="20057" path="GaseousMediumSupply" schema="util">
+            <extension base="util_AbstractMediumSupplyType"/>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="type" schema="util">
+                <attribute column="type_codespace" type="string" path="@codespace" schema="util"/>
+                <attribute column="type_2" type="string" path="." schema="util"/>
+            </complexAttribute>
+        </complexType>
+        <complexType id="util_LiquidMediumSupplyType" table="util_mediumsupply" objectClassId="20066" path="LiquidMediumSupply" schema="util">
+            <extension base="util_AbstractMediumSupplyType"/>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="type" schema="util">
+                <attribute column="type_codespace_1" type="string" path="@codespace" schema="util"/>
+                <attribute column="type_3" type="string" path="." schema="util"/>
+            </complexAttribute>
+        </complexType>
+        <complexType id="util_OpticalMediumSupplyType" table="util_mediumsupply" objectClassId="20070" path="OpticalMediumSupply" schema="util">
+            <extension base="util_AbstractMediumSupplyType"/>
+            <attribute column="type_1" type="string" minOccurs="1" maxOccurs="1" path="type" schema="util"/>
+        </complexType>
+        <complexType id="util_SolidMediumSupplyType" table="util_mediumsupply" objectClassId="20083" path="SolidMediumSupply" schema="util">
+            <extension base="util_AbstractMediumSupplyType"/>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="type" schema="util">
+                <attribute column="type_codespace_2" type="string" path="@codespace" schema="util"/>
+                <attribute column="type_4" type="string" path="." schema="util"/>
+            </complexAttribute>
+        </complexType>
+    </complexTypes>
+    <featureTypes>
+        <featureType id="util_ACLineSegmentType" table="util_conductor" objectClassId="20000" path="ACLineSegment" schema="util">
+            <extension base="util_ConductorType">
+                <join table="util_cable" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+        </featureType>
+        <featureType id="util_ConductorType" table="util_cable" objectClassId="20001" path="Conductor" schema="util">
+            <extension base="util_CableType"/>
+        </featureType>
+        <featureType id="util_CableType" table="util_cable" objectClassId="20002" path="Cable" schema="util">
+            <extension base="util_AbstractDistributionElementType">
+                <join table="util_distributionelement" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="ispower" type="boolean" maxOccurs="1" path="isPower" schema="util"/>
+            <attribute column="iscommunication" type="boolean" maxOccurs="1" path="isCommunication" schema="util"/>
+            <complexAttribute maxOccurs="1" path="crossSection" schema="util">
+                <attribute column="crosssection_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="crosssection" type="double" path="." schema="util"/>
+            </complexAttribute>
+        </featureType>
+        <featureType abstract="true" id="util_AbstractCommodityType" table="util_commodity" objectClassId="20003" path="AbstractCommodity" schema="util">
+            <extension base="AbstractFeatureType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="owner" type="string" maxOccurs="1" path="owner" schema="util"/>
+            <featureProperty target="util_AbstractHazardClassifierType" path="isClassifiedBy" schema="util">
+                <join table="util_hazardclassifier" fromColumn="id" toColumn="commodity_isclassifiedby_id" toRole="child">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </featureProperty>
+            <featureProperty target="util_NetworkType" path="associatedNetwork" schema="util">
+                <join table="util_network" fromColumn="id" toColumn="commodity_associatednetwo_id" toRole="child"/>
+            </featureProperty>
+        </featureType>
+        <featureType abstract="true" id="util_AbstractHazardClassifierType" table="util_hazardclassifier" objectClassId="20004" path="AbstractHazardClassifier" schema="util">
+            <extension base="AbstractFeatureType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="molformula" type="string" maxOccurs="1" path="molFormula" schema="util"/>
+            <attribute column="physicalform" type="string" maxOccurs="1" path="physicalForm" schema="util"/>
+            <complexAttribute maxOccurs="1" path="molecularWeight" schema="util">
+                <attribute column="molecularweight_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="molecularweight" type="double" path="." schema="util"/>
+            </complexAttribute>
+            <attribute column="signalword" type="string" maxOccurs="1" path="signalWord" schema="util"/>
+            <attribute column="ischemicalcomplex" type="boolean" maxOccurs="1" path="isChemicalComplex" schema="util"/>
+            <complexProperty maxOccurs="1" path="hazardClass" schema="util">
+                <type path="HazardClass" schema="util">
+                    <attribute column="hazardclasstype_hazardclass" type="string" maxOccurs="1" path="hazardClass" schema="util"/>
+                    <attribute column="hazardclasstype_categorycode" type="string" maxOccurs="1" path="categoryCode" schema="util"/>
+                    <attribute column="hazardclasstyp_statementcode" type="string" maxOccurs="1" path="statementCode" schema="util"/>
+                    <attribute column="hazardclasstyp_pictogramcode" type="string" maxOccurs="1" path="pictogramCode" schema="util"/>
+                    <attribute column="hazardclasstype_pictogramuri" type="string" maxOccurs="1" path="pictogramURI" schema="util"/>
+                </type>
+            </complexProperty>
+            <featureProperty target="util_AbstractHazardClassifierType" path="consistsOfFurtherElements" schema="util">
+                <join table="util_hazardclassifier" fromColumn="id" toColumn="hazardclassi_consistsoffu_id" toRole="child">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </featureProperty>
+            <featureProperty target="util_AbstractFeatureMaterialType" maxOccurs="1" path="definesMaterial" schema="util">
+                <join table="util_featurematerial" fromColumn="definesmaterial_id" toColumn="id" toRole="parent">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </featureProperty>
+            <featureProperty target="util_AbstractCommodityType" maxOccurs="1" path="definesCommodity" schema="util">
+                <join table="util_commodity" fromColumn="definescommodity_id" toColumn="id" toRole="parent">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </featureProperty>
+            <featureProperty target="util_AbstractHollowSpaceType" maxOccurs="1" path="boundedBy" schema="util">
+                <join table="util_hollowspace" fromColumn="boundedby_id" toColumn="id" toRole="parent">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </featureProperty>
+        </featureType>
+        <featureType id="util_NetworkType" table="util_network" objectClassId="20005" path="Network" schema="util">
+            <extension base="AbstractCityObjectType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="class" type="string" maxOccurs="1" path="class" schema="util"/>
+            <attribute column="function" type="string" path="function" schema="util"/>
+            <attribute column="usage" type="string" path="usage" schema="util"/>
+            <featureProperty target="util_AbstractCommodityType" maxOccurs="1" path="transportedMedium" schema="util">
+                <join table="util_commodity" fromColumn="transportedmedium_id" toColumn="id" toRole="parent">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </featureProperty>
+            <featureProperty target="util_NetworkType" path="subNetwork" schema="util">
+                <join table="util_network" fromColumn="id" toColumn="network_subnetwork_id" toRole="child"/>
+            </featureProperty>
+            <featureProperty target="util_NetworkGraphType" maxOccurs="1" path="topoGraph" schema="util">
+                <join table="util_networkgraph" fromColumn="topograph_id" toColumn="id" toRole="parent"/>
+            </featureProperty>
+            <featureProperty target="util_AbstractNetworkFeatureType" path="component" schema="util">
+                <join table="util_networkfeature" fromColumn="id" toColumn="network_component_id" toRole="child">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </featureProperty>
+            <featureProperty target="util_SupplyAreaType" maxOccurs="1" path="supplies" schema="util">
+                <join table="util_supplyarea" fromColumn="supplies_id" toColumn="id" toRole="parent"/>
+            </featureProperty>
+            <featureProperty target="util_NetworkType" path="subOrdinateNetwork" schema="util">
+                <join table="util_network" fromColumn="id" toColumn="network_subordinatenetwor_id" toRole="child"/>
+            </featureProperty>
+            <featureProperty target="util_NetworkType" path="superOrdinateNetwork" schema="util">
+                <join table="util_network" fromColumn="id" toColumn="network_superordinatenetw_id" toRole="child"/>
+            </featureProperty>
+        </featureType>
+        <featureType abstract="true" id="util_AbstractFeatureMaterialType" table="util_featurematerial" objectClassId="20006" path="AbstractFeatureMaterial" schema="util">
+            <extension base="AbstractFeatureType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="type" schema="util">
+                <attribute column="type_codespace" type="string" path="@codespace" schema="util"/>
+                <attribute column="type" type="string" path="." schema="util"/>
+            </complexAttribute>
+            <featureProperty target="util_FillingMaterialType" path="consistsOfFM" schema="util">
+                <join table="util_fillingmaterial" fromColumn="id" toColumn="featuremater_consistsoffm_id" toRole="child"/>
+            </featureProperty>
+            <featureProperty target="util_InteriorMaterialType" path="consistsOf" schema="util">
+                <join table="util_featurematerial" fromColumn="id" toColumn="featuremateria_consistsof_id" toRole="child">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </featureProperty>
+            <featureProperty target="util_AbstractHazardClassifierType" path="isClassifiedBy" schema="util">
+                <join table="util_hazardclassifier" fromColumn="id" toColumn="featuremater_isclassified_id" toRole="child">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </featureProperty>
+            <featureProperty target="util_AbstractNetworkFeatureType" path="usedBy" schema="util">
+                <join table="util_networkfeature" fromColumn="id" toColumn="featurematerial_usedby_id" toRole="child">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </featureProperty>
+        </featureType>
+        <featureType abstract="true" id="util_AbstractHollowSpaceType" table="util_hollowspace" objectClassId="20007" path="AbstractHollowSpace" schema="util">
+            <extension base="AbstractFeatureType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <featureProperty target="util_AbstractHazardClassifierType" maxOccurs="1" path="containedCommodity" schema="util">
+                <join table="util_hazardclassifier" fromColumn="containedcommodity_id" toColumn="id" toRole="parent">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </featureProperty>
+            <featureProperty target="util_HollowSpacePartType" path="consistsOfParts" schema="util">
+                <join table="util_hollowspace" fromColumn="id" toColumn="hollowspace_consistsofpar_id" toRole="child">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </featureProperty>
+        </featureType>
+        <featureType id="util_NetworkGraphType" table="util_networkgraph" objectClassId="20008" path="NetworkGraph" schema="util">
+            <extension base="AbstractFeatureType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <featureProperty target="util_FeatureGraphType" path="featureGraphMember" schema="util">
+                <join table="util_featuregraph" fromColumn="id" toColumn="networkgraph_featuregraph_id" toRole="child"/>
+            </featureProperty>
+            <featureProperty target="util_InterFeatureLinkType" path="linkMember" schema="util">
+                <join table="util_link" fromColumn="id" toColumn="networkgraph_linkmember_id" toRole="child">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </featureProperty>
+        </featureType>
+        <featureType abstract="true" id="util_AbstractNetworkFeatureType" table="util_networkfeature" objectClassId="20009" path="AbstractNetworkFeature" schema="util">
+            <extension base="AbstractCityObjectType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <featureProperty target="util_ActorType" maxOccurs="1" path="owner" schema="util">
+                <join table="util_actor" fromColumn="owner_id" toColumn="id" toRole="parent"/>
+            </featureProperty>
+            <featureProperty target="util_ActorType" path="operator" schema="util">
+                <join table="util_actor" fromColumn="id" toColumn="networkfeature_operator_id" toRole="child"/>
+            </featureProperty>
+            <complexAttribute maxOccurs="1" path="function" schema="util">
+                <attribute column="function_codespace" type="string" path="@codespace" schema="util"/>
+                <attribute column="function" type="string" path="." schema="util"/>
+            </complexAttribute>
+            <complexAttribute path="usage" schema="util">
+                <attribute column="usage_codespace" type="string" path="@codespace" schema="util"/>
+                <attribute column="usage" type="string" path="." schema="util"/>
+            </complexAttribute>
+            <attribute column="dateofconstruction" type="timestamp" maxOccurs="1" path="dateOfConstruction" schema="util"/>
+            <attribute column="status" type="string" maxOccurs="1" path="status" schema="util"/>
+            <attribute column="locationquality" type="string" maxOccurs="1" path="locationQuality" schema="util"/>
+            <attribute column="elevationquality" type="string" maxOccurs="1" path="elevationQuality" schema="util"/>
+            <featureProperty target="util_AbstractNetworkFeatureType" path="consistsOf" schema="util">
+                <join table="util_networkfeature" fromColumn="id" toColumn="networkfeature_consistsof_id" toRole="child">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </featureProperty>
+            <featureProperty target="util_AbstractFeatureMaterialType" path="hasMaterial" schema="util">
+                <join table="util_featurematerial" fromColumn="id" toColumn="networkfeatur_hasmaterial_id" toRole="child">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </featureProperty>
+            <featureProperty target="util_FeatureGraphType" maxOccurs="1" path="topoGraph" schema="util">
+                <join table="util_featuregraph" fromColumn="topograph_id" toColumn="id" toRole="parent"/>
+            </featureProperty>
+            <featureProperty target="util_AbstractHollowSpaceType" maxOccurs="1" path="occupiedHollowSpace" schema="util">
+                <join table="util_hollowspace" fromColumn="occupiedhollowspace_id" toColumn="id" toRole="parent">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </featureProperty>
+            <geometryProperty refColumn="lod1geometry_brep_id" inlineColumn="lod1geometry_other_geom" type="AbstractGeometry" maxOccurs="1" path="lod1Geometry" schema="util"/>
+        </featureType>
+        <featureType id="util_SupplyAreaType" table="util_supplyarea" objectClassId="20010" topLevel="true" path="SupplyArea" schema="util">
+            <extension base="CityObjectGroupType">
+                <join table="cityobjectgroup" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <featureProperty target="util_NetworkType" minOccurs="1" maxOccurs="1" path="suppliedBy" schema="util">
+                <join table="util_network" fromColumn="suppliedby_id" toColumn="id" toRole="parent"/>
+            </featureProperty>
+        </featureType>
+        <featureType abstract="true" id="util_AbstractDistributionElementType" table="util_distributionelement" objectClassId="20011" path="AbstractDistributionElement" schema="util">
+            <extension base="util_AbstractNetworkFeatureType">
+                <join table="util_networkfeature" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <complexAttribute maxOccurs="1" path="class" schema="util">
+                <attribute column="class_codespace" type="string" path="@codespace" schema="util"/>
+                <attribute column="class" type="string" path="." schema="util"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="functionOfLine" schema="util">
+                <attribute column="functionofline_codespace" type="string" path="@codespace" schema="util"/>
+                <attribute column="functionofline" type="string" path="." schema="util"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="util_ActorType" table="util_actor" objectClassId="20012" path="Actor" schema="util">
+            <extension base="AbstractFeatureType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="name" type="string" minOccurs="1" maxOccurs="1" path="name" schema="util"/>
+            <featureProperty target="AddressType" minOccurs="1" maxOccurs="1" path="address" schema="util">
+                <join table="address" fromColumn="address_id" toColumn="id" toRole="parent"/>
+            </featureProperty>
+        </featureType>
+        <featureType id="util_FeatureGraphType" table="util_featuregraph" objectClassId="20013" path="FeatureGraph" schema="util">
+            <extension base="AbstractFeatureType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <featureProperty target="util_InteriorFeatureLinkType" path="linkMember" schema="util">
+                <join table="util_link" fromColumn="id" toColumn="featuregraph_linkmember_id" toRole="child">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </featureProperty>
+            <featureProperty target="util_NodeType" minOccurs="1" path="nodeMember" schema="util">
+                <join table="util_node" fromColumn="id" toColumn="featuregraph_nodemember_id" toRole="child"/>
+            </featureProperty>
+            <featureProperty target="util_NetworkLinkType" path="networkLinkMember" schema="util">
+                <join table="util_link" fromColumn="id" toColumn="featuregraph_networklinkm_id" toRole="child">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </featureProperty>
+        </featureType>
+        <featureType id="util_FillingMaterialType" table="util_fillingmaterial" objectClassId="20014" path="FillingMaterial" schema="util">
+            <extension base="AbstractFeatureType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="type" schema="util">
+                <attribute column="type_codespace" type="string" path="@codespace" schema="util"/>
+                <attribute column="type" type="string" path="." schema="util"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="util_InteriorMaterialType" table="util_featurematerial" objectClassId="20015" path="InteriorMaterial" schema="util">
+            <extension base="util_AbstractFeatureMaterialType"/>
+        </featureType>
+        <featureType abstract="true" id="util_AbstractFunctionalElementType" table="util_functionalelement" objectClassId="20016" path="AbstractFunctionalElement" schema="util">
+            <extension base="util_AbstractNetworkFeatureType">
+                <join table="util_networkfeature" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+        </featureType>
+        <featureType id="util_HollowSpacePartType" table="util_hollowspace" objectClassId="20018" path="HollowSpacePart" schema="util">
+            <extension base="util_AbstractHollowSpaceType"/>
+        </featureType>
+        <featureType abstract="true" id="util_AbstractLinkType" table="util_link" objectClassId="20019" path="AbstractLink" schema="util">
+            <extension base="AbstractFeatureType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="direction" type="string" maxOccurs="1" path="direction" schema="util"/>
+            <complexProperty refType="util_AbstractLinkControlType" maxOccurs="1" path="linkControl" schema="util">
+                <join table="util_linkcontrol" fromColumn="linkcontrol_id" toColumn="id" toRole="parent"/>
+            </complexProperty>
+            <geometryProperty inlineColumn="realization" type="MultiCurve" maxOccurs="1" path="realization" schema="util"/>
+            <featureProperty target="util_NodeType" minOccurs="1" maxOccurs="1" path="start" schema="util">
+                <join table="util_node" fromColumn="start_id" toColumn="id" toRole="parent"/>
+            </featureProperty>
+            <featureProperty target="util_NodeType" minOccurs="1" maxOccurs="1" path="end" schema="util">
+                <join table="util_node" fromColumn="end_id" toColumn="id" toRole="parent"/>
+            </featureProperty>
+        </featureType>
+        <featureType id="util_NodeType" table="util_node" objectClassId="20021" path="Node" schema="util">
+            <extension base="AbstractFeatureType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="type" type="string" minOccurs="1" maxOccurs="1" path="type" schema="util"/>
+            <complexProperty refType="util_AbstractSignatureType" maxOccurs="1" path="connectionSignature" schema="util">
+                <join table="util_signature" fromColumn="connectionsignature_id" toColumn="id" toRole="parent"/>
+            </complexProperty>
+            <complexProperty refType="util_AbstractLinkControlType" maxOccurs="1" path="linkControl" schema="util">
+                <join table="util_linkcontrol" fromColumn="linkcontrol_id" toColumn="id" toRole="parent"/>
+            </complexProperty>
+            <geometryProperty inlineColumn="realization" type="Point" maxOccurs="1" path="realization" schema="util"/>
+        </featureType>
+        <featureType id="util_InteriorFeatureLinkType" table="util_link" objectClassId="20026" path="InteriorFeatureLink" schema="util">
+            <extension base="util_AbstractLinkType"/>
+        </featureType>
+        <featureType id="util_NetworkLinkType" table="util_link" objectClassId="20027" path="NetworkLink" schema="util">
+            <extension base="util_AbstractLinkType"/>
+        </featureType>
+        <featureType abstract="true" id="util_AbstractPipeType" table="util_pipe" objectClassId="20028" path="AbstractPipe" schema="util">
+            <extension base="util_AbstractDistributionElementType">
+                <join table="util_distributionelement" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="isgravity" type="boolean" maxOccurs="1" path="isGravity" schema="util"/>
+            <complexAttribute maxOccurs="1" path="exteriorWidth" schema="util">
+                <attribute column="exteriorwidth_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="exteriorwidth" type="double" path="." schema="util"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="exteriorHeight" schema="util">
+                <attribute column="exteriorheight_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="exteriorheight" type="double" path="." schema="util"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="exteriorDiameter" schema="util">
+                <attribute column="exteriordiameter_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="exteriordiameter" type="double" path="." schema="util"/>
+            </complexAttribute>
+        </featureType>
+        <featureType abstract="true" id="util_AbstractProtectionShellType" table="util_protectionshell" objectClassId="20029" path="AbstractProtectionShell" schema="util">
+            <extension base="util_ProtectiveElementType">
+                <join table="util_networkfeature" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <complexAttribute maxOccurs="1" path="exteriorWidth" schema="util">
+                <attribute column="exteriorwidth_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="exteriorwidth" type="double" path="." schema="util"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="exteriorHeight" schema="util">
+                <attribute column="exteriorheight_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="exteriorheight" type="double" path="." schema="util"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="exteriorDiameter" schema="util">
+                <attribute column="exteriordiameter_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="exteriordiameter" type="double" path="." schema="util"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="util_ProtectiveElementType" table="util_networkfeature" objectClassId="20030" path="ProtectiveElement" schema="util">
+            <extension base="util_AbstractNetworkFeatureType"/>
+            <featureProperty target="util_AbstractNetworkFeatureType" path="contains" schema="util">
+                <join table="util_networkfeature" fromColumn="id" toColumn="networkfeature_contains_id" toRole="child">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </featureProperty>
+        </featureType>
+        <featureType id="util_ActuatorType" table="util_actuator" objectClassId="20031" path="Actuator" schema="util">
+            <extension base="AbstractFeatureType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+        </featureType>
+        <featureType id="util_BeddingType" table="util_networkfeature" objectClassId="20032" path="Bedding" schema="util">
+            <extension base="util_ProtectiveElementType"/>
+            <complexAttribute maxOccurs="1" path="width" schema="util">
+                <attribute column="width_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="width" type="double" path="." schema="util"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="util_BreakerType" table="util_protectedswitch" objectClassId="20033" path="Breaker" schema="util">
+            <extension base="util_ProtectedSwitchType">
+                <join table="util_controllercomponent" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+        </featureType>
+        <featureType id="util_ProtectedSwitchType" table="util_controllercomponent" objectClassId="20034" path="ProtectedSwitch" schema="util">
+            <extension base="util_SwitchType"/>
+        </featureType>
+        <featureType id="util_SwitchType" table="util_controllercomponent" objectClassId="20035" path="Switch" schema="util">
+            <extension base="util_ControllerComponentType"/>
+        </featureType>
+        <featureType id="util_BusbarSectionType" table="util_connector" objectClassId="20036" path="BusbarSection" schema="util">
+            <extension base="util_ConnectorType">
+                <join table="util_connectioncomponent" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+        </featureType>
+        <featureType id="util_ConnectorType" table="util_connectioncomponent" objectClassId="20037" path="Connector" schema="util">
+            <extension base="util_ConnectionComponentType">
+                <join table="util_simplefunctionalcomp" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+        </featureType>
+        <featureType id="util_ConnectionComponentType" table="util_simplefunctionalcomp" objectClassId="20038" path="ConnectionComponent" schema="util">
+            <extension base="util_SimpleFunctionalComponentType"/>
+            <complexAttribute maxOccurs="1" path="class" schema="util">
+                <attribute column="class_codespace" type="string" path="@codespace" schema="util"/>
+                <attribute column="class" type="string" path="." schema="util"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="util_CanalType" table="util_canal" objectClassId="20039" path="Canal" schema="util">
+            <extension base="util_AbstractDistributionElementType">
+                <join table="util_distributionelement" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="profilename" type="string" maxOccurs="1" path="profileName" schema="util"/>
+            <complexAttribute maxOccurs="1" path="slope" schema="util">
+                <attribute column="slope_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="slope" type="double" path="." schema="util"/>
+            </complexAttribute>
+            <attribute column="isgravity" type="boolean" maxOccurs="1" path="isGravity" schema="util"/>
+            <complexAttribute maxOccurs="1" path="exteriorWidth" schema="util">
+                <attribute column="exteriorwidth_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="exteriorwidth" type="double" path="." schema="util"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="exteriorHeight" schema="util">
+                <attribute column="exteriorheight_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="exteriorheight" type="double" path="." schema="util"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="exteriorDiameter" schema="util">
+                <attribute column="exteriordiameter_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="exteriordiameter" type="double" path="." schema="util"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="util_ChemicalClassifierType" table="util_chemicalclassifier" objectClassId="20040" path="ChemicalClassifier" schema="util">
+            <extension base="util_AbstractHazardClassifierType">
+                <join table="util_hazardclassifier" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="ecno" type="string" maxOccurs="1" path="ECNo" schema="util"/>
+            <attribute column="casno" type="string" maxOccurs="1" path="CasNo" schema="util"/>
+            <attribute column="iuclidchemicaldatasheet" type="string" maxOccurs="1" path="IUCLIDChemicalDataSheet" schema="util"/>
+        </featureType>
+        <featureType id="util_ClosedCanalType" table="util_canal" objectClassId="20041" path="ClosedCanal" schema="util">
+            <extension base="util_CanalType"/>
+        </featureType>
+        <featureType id="util_ComplexFunctionalComponentType" table="util_complexfunctionalcom" objectClassId="20042" path="ComplexFunctionalComponent" schema="util">
+            <extension base="util_AbstractFunctionalElementType">
+                <join table="util_functionalelement" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <featureProperty target="util_AbstractFunctionalElementType" path="functionalComponent" schema="util">
+                <join table="util_functionalelement" fromColumn="id" toColumn="complexfunct_functionalco_id" toRole="child">
+                    <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
+                </join>
+            </featureProperty>
+            <complexAttribute maxOccurs="1" path="class" schema="util">
+                <attribute column="class_codespace" type="string" path="@codespace" schema="util"/>
+                <attribute column="class" type="string" path="." schema="util"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="util_CompositeSwitchType" table="util_complexfunctionalcom" objectClassId="20043" path="CompositeSwitch" schema="util">
+            <extension base="util_ComplexFunctionalComponentType"/>
+            <attribute column="switch" type="clob" path="switch" schema="util"/>
+        </featureType>
+        <featureType abstract="true" id="util_SimpleFunctionalComponentType" table="util_simplefunctionalcomp" objectClassId="20044" path="SimpleFunctionalComponent" schema="util">
+            <extension base="util_AbstractFunctionalElementType">
+                <join table="util_functionalelement" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="isactive" type="boolean" maxOccurs="1" path="isActive" schema="util"/>
+        </featureType>
+        <featureType id="util_ControllerComponentType" table="util_controllercomponent" objectClassId="20045" path="ControllerComponent" schema="util">
+            <extension base="util_SimpleFunctionalComponentType">
+                <join table="util_simplefunctionalcomp" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="actuator" type="clob" path="actuator" schema="util"/>
+            <attribute column="regulator" type="clob" path="regulator" schema="util"/>
+            <complexAttribute maxOccurs="1" path="class" schema="util">
+                <attribute column="class_codespace" type="string" path="@codespace" schema="util"/>
+                <attribute column="class" type="string" path="." schema="util"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="util_DCLineSegmentType" table="util_conductor" objectClassId="20046" path="DCLineSegment" schema="util">
+            <extension base="util_ConductorType">
+                <join table="util_cable" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+        </featureType>
+        <featureType id="util_DisconnectorType" table="util_controllercomponent" objectClassId="20047" path="Disconnector" schema="util">
+            <extension base="util_SwitchType"/>
+        </featureType>
+        <featureType id="util_ElectricalMediumType" table="util_electricalmedium" objectClassId="20048" path="ElectricalMedium" schema="util">
+            <extension base="util_AbstractCommodityType">
+                <join table="util_commodity" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="type" type="string" minOccurs="1" maxOccurs="1" path="type" schema="util"/>
+            <complexAttribute maxOccurs="1" path="voltageRange" schema="util">
+                <attribute column="voltagerange_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="voltagerange" type="double" path="." schema="util"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="amperageRange" schema="util">
+                <attribute column="amperagerange_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="amperagerange" type="double" path="." schema="util"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="bandWidth" schema="util">
+                <attribute column="bandwidth_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="bandwidth" type="double" path="." schema="util"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="util_EnergyConsumerType" table="util_simplefunctionalcomp" objectClassId="20050" path="EnergyConsumer" schema="util">
+            <extension base="util_TerminalComponentType"/>
+        </featureType>
+        <featureType id="util_TerminalComponentType" table="util_simplefunctionalcomp" objectClassId="20051" path="TerminalComponent" schema="util">
+            <extension base="util_SimpleFunctionalComponentType"/>
+            <complexAttribute maxOccurs="1" path="class" schema="util">
+                <attribute column="class_codespace_4" type="string" path="@codespace" schema="util"/>
+                <attribute column="class_4" type="string" path="." schema="util"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="util_EnergySourceType" table="util_simplefunctionalcomp" objectClassId="20052" path="EnergySource" schema="util">
+            <extension base="util_TerminalComponentType"/>
+        </featureType>
+        <featureType id="util_ExteriorMaterialType" table="util_featurematerial" objectClassId="20053" path="ExteriorMaterial" schema="util">
+            <extension base="util_AbstractFeatureMaterialType"/>
+        </featureType>
+        <featureType id="util_FuseType" table="util_controllercomponent" objectClassId="20054" path="Fuse" schema="util">
+            <extension base="util_SwitchType"/>
+        </featureType>
+        <featureType id="util_GHSClassifierType" table="util_ghsclassifier" objectClassId="20055" path="GHSClassifier" schema="util">
+            <extension base="util_AbstractHazardClassifierType">
+                <join table="util_hazardclassifier" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="ecno" type="string" maxOccurs="1" path="ECNo" schema="util"/>
+            <attribute column="casno" type="string" maxOccurs="1" path="CasNo" schema="util"/>
+        </featureType>
+        <featureType id="util_GaseousMediumType" table="util_gaseousmedium" objectClassId="20056" path="GaseousMedium" schema="util">
+            <extension base="util_AbstractCommodityType">
+                <join table="util_commodity" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="type" schema="util">
+                <attribute column="type_codespace" type="string" path="@codespace" schema="util"/>
+                <attribute column="type" type="string" path="." schema="util"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="concentration" schema="util">
+                <attribute column="concentration_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="concentration" type="double" path="." schema="util"/>
+            </complexAttribute>
+            <attribute column="isexplosive" type="boolean" maxOccurs="1" path="isExplosive" schema="util"/>
+            <complexAttribute maxOccurs="1" path="pressureRange" schema="util">
+                <attribute column="pressurerange_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="pressurerange" type="double" path="." schema="util"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="electricConductivityRange" schema="util">
+                <attribute column="electricconductivityrang_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="electricconductivityrange" type="double" path="." schema="util"/>
+            </complexAttribute>
+            <attribute column="islighterthanair" type="boolean" maxOccurs="1" path="isLighterThanAir" schema="util"/>
+        </featureType>
+        <featureType id="util_GenericClassifierType" table="util_hazardclassifier" objectClassId="20058" path="GenericClassifier" schema="util">
+            <extension base="util_AbstractHazardClassifierType"/>
+        </featureType>
+        <featureType id="util_GroundType" table="util_simplefunctionalcomp" objectClassId="20059" path="Ground" schema="util">
+            <extension base="util_TerminalComponentType"/>
+        </featureType>
+        <featureType id="util_GroundDisconnectorType" table="util_controllercomponent" objectClassId="20060" path="GroundDisconnector" schema="util">
+            <extension base="util_SwitchType"/>
+        </featureType>
+        <featureType id="util_HollowSpaceType" table="util_hollowspace" objectClassId="20061" path="HollowSpace" schema="util">
+            <extension base="util_AbstractHollowSpaceType"/>
+        </featureType>
+        <featureType id="util_InterFeatureLinkType" table="util_link" objectClassId="20062" path="InterFeatureLink" schema="util">
+            <extension base="util_AbstractLinkType"/>
+            <attribute column="type" type="string" minOccurs="1" maxOccurs="1" path="type" schema="util"/>
+        </featureType>
+        <featureType id="util_JumperType" table="util_controllercomponent" objectClassId="20063" path="Jumper" schema="util">
+            <extension base="util_SwitchType"/>
+        </featureType>
+        <featureType id="util_JunctionType" table="util_connector" objectClassId="20064" path="Junction" schema="util">
+            <extension base="util_ConnectorType">
+                <join table="util_connectioncomponent" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+        </featureType>
+        <featureType id="util_LiquidMediumType" table="util_liquidmedium" objectClassId="20065" path="LiquidMedium" schema="util">
+            <extension base="util_AbstractCommodityType">
+                <join table="util_commodity" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="type" schema="util">
+                <attribute column="type_codespace" type="string" path="@codespace" schema="util"/>
+                <attribute column="type" type="string" path="." schema="util"/>
+            </complexAttribute>
+            <attribute column="iscorrosive" type="boolean" maxOccurs="1" path="isCorrosive" schema="util"/>
+            <attribute column="isexplosive" type="boolean" maxOccurs="1" path="isExplosive" schema="util"/>
+            <attribute column="flammabilityratio" type="double" maxOccurs="1" path="flammabilityRatio" schema="util"/>
+            <complexAttribute maxOccurs="1" path="electricConductivity" schema="util">
+                <attribute column="electricconductivity_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="electricconductivity" type="double" path="." schema="util"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="phValueRange" schema="util">
+                <attribute column="phvaluerange_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="phvaluerange" type="double" path="." schema="util"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="temperatureRange" schema="util">
+                <attribute column="temperaturerange_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="temperaturerange" type="double" path="." schema="util"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="flowRateRange" schema="util">
+                <attribute column="flowraterange_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="flowraterange" type="double" path="." schema="util"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="pressureRange" schema="util">
+                <attribute column="pressurerange_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="pressurerange" type="double" path="." schema="util"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="util_LoadBreakSwitchType" table="util_protectedswitch" objectClassId="20067" path="LoadBreakSwitch" schema="util">
+            <extension base="util_ProtectedSwitchType">
+                <join table="util_controllercomponent" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+        </featureType>
+        <featureType id="util_MeasurementComponentType" table="util_simplefunctionalcomp" objectClassId="20068" path="MeasurementComponent" schema="util">
+            <extension base="util_SimpleFunctionalComponentType"/>
+            <complexAttribute maxOccurs="1" path="class" schema="util">
+                <attribute column="class_codespace_1" type="string" path="@codespace" schema="util"/>
+                <attribute column="class_1" type="string" path="." schema="util"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="util_OpticalMediumType" table="util_opticalmedium" objectClassId="20069" path="OpticalMedium" schema="util">
+            <extension base="util_AbstractCommodityType">
+                <join table="util_commodity" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <attribute column="type" type="string" minOccurs="1" maxOccurs="1" path="type" schema="util"/>
+            <attribute column="modetype" type="string" maxOccurs="1" path="modeType" schema="util"/>
+            <complexAttribute maxOccurs="1" path="bandWidth" schema="util">
+                <attribute column="bandwidth_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="bandwidth" type="double" path="." schema="util"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="coreCrossSection" schema="util">
+                <attribute column="corecrosssection_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="corecrosssection" type="double" path="." schema="util"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="claddingCrossSection" schema="util">
+                <attribute column="claddingcrosssection_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="claddingcrosssection" type="double" path="." schema="util"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="util_OtherComponentType" table="util_simplefunctionalcomp" objectClassId="20071" path="OtherComponent" schema="util">
+            <extension base="util_SimpleFunctionalComponentType"/>
+            <complexAttribute maxOccurs="1" path="class" schema="util">
+                <attribute column="class_codespace_2" type="string" path="@codespace" schema="util"/>
+                <attribute column="class_2" type="string" path="." schema="util"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="util_OtherShapePipeType" table="util_pipe" objectClassId="20072" path="OtherShapePipe" schema="util">
+            <extension base="util_AbstractPipeType"/>
+        </featureType>
+        <featureType id="util_OtherShellType" table="util_protectionshell" objectClassId="20073" path="OtherShell" schema="util">
+            <extension base="util_AbstractProtectionShellType"/>
+        </featureType>
+        <featureType id="util_PowerTransformerType" table="util_complexfunctionalcom" objectClassId="20074" path="PowerTransformer" schema="util">
+            <extension base="util_ComplexFunctionalComponentType"/>
+            <attribute column="transformerend" type="clob" path="transformerEnd" schema="util"/>
+        </featureType>
+        <featureType id="util_RectangularPipeType" table="util_rectangularpipe" objectClassId="20075" path="RectangularPipe" schema="util">
+            <extension base="util_AbstractPipeType">
+                <join table="util_pipe" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <complexAttribute maxOccurs="1" path="interiorWidth" schema="util">
+                <attribute column="interiorwidth_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="interiorwidth" type="double" path="." schema="util"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="interiorHeight" schema="util">
+                <attribute column="interiorheight_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="interiorheight" type="double" path="." schema="util"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="util_RectangularShellType" table="util_rectangularshell" objectClassId="20076" path="RectangularShell" schema="util">
+            <extension base="util_AbstractProtectionShellType">
+                <join table="util_protectionshell" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <complexAttribute maxOccurs="1" path="interiorWidth" schema="util">
+                <attribute column="interiorwidth_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="interiorwidth" type="double" path="." schema="util"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="interiorHeight" schema="util">
+                <attribute column="interiorheight_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="interiorheight" type="double" path="." schema="util"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="util_RegulatorType" table="util_regulator" objectClassId="20077" path="Regulator" schema="util">
+            <extension base="AbstractFeatureType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+        </featureType>
+        <featureType id="util_RoleInNetworkType" table="util_roleinnetwork" objectClassId="20078" path="RoleInNetwork" schema="util">
+            <extension base="AbstractFeatureType">
+                <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <complexAttribute maxOccurs="1" path="functionInNetwork" schema="util">
+                <attribute column="functioninnetwork_codespace" type="string" path="@codespace" schema="util"/>
+                <attribute column="functioninnetwork" type="string" path="." schema="util"/>
+            </complexAttribute>
+            <complexAttribute path="usageInNetwork" schema="util">
+                <attribute column="usageinnetwork_codespace" type="string" path="@codespace" schema="util"/>
+                <attribute column="usageinnetwork" type="string" path="." schema="util"/>
+            </complexAttribute>
+            <featureProperty target="util_NetworkType" minOccurs="1" maxOccurs="1" path="network" schema="util">
+                <join table="util_network" fromColumn="network_id" toColumn="id" toRole="parent"/>
+            </featureProperty>
+        </featureType>
+        <featureType id="util_RoundPipeType" table="util_pipe" objectClassId="20079" path="RoundPipe" schema="util">
+            <extension base="util_AbstractPipeType"/>
+            <complexAttribute maxOccurs="1" path="interiorDiameter" schema="util">
+                <attribute column="interiordiameter_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="interiordiameter" type="double" path="." schema="util"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="util_RoundShellType" table="util_protectionshell" objectClassId="20080" path="RoundShell" schema="util">
+            <extension base="util_AbstractProtectionShellType"/>
+            <complexAttribute maxOccurs="1" path="interiorDiameter" schema="util">
+                <attribute column="interiordiameter_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="interiordiameter" type="double" path="." schema="util"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="util_SemiOpenCanalType" table="util_canal" objectClassId="20081" path="SemiOpenCanal" schema="util">
+            <extension base="util_CanalType"/>
+        </featureType>
+        <featureType id="util_SolidMediumType" table="util_solidmedium" objectClassId="20082" path="SolidMedium" schema="util">
+            <extension base="util_AbstractCommodityType">
+                <join table="util_commodity" fromColumn="id" toColumn="id" toRole="parent"/>
+            </extension>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="type" schema="util">
+                <attribute column="type_codespace" type="string" path="@codespace" schema="util"/>
+                <attribute column="type" type="string" path="." schema="util"/>
+            </complexAttribute>
+            <attribute column="isexplosive" type="boolean" maxOccurs="1" path="isExplosive" schema="util"/>
+            <attribute column="flammabilityratio" type="double" maxOccurs="1" path="flammabilityRatio" schema="util"/>
+            <complexAttribute maxOccurs="1" path="concentration" schema="util">
+                <attribute column="concentration_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="concentration" type="double" path="." schema="util"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="electricConductivity" schema="util">
+                <attribute column="electricconductivity_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="electricconductivity" type="double" path="." schema="util"/>
+            </complexAttribute>
+            <complexAttribute maxOccurs="1" path="pressureRange" schema="util">
+                <attribute column="pressurerange_uom" type="string" path="@uom" schema="util"/>
+                <attribute column="pressurerange" type="double" path="." schema="util"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="util_StorageComponentType" table="util_simplefunctionalcomp" objectClassId="20084" path="StorageComponent" schema="util">
+            <extension base="util_SimpleFunctionalComponentType"/>
+            <complexAttribute maxOccurs="1" path="class" schema="util">
+                <attribute column="class_codespace_3" type="string" path="@codespace" schema="util"/>
+                <attribute column="class_3" type="string" path="." schema="util"/>
+            </complexAttribute>
+        </featureType>
+        <featureType id="util_TransformerEndType" table="util_simplefunctionalcomp" objectClassId="20085" path="TransformerEnd" schema="util">
+            <extension base="util_OtherComponentType"/>
+        </featureType>
+    </featureTypes>
+    <propertyInjections>
+        <propertyInjection table="util_building" defaultBase="AbstractBuildingType">
+            <join table="util_building" fromColumn="ID" toColumn="ID" toRole="child"/>
+            <attribute column="buildinghabitants" type="integer" path="buildingHabitants" schema="util"/>
+        </propertyInjection>
+        <propertyInjection table="util_cityobject" defaultBase="AbstractCityObjectType">
+            <join table="util_cityobject" fromColumn="ID" toColumn="ID" toRole="child"/>
+            <complexProperty refType="util_AbstractMediumSupplyType" path="mediumSupply" schema="util">
+                <join table="util_mediumsupply" fromColumn="id" toColumn="cityobject_mediumsupply_id" toRole="child"/>
+            </complexProperty>
+            <featureProperty target="util_RoleInNetworkType" relationType="association" path="roleInNetwork" schema="util">
+                <join table="util_roleinnetwork" fromColumn="id" toColumn="cityobject_roleinnetwork_id" toRole="child"/>
+            </featureProperty>
+        </propertyInjection>
+    </propertyInjections>
+</schemaMapping>
