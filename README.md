@@ -77,4 +77,4 @@ Code is maintained by TU Berlin Institute for Digital Networking of Buildings, E
 `django-citydb` has been developed within public funded projects
 and with financial support by BMWK (Federal Ministry for Economics and Climate Action)
 
-<img src="resources/bmwk_en_2023.png" width="200">
+<img src="img\bmwk-logo-2022-en-web-transparent.gif" width="200">
