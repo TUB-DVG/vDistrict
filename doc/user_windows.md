@@ -38,15 +38,15 @@ folder on `D:\\` for installation. At some point the installer will ask you:
         $ conda install shapely libgdal gdal
         $ pip install django influxdb
 
-One comment on gdal and libgdal: Django can't handle newer version.
+One comment on gdal and libgdal: Django can't handle newer version. Install GDAL via https://github.com/cgohlke/geospatial-wheels/ 
 
 ### Internal dependencies
 
 We use the following EBC Django-applications:
 
-- [`django-citydb`](https://git.rwth-aachen.de/EBC/Team_UES/living-roadmap/django-citydb) - Interface to 3DCityDB, with GIS-based web app.
-- [`django-uesmodels`](https://git.rwth-aachen.de/EBC/Team_UES/living-roadmap/django-uesmodels) - Enables usage of uesmodels/uesgraphs in combination with `django-citydb`
-- [`django-teaser`](https://git.rwth-aachen.de/EBC/Team_UES/living-roadmap/django-teaser) - Enable export and import of TEASER models in combination with `django-citydb`
+- [`django-citydb`](https://github.com/TUB-DVG/djangoCityDB) - Interface to 3DCityDB, with GIS-based web app.
+- [`django-uesmodels`](https://git.rwth-aachen.de/EBC/Team_UES/living-roadmap/django-uesmodels) - Enables usage of uesmodels/uesgraphs in combination with `django-citydb` - Currently not maintained and updated. 
+- [`django-teaser`](https://github.com/TUB-DVG/djangoTEASER) - Enable export and import of TEASER models in combination with `django-citydb`
 
 You will find detailed installation information in the README of the repositories
 
