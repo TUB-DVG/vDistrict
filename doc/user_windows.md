@@ -32,21 +32,26 @@ folder on `D:\\` for installation. At some point the installer will ask you:
 
 ### Public dependencies
 
-- `vDistrict` has some dependencies, we need to install them by using `conda` or `pip`, just type
+- `vDistrict` has some dependencies, we need to install them by using `conda` or `pip`, or `wheels`.
 
-        $ conda install psycopg2 numpy pandas pyproj scipy plotly
-        $ conda install shapely libgdal gdal
-        $ pip install django influxdb
+- Install GDAL via https://github.com/cgohlke/geospatial-wheels/ 
+- Activate your envrionment, check the version ( 'python -V'), download the respective wheels and install them with pip. E.g. in my case: 'pip install GDAL-3.9.2-cp312-cp312-win_amd64.whl'
 
-One comment on gdal and libgdal: Django can't handle newer version.
+After this install the following packages:
+
+        $ pip install Django 
+        $ pip install numpy influxdb pandas psycopg2
+
+
+One comment on gdal and libgdal: Django can't handle newer version. 
 
 ### Internal dependencies
 
 We use the following EBC Django-applications:
 
-- [`django-citydb`](https://git.rwth-aachen.de/EBC/Team_UES/living-roadmap/django-citydb) - Interface to 3DCityDB, with GIS-based web app.
-- [`django-uesmodels`](https://git.rwth-aachen.de/EBC/Team_UES/living-roadmap/django-uesmodels) - Enables usage of uesmodels/uesgraphs in combination with `django-citydb`
-- [`django-teaser`](https://git.rwth-aachen.de/EBC/Team_UES/living-roadmap/django-teaser) - Enable export and import of TEASER models in combination with `django-citydb`
+- [`django-citydb`](https://github.com/TUB-DVG/djangoCityDB) - Interface to 3DCityDB, with GIS-based web app.
+- [`django-uesmodels`](https://git.rwth-aachen.de/EBC/Team_UES/living-roadmap/django-uesmodels) - Enables usage of uesmodels/uesgraphs in combination with `django-citydb` - Currently not maintained and updated. 
+- [`django-teaser`](https://github.com/TUB-DVG/djangoTEASER) - Enable export and import of TEASER models in combination with `django-citydb`
 
 You will find detailed installation information in the README of the repositories
 
@@ -54,7 +59,7 @@ You will find detailed installation information in the README of the repositorie
 
 `VDistrict` needs a couple of environment variables to AixLib Modelica library, itself and to
 geospatial libraries, these libraries come with the installation of QGIS. After you have
-successfully installed the latest QGIS version (e.g. using EON.ERC Softwarecenter).
+successfully installed the latest QGIS version (e.g. using https://qgis.org/download/ ).
 
 Now you need to set a specific environment variable for the conda python
 environment. In your anaconda environment you will find a folder called
@@ -92,6 +97,13 @@ For my Account the variables look like:
         set GDAL_DATA=%OSGEO4W_ROOT%/share/gdal
         set PROJ_LIB=%OSGEO4W_ROOT%/share/proj
         set PATH=%PATH%;%OSGEO4W_ROOT%/bin
+
+Another approach is to use the `activate_env_vars.bat` file or the `deactivate_env_vars.bat` file.
+
+## Change Django GDAL settings 
+
+It might be the case, that Django rasises "django.core.exceptions.ImproperlyConfigured: Could not find the GDAL library." In this case this webpage offers help for tourble shooting: https://www.pointsnorthgis.ca/blog/geodjango-gdal-setup-windows-10/ 
+
 
 ## Next steps
 
