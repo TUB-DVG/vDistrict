@@ -85,6 +85,10 @@ DATABASES = {
 
 WSGI_APPLICATION = "vDistrict.wsgi.application"
 
+LOGGING = {
+    "version": 1,  # the dictConfig format version
+    "disable_existing_loggers": False,  # retain the default loggers
+}
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {

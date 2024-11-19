@@ -2,12 +2,25 @@
 
 
 import django
-
+import os
 # IMPORTANT: Before you use EBC Django modules outside the project you need to call
 # django.setup() - assuming you followed the instruction in the README. Now you can
 # import all functions and models from the applications.
+import sys
+import os
 
+# Get the project root directory and add to Python path
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(project_root)
+
+# Configure Django settings
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'vDistrict.settings')
+
+# Initialize Django
 django.setup()
+
+# Import required modules
+from django.conf import settings
 import citydb.shortcuts.time_series_data as ts_short
 import citydb.shortcuts.buildings_data as bldg_short
 from datetime import datetime as dt
