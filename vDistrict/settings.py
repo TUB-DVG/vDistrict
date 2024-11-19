@@ -12,12 +12,10 @@ config = configparser.ConfigParser()
 config.read(env_path)
 
 if os.name == 'nt':
-    OSGEO4W = r"C:\OSGeo4W"
-    assert os.path.isdir(OSGEO4W), "Directory does not exist: " + OSGEO4W
-    os.environ['OSGEO4W_ROOT'] = OSGEO4W
-    os.environ['GDAL_DATA'] = OSGEO4W + r"\share\gdal"
-    os.environ['PROJ_LIB'] = OSGEO4W + r"\share\proj"
-    os.environ['PATH'] = OSGEO4W + r"\bin;" + os.environ['PATH']
+    VIRTUAL_ENV_BASE = os.environ['VIRTUAL_ENV']
+    os.environ['PATH'] = os.path.join(VIRTUAL_ENV_BASE, r'.\Lib\site-packages\osgeo') + ';' + os.environ['PATH']
+    os.environ['PROJ_LIB'] = os.path.join(VIRTUAL_ENV_BASE, r'.\Lib\site-packages\osgeo\data\proj') + ';' + os.environ['PATH']
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -26,9 +24,9 @@ if os.name == 'nt':
 SECRET_KEY = config.get("DEFAULT", "SECRET_KEY", fallback="-p5pvp5(g4xt-*yrium6ryo^i9y%gx3!f)v+d%l%%7h&(mejp8")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config.getboolean("DEFAULT", "DEBUG", fallback=True)
+DEBUG = config["Django"].getboolean("DEBUG", fallback=True)
 
-ALLOWED_HOSTS = config.get("DEFAULT", "ALLOWED_HOSTS", fallback="*").split(",")
+ALLOWED_HOSTS = config["Django"].get("ALLOWED_HOSTS", fallback="*").split(",")
 
 # Application definition
 INSTALLED_APPS = [
