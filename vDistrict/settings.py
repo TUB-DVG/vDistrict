@@ -19,9 +19,6 @@ if os.name == 'nt':
     os.environ['PROJ_LIB'] = OSGEO4W + r"\share\proj"
     os.environ['PATH'] = OSGEO4W + r"\bin;" + os.environ['PATH']
 
-# Debugging: Print loaded environment variables
-print("Loaded POSTGRES_DB:", config["CityDB"].get("POSTGRES_DB", fallback="citydb"))
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
