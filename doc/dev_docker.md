@@ -2,9 +2,9 @@
 
 To set up databases, we will guide you through 2 steps:
 
-1. Start `3dcitydb` docker with `PostgreSQL` and `PostGIS`
+1. Start `3dcitydb` docker with `PostgreSQL` and `PostGIS`. For this you can use the docker-compose file in the `vDistrict` folder and the `.env` file in the `config` folder.
 2. Start `InfluxDB` docker
-3. Migrate EnergyADE and UtilityNetworksADE
+3. Migrate EnergyADE and UtilityNetworksADE, with the `3dcitydb` [importer/exporter tool](https://www.3dcitydb.org/3dcitydb/3dimpexp/).
 
 If you don't know docker, have a look at: https://docs.docker.com/. There is a helpful
 docker cheat sheet available here:
@@ -28,6 +28,9 @@ First we want to start a docker, that contains a `PostgreSQL` database, with
     - POSTGRES_PASSWORD for Password (e. g. admin)
     - SRID set the SRID reference (standardvalues / needed for 3dcitydb) ("25832")
     - SRSName set the SRSName reference (standardvalues / needed for 3dcitydb) ("urn:adv:crs:ETRS89_UTM32*DE_DHHN92_NH")
+
+
+    - You can also use the docker-compose file in the `vDistrict` folder and the `.env` file in the `config` folder to start the `3dcitydb` docker.
 
 ## 2. InfluxDB
 
