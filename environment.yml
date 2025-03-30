@@ -1,0 +1,11 @@
+name: vDistrict
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - django
+  - gdal
+  - influxdb
+  - numpy
+  - pandas
+  - psycopg2

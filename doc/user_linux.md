@@ -1,3 +1,6 @@
+# Note: Currently only the windows version is tested
+# Note: Due to backwards compatibility, the Linux documentation is kept, but not tested.
+
 # User Guide for Linux
 
 To use `vDistrict` on Linux, we will guide you through 3 steps:

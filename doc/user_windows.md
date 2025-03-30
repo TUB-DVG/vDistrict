@@ -16,13 +16,12 @@ To install and use `anaconda` for our purposes, do the following:
 
 - Download latest `anaconda` version (e.g.
 https://www.anaconda.com/download/#download) and use the graphical installer to
-install anaconda on your PC. If you are at EON ERC, please choose your personal
-folder on `D:\\` for installation. At some point the installer will ask you:
+install anaconda on your PC. At some point the installer will ask you:
 "Add Anaconda to my PATH environment variable", please check this box (although
     you might get a warning).
 - Once you have everything installed, open a windows command prompt and create your virtual environment:
 
-        $ conda create -n vDistrict python=3.7
+        $ conda create -n vDistrict python=3.12
 
 - Activate your new environment with:
 
@@ -32,18 +31,28 @@ folder on `D:\\` for installation. At some point the installer will ask you:
 
 ### Public dependencies
 
-- `vDistrict` has some dependencies, we need to install them by using `conda` or `pip`, or `wheels`.
 
-- Install GDAL via https://github.com/cgohlke/geospatial-wheels/ 
-- Activate your envrionment, check the version ( 'python -V'), download the respective wheels and install them with pip. E.g. in my case: 'pip install GDAL-3.9.2-cp312-cp312-win_amd64.whl'
+
+- `vDistrict` has some dependencies, we need to install them by using `conda` or `pip`, or `wheels`. Due to GDAL, conda is reommenced. However, GDLA wheels can also be installed in different ways for example via wheels.
+
+
+- Install GDAL via conda:
+
+        $ conda install gdal
+
 
 After this install the following packages:
 
-        $ pip install Django 
-        $ pip install numpy influxdb pandas psycopg2
+        $ conda install Django 
+        $ conda install numpy pandas psycopg2
+        $ conda install -c conda-forge influxdb
 
 
 One comment on gdal and libgdal: Django can't handle newer version. 
+
+You can also use the provided `environment.yml` file to create your conda environment.
+
+        $ conda env create -f environment.yml
 
 ### Internal dependencies
 
@@ -52,23 +61,20 @@ We use the following EBC Django-applications:
 - [`django-citydb`](https://github.com/TUB-DVG/djangoCityDB) - Interface to 3DCityDB, with GIS-based web app.
 - [`django-uesmodels`](https://git.rwth-aachen.de/EBC/Team_UES/living-roadmap/django-uesmodels) - Enables usage of uesmodels/uesgraphs in combination with `django-citydb` - Currently not maintained and updated. 
 - [`django-teaser`](https://github.com/TUB-DVG/djangoTEASER) - Enable export and import of TEASER models in combination with `django-citydb`
+- [`django-SRI`](https://github.com/TUB-DVG/djangoSRI) - Enable export and import of SRI models in combination with `django-citydb` -> currently not published.
 
 You will find detailed installation information in the README of the repositories
 
 ## 3. Environment variables
 
-`VDistrict` needs a couple of environment variables to AixLib Modelica library, itself and to
+`vDistrict` needs a couple of environment variables to AixLib Modelica library, itself and to
 geospatial libraries, these libraries come with the installation of QGIS. After you have
 successfully installed the latest QGIS version (e.g. using https://qgis.org/download/ ).
 
-Now you need to set a specific environment variable for the conda python
-environment. In your anaconda environment you will find a folder called
-`etc/conda` with sub folders `activate.d` and `deactivate.d` (if you do not find
-them, just create them). In each of these sub folders you should create a file
-called `env_vars.bat`.
-Modify the file as follows:
 
-`etc/conda/activate.d`:
+To set these environment variables for your conda Python environment, navigate to the `etc/conda` directory in your Anaconda environment. If the subfolders `activate.d` and `deactivate.d` do not exist, create them. In each subfolder, create a file named `env_vars.bat` and modify it as follows:
+
+`etc/conda/activate.d/env_vars.bat`:
 
         set OSGEO4W_ROOT=Path/to/your/QGIS
         set PYTHONPATH=[...]/vDistrict
@@ -77,8 +83,7 @@ Modify the file as follows:
         set PATH=%PATH%;%OSGEO4W_ROOT%/bin
         set AIXLIB_LIBRARY_PATH=Path/to/your/AixLibClone
 
-
-`etc/conda/deactivate.d`:
+`etc/conda/deactivate.d/env_vars.bat`:
 
         set PATH=%PATH:%OSGEO4W_ROOT%/bin;=%
         set OSGEO4W_ROOT=
@@ -89,7 +94,7 @@ Modify the file as follows:
 
 You can also set these variables only for your [conda environment](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#windows)
 
-For my Account the variables look like:
+For example, on my system, the variables are set as follows:
 
         set PYTHONPATH=D:\pre\git\vDistrict\
         set AIXLIB_LIBRARY_PATH=D:\pre\git\AixLib\AixLib
@@ -98,7 +103,7 @@ For my Account the variables look like:
         set PROJ_LIB=%OSGEO4W_ROOT%/share/proj
         set PATH=%PATH%;%OSGEO4W_ROOT%/bin
 
-Another approach is to use the `activate_env_vars.bat` file or the `deactivate_env_vars.bat` file.
+Alternatively, you can use `activate_env_vars.bat` or `deactivate_env_vars.bat` files to manage these settings.
 
 ## Change Django GDAL settings 
 
