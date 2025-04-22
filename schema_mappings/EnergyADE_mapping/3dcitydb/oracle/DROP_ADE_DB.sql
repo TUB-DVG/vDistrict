@@ -3,1118 +3,1118 @@
 -- *********************************** Drop foreign keys ********************************** 
 -- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 -- -------------------------------------------------------------------- 
--- engy_aircompressor 
+-- ng_aircompressor 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_aircompressor
-    DROP CONSTRAINT engy_aircompressor_fk;
+ALTER TABLE ng_aircompressor
+    DROP CONSTRAINT ng_aircompressor_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_building 
+-- ng_building 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_building
-    DROP CONSTRAINT engy_building_fk;
+ALTER TABLE ng_building
+    DROP CONSTRAINT ng_building_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_buildingu_to_address 
+-- ng_buildingu_to_address 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_buildingu_to_address
-    DROP CONSTRAINT engy_buildin_to_addres_fk1;
+ALTER TABLE ng_buildingu_to_address
+    DROP CONSTRAINT ng_buildin_to_addres_fk1;
 
-ALTER TABLE engy_buildingu_to_address
-    DROP CONSTRAINT engy_buildin_to_addres_fk2;
-
--- -------------------------------------------------------------------- 
--- engy_buildingunit 
--- -------------------------------------------------------------------- 
-ALTER TABLE engy_buildingunit
-    DROP CONSTRAINT engy_buildingunit_fk;
-
-ALTER TABLE engy_buildingunit
-    DROP CONSTRAINT engy_buildi_usage_conta_fk;
+ALTER TABLE ng_buildingu_to_address
+    DROP CONSTRAINT ng_buildin_to_addres_fk2;
 
 -- -------------------------------------------------------------------- 
--- engy_chiller 
+-- ng_buildingunit 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_chiller
-    DROP CONSTRAINT engy_chiller_fk;
+ALTER TABLE ng_buildingunit
+    DROP CONSTRAINT ng_buildingunit_fk;
+
+ALTER TABLE ng_buildingunit
+    DROP CONSTRAINT ng_buildi_usage_conta_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_cityobject 
+-- ng_chiller 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_cityobject
-    DROP CONSTRAINT engy_cityobject_fk;
+ALTER TABLE ng_chiller
+    DROP CONSTRAINT ng_chiller_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_combinedheatpower 
+-- ng_cityobject 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_combinedheatpower
-    DROP CONSTRAINT engy_combinedheatpower_fk;
+ALTER TABLE ng_cityobject
+    DROP CONSTRAINT ng_cityobject_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_construction 
+-- ng_combinedheatpower 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_construction
-    DROP CONSTRAINT engy_construction_fk;
-
-ALTER TABLE engy_construction
-    DROP CONSTRAINT engy_constr_build_aggre_fk;
-
-ALTER TABLE engy_construction
-    DROP CONSTRAINT engy_construct_basecons_fk;
+ALTER TABLE ng_combinedheatpower
+    DROP CONSTRAINT ng_combinedheatpower_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_construction_1 
+-- ng_construction 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_construction_1
-    DROP CONSTRAINT engy_construction_fk_1;
+ALTER TABLE ng_construction
+    DROP CONSTRAINT ng_construction_fk;
 
-ALTER TABLE engy_construction_1
-    DROP CONSTRAINT engy_construct_servicel_fk;
+ALTER TABLE ng_construction
+    DROP CONSTRAINT ng_constr_build_aggre_fk;
 
-ALTER TABLE engy_construction_1
-    DROP CONSTRAINT engy_construct_opticalp_fk;
-
--- -------------------------------------------------------------------- 
--- engy_dailyschedule 
--- -------------------------------------------------------------------- 
-ALTER TABLE engy_dailyschedule
-    DROP CONSTRAINT engy_dailysche_schedule_fk;
-
-ALTER TABLE engy_dailyschedule
-    DROP CONSTRAINT engy_dailys_perio_daily_fk;
+ALTER TABLE ng_construction
+    DROP CONSTRAINT ng_construct_basecons_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_dhwfacilities 
+-- ng_construction_1 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_dhwfacilities
-    DROP CONSTRAINT engy_dhwfacilities_fk;
+ALTER TABLE ng_construction_1
+    DROP CONSTRAINT ng_construction_fk_1;
+
+ALTER TABLE ng_construction_1
+    DROP CONSTRAINT ng_construct_servicel_fk;
+
+ALTER TABLE ng_construction_1
+    DROP CONSTRAINT ng_construct_opticalp_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_dualvalueschedule 
+-- ng_dailyschedule 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_dualvalueschedule
-    DROP CONSTRAINT engy_dualvalueschedule_fk;
+ALTER TABLE ng_dailyschedule
+    DROP CONSTRAINT ng_dailysche_schedule_fk;
+
+ALTER TABLE ng_dailyschedule
+    DROP CONSTRAINT ng_dailys_perio_daily_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_emissivity 
+-- ng_dhwfacilities 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_emissivity
-    DROP CONSTRAINT engy_emissi_optic_emiss_fk;
+ALTER TABLE ng_dhwfacilities
+    DROP CONSTRAINT ng_dhwfacilities_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_emit_emit_to_ene_ise 
+-- ng_dualvalueschedule 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_emit_emit_to_ene_ise
-    DROP CONSTRAINT engy_emi_emi_to_ene_ise_fk;
+ALTER TABLE ng_dualvalueschedule
+    DROP CONSTRAINT ng_dualvalueschedule_fk;
 
-ALTER TABLE engy_emit_emit_to_ene_ise
+-- -------------------------------------------------------------------- 
+-- ng_emissivity 
+-- -------------------------------------------------------------------- 
+ALTER TABLE ng_emissivity
+    DROP CONSTRAINT ng_emissi_optic_emiss_fk;
+
+-- -------------------------------------------------------------------- 
+-- ng_emit_emit_to_ene_ise 
+-- -------------------------------------------------------------------- 
+ALTER TABLE ng_emit_emit_to_ene_ise
+    DROP CONSTRAINT ng_emi_emi_to_ene_ise_fk;
+
+ALTER TABLE ng_emit_emit_to_ene_ise
     DROP CONSTRAINT eng_emi_emi_to_ene_is_fk_1;
 
 -- -------------------------------------------------------------------- 
--- engy_emittersystem 
+-- ng_emittersystem 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_emittersystem
-    DROP CONSTRAINT engy_emittersystem_fk;
+ALTER TABLE ng_emittersystem
+    DROP CONSTRAINT ng_emittersystem_fk;
 
-ALTER TABLE engy_emittersystem
-    DROP CONSTRAINT engy_emittersy_thermale_fk;
+ALTER TABLE ng_emittersystem
+    DROP CONSTRAINT ng_emittersy_thermale_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_ener_dist_to_ene_isd 
+-- ng_ener_dist_to_ene_isd 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_ener_dist_to_ene_isd
-    DROP CONSTRAINT engy_ene_dis_to_ene_isd_fk;
+ALTER TABLE ng_ener_dist_to_ene_isd
+    DROP CONSTRAINT ng_ene_dis_to_ene_isd_fk;
 
-ALTER TABLE engy_ener_dist_to_ene_isd
+ALTER TABLE ng_ener_dist_to_ene_isd
     DROP CONSTRAINT eng_ene_dis_to_ene_is_fk_1;
 
 -- -------------------------------------------------------------------- 
--- engy_ener_isst_to_sto_sto 
+-- ng_ener_isst_to_sto_sto 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_ener_isst_to_sto_sto
-    DROP CONSTRAINT engy_ene_iss_to_sto_sto_fk;
+ALTER TABLE ng_ener_isst_to_sto_sto
+    DROP CONSTRAINT ng_ene_iss_to_sto_sto_fk;
 
-ALTER TABLE engy_ener_isst_to_sto_sto
+ALTER TABLE ng_ener_isst_to_sto_sto
     DROP CONSTRAINT eng_ene_iss_to_sto_st_fk_1;
 
 -- -------------------------------------------------------------------- 
--- engy_ener_prov_to_ene_isp 
+-- ng_ener_prov_to_ene_isp 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_ener_prov_to_ene_isp
-    DROP CONSTRAINT engy_ene_pro_to_ene_isp_fk;
+ALTER TABLE ng_ener_prov_to_ene_isp
+    DROP CONSTRAINT ng_ene_pro_to_ene_isp_fk;
 
-ALTER TABLE engy_ener_prov_to_ene_isp
+ALTER TABLE ng_ener_prov_to_ene_isp
     DROP CONSTRAINT eng_ene_pro_to_ene_is_fk_1;
 
 -- -------------------------------------------------------------------- 
--- engy_energyconversionsyst 
+-- ng_energyconversionsyst 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_energyconversionsyst
-    DROP CONSTRAINT engy_energycon_objectcl_fk;
+ALTER TABLE ng_energyconversionsyst
+    DROP CONSTRAINT ng_energycon_objectcl_fk;
 
-ALTER TABLE engy_energyconversionsyst
-    DROP CONSTRAINT engy_energyconversionsy_fk;
+ALTER TABLE ng_energyconversionsyst
+    DROP CONSTRAINT ng_energyconversionsy_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_energyde_to_cityobje 
+-- ng_energyde_to_cityobje 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_energyde_to_cityobje
-    DROP CONSTRAINT engy_energyd_to_cityob_fk1;
+ALTER TABLE ng_energyde_to_cityobje
+    DROP CONSTRAINT ng_energyd_to_cityob_fk1;
 
-ALTER TABLE engy_energyde_to_cityobje
-    DROP CONSTRAINT engy_energyd_to_cityob_fk2;
+ALTER TABLE ng_energyde_to_cityobje
+    DROP CONSTRAINT ng_energyd_to_cityob_fk2;
 
 -- -------------------------------------------------------------------- 
--- engy_energydemand 
+-- ng_energydemand 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_energydemand
-    DROP CONSTRAINT engy_energydemand_fk;
+ALTER TABLE ng_energydemand
+    DROP CONSTRAINT ng_energydemand_fk;
 
-ALTER TABLE engy_energydemand
-    DROP CONSTRAINT engy_energydem_energyam_fk;
+ALTER TABLE ng_energydemand
+    DROP CONSTRAINT ng_energydem_energyam_fk;
 
-ALTER TABLE engy_energydemand
-    DROP CONSTRAINT engy_energy_cityo_deman_fk;
+ALTER TABLE ng_energydemand
+    DROP CONSTRAINT ng_energy_cityo_deman_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_energydistributionsy 
+-- ng_energydistributionsy 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_energydistributionsy
-    DROP CONSTRAINT engy_energydistribution_fk;
+ALTER TABLE ng_energydistributionsy
+    DROP CONSTRAINT ng_energydistribution_fk;
 
-ALTER TABLE engy_energydistributionsy
-    DROP CONSTRAINT engy_energydis_objectcl_fk;
+ALTER TABLE ng_energydistributionsy
+    DROP CONSTRAINT ng_energydis_objectcl_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_energyflow 
+-- ng_energyflow 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_energyflow
-    DROP CONSTRAINT engy_energyflow_fk;
+ALTER TABLE ng_energyflow
+    DROP CONSTRAINT ng_energyflow_fk;
 
-ALTER TABLE engy_energyflow
-    DROP CONSTRAINT engy_energyflo_energyam_fk;
+ALTER TABLE ng_energyflow
+    DROP CONSTRAINT ng_energyflo_energyam_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_energyperformancecer 
+-- ng_energyperformancecer 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_energyperformancecer
-    DROP CONSTRAINT engy_energy_build_energ_fk;
+ALTER TABLE ng_energyperformancecer
+    DROP CONSTRAINT ng_energy_build_energ_fk;
 
-ALTER TABLE engy_energyperformancecer
-    DROP CONSTRAINT engy_energ_build_ener_fk_1;
+ALTER TABLE ng_energyperformancecer
+    DROP CONSTRAINT ng_energ_build_ener_fk_1;
 
 -- -------------------------------------------------------------------- 
--- engy_energysource 
+-- ng_energysource 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_energysource
-    DROP CONSTRAINT engy_energysource_fk;
+ALTER TABLE ng_energysource
+    DROP CONSTRAINT ng_energysource_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_energysy_to_cityobje 
+-- ng_energysy_to_cityobje 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_energysy_to_cityobje
-    DROP CONSTRAINT engy_energys_to_cityob_fk1;
+ALTER TABLE ng_energysy_to_cityobje
+    DROP CONSTRAINT ng_energys_to_cityob_fk1;
 
-ALTER TABLE engy_energysy_to_cityobje
-    DROP CONSTRAINT engy_energys_to_cityob_fk2;
+ALTER TABLE ng_energysy_to_cityobje
+    DROP CONSTRAINT ng_energys_to_cityob_fk2;
 
 -- -------------------------------------------------------------------- 
--- engy_energysystem 
+-- ng_energysystem 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_energysystem
-    DROP CONSTRAINT engy_energysystem_fk;
+ALTER TABLE ng_energysystem
+    DROP CONSTRAINT ng_energysystem_fk;
 
-ALTER TABLE engy_energysystem
-    DROP CONSTRAINT engy_energysys_objectcl_fk;
+ALTER TABLE ng_energysystem
+    DROP CONSTRAINT ng_energysys_objectcl_fk;
 
-ALTER TABLE engy_energysystem
-    DROP CONSTRAINT engy_energysys_servicel_fk;
+ALTER TABLE ng_energysystem
+    DROP CONSTRAINT ng_energysys_servicel_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_facilities 
+-- ng_facilities 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_facilities
-    DROP CONSTRAINT engy_facilitie_objectcl_fk;
+ALTER TABLE ng_facilities
+    DROP CONSTRAINT ng_facilitie_objectcl_fk;
 
-ALTER TABLE engy_facilities
-    DROP CONSTRAINT engy_facilities_fk;
+ALTER TABLE ng_facilities
+    DROP CONSTRAINT ng_facilities_fk;
 
-ALTER TABLE engy_facilities
-    DROP CONSTRAINT engy_facilitie_heatdiss_fk;
+ALTER TABLE ng_facilities
+    DROP CONSTRAINT ng_facilitie_heatdiss_fk;
 
-ALTER TABLE engy_facilities
-    DROP CONSTRAINT engy_facili_usage_equip_fk;
+ALTER TABLE ng_facilities
+    DROP CONSTRAINT ng_facili_usage_equip_fk;
 
-ALTER TABLE engy_facilities
-    DROP CONSTRAINT engy_facilitie_operatio_fk;
+ALTER TABLE ng_facilities
+    DROP CONSTRAINT ng_facilitie_operatio_fk;
 
-ALTER TABLE engy_facilities
-    DROP CONSTRAINT engy_facili_build_equip_fk;
+ALTER TABLE ng_facilities
+    DROP CONSTRAINT ng_facili_build_equip_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_floorarea 
+-- ng_floorarea 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_floorarea
-    DROP CONSTRAINT engy_floora_build_floor_fk;
+ALTER TABLE ng_floorarea
+    DROP CONSTRAINT ng_floora_build_floor_fk;
 
-ALTER TABLE engy_floorarea
-    DROP CONSTRAINT engy_floora_therm_floor_fk;
+ALTER TABLE ng_floorarea
+    DROP CONSTRAINT ng_floora_therm_floor_fk;
 
-ALTER TABLE engy_floorarea
-    DROP CONSTRAINT engy_floora_usage_floor_fk;
+ALTER TABLE ng_floorarea
+    DROP CONSTRAINT ng_floora_usage_floor_fk;
 
-ALTER TABLE engy_floorarea
-    DROP CONSTRAINT engy_floor_build_floo_fk_1;
+ALTER TABLE ng_floorarea
+    DROP CONSTRAINT ng_floor_build_floo_fk_1;
 
 -- -------------------------------------------------------------------- 
--- engy_gas 
+-- ng_gas 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_gas
-    DROP CONSTRAINT engy_gas_fk;
+ALTER TABLE ng_gas
+    DROP CONSTRAINT ng_gas_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_heatexchanger 
+-- ng_heatexchanger 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_heatexchanger
-    DROP CONSTRAINT engy_heatexchanger_fk;
+ALTER TABLE ng_heatexchanger
+    DROP CONSTRAINT ng_heatexchanger_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_heatpump 
+-- ng_heatpump 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_heatpump
-    DROP CONSTRAINT engy_heatpump_fk;
+ALTER TABLE ng_heatpump
+    DROP CONSTRAINT ng_heatpump_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_heightaboveground 
+-- ng_heightaboveground 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_heightaboveground
-    DROP CONSTRAINT engy_height_build_heigh_fk;
+ALTER TABLE ng_heightaboveground
+    DROP CONSTRAINT ng_height_build_heigh_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_household 
+-- ng_household 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_household
-    DROP CONSTRAINT engy_household_fk;
+ALTER TABLE ng_household
+    DROP CONSTRAINT ng_household_fk;
 
-ALTER TABLE engy_household
-    DROP CONSTRAINT engy_househ_occup_house_fk;
+ALTER TABLE ng_household
+    DROP CONSTRAINT ng_househ_occup_house_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_imagetexture 
+-- ng_imagetexture 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_imagetexture
-    DROP CONSTRAINT engy_imagetexture_fk;
+ALTER TABLE ng_imagetexture
+    DROP CONSTRAINT ng_imagetexture_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_irregulartimeseries 
+-- ng_irregulartimeseries 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_irregulartimeseries
-    DROP CONSTRAINT engy_irregulartimeserie_fk;
+ALTER TABLE ng_irregulartimeseries
+    DROP CONSTRAINT ng_irregulartimeserie_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_irregulartimeseriesf 
+-- ng_irregulartimeseriesf 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_irregulartimeseriesf
-    DROP CONSTRAINT engy_irregulartimeser_fk_1;
+ALTER TABLE ng_irregulartimeseriesf
+    DROP CONSTRAINT ng_irregulartimeser_fk_1;
 
 -- -------------------------------------------------------------------- 
--- engy_layer 
+-- ng_layer 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_layer
-    DROP CONSTRAINT engy_layer_fk;
+ALTER TABLE ng_layer
+    DROP CONSTRAINT ng_layer_fk;
 
-ALTER TABLE engy_layer
-    DROP CONSTRAINT engy_layer_constr_layer_fk;
+ALTER TABLE ng_layer
+    DROP CONSTRAINT ng_layer_constr_layer_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_layercomponent 
+-- ng_layercomponent 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_layercomponent
-    DROP CONSTRAINT engy_layercomponent_fk;
+ALTER TABLE ng_layercomponent
+    DROP CONSTRAINT ng_layercomponent_fk;
 
-ALTER TABLE engy_layercomponent
-    DROP CONSTRAINT engy_layercomp_servicel_fk;
+ALTER TABLE ng_layercomponent
+    DROP CONSTRAINT ng_layercomp_servicel_fk;
 
-ALTER TABLE engy_layercomponent
-    DROP CONSTRAINT engy_layerc_layer_layer_fk;
+ALTER TABLE ng_layercomponent
+    DROP CONSTRAINT ng_layerc_layer_layer_fk;
 
-ALTER TABLE engy_layercomponent
-    DROP CONSTRAINT engy_layercomp_material_fk;
+ALTER TABLE ng_layercomponent
+    DROP CONSTRAINT ng_layercomp_material_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_material 
+-- ng_material 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_material
-    DROP CONSTRAINT engy_material_fk;
+ALTER TABLE ng_material
+    DROP CONSTRAINT ng_material_fk;
 
-ALTER TABLE engy_material
-    DROP CONSTRAINT engy_material_objectcla_fk;
+ALTER TABLE ng_material
+    DROP CONSTRAINT ng_material_objectcla_fk;
 
-ALTER TABLE engy_material
-    DROP CONSTRAINT engy_material_imagetext_fk;
+ALTER TABLE ng_material
+    DROP CONSTRAINT ng_material_imagetext_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_measurementpoint 
+-- ng_measurementpoint 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_measurementpoint
-    DROP CONSTRAINT engy_measur_irreg_conta_fk;
+ALTER TABLE ng_measurementpoint
+    DROP CONSTRAINT ng_measur_irreg_conta_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_mechanicalventilatio 
+-- ng_mechanicalventilatio 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_mechanicalventilatio
-    DROP CONSTRAINT engy_mechanicalventilat_fk;
+ALTER TABLE ng_mechanicalventilatio
+    DROP CONSTRAINT ng_mechanicalventilat_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_occupants 
+-- ng_occupants 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_occupants
-    DROP CONSTRAINT engy_occupants_fk;
+ALTER TABLE ng_occupants
+    DROP CONSTRAINT ng_occupants_fk;
 
-ALTER TABLE engy_occupants
-    DROP CONSTRAINT engy_occupants_heatdiss_fk;
+ALTER TABLE ng_occupants
+    DROP CONSTRAINT ng_occupants_heatdiss_fk;
 
-ALTER TABLE engy_occupants
-    DROP CONSTRAINT engy_occupa_usage_occup_fk;
+ALTER TABLE ng_occupants
+    DROP CONSTRAINT ng_occupa_usage_occup_fk;
 
-ALTER TABLE engy_occupants
-    DROP CONSTRAINT engy_occupants_occupanc_fk;
+ALTER TABLE ng_occupants
+    DROP CONSTRAINT ng_occupants_occupanc_fk;
 
-ALTER TABLE engy_occupants
-    DROP CONSTRAINT engy_occupa_build_occup_fk;
+ALTER TABLE ng_occupants
+    DROP CONSTRAINT ng_occupa_build_occup_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_periodofyear 
+-- ng_periodofyear 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_periodofyear
-    DROP CONSTRAINT engy_period_sched_perio_fk;
+ALTER TABLE ng_periodofyear
+    DROP CONSTRAINT ng_period_sched_perio_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_photovoltaicsystem 
+-- ng_photovoltaicsystem 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_photovoltaicsystem
-    DROP CONSTRAINT engy_photovoltaicsystem_fk;
+ALTER TABLE ng_photovoltaicsystem
+    DROP CONSTRAINT ng_photovoltaicsystem_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_photovoltaicthermals 
+-- ng_photovoltaicthermals 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_photovoltaicthermals
-    DROP CONSTRAINT engy_photovoltaictherma_fk;
+ALTER TABLE ng_photovoltaicthermals
+    DROP CONSTRAINT ng_photovoltaictherma_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_powerdistributionsys 
+-- ng_powerdistributionsys 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_powerdistributionsys
-    DROP CONSTRAINT engy_powerdistributions_fk;
+ALTER TABLE ng_powerdistributionsys
+    DROP CONSTRAINT ng_powerdistributions_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_powerstoragesystem 
+-- ng_powerstoragesystem 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_powerstoragesystem
-    DROP CONSTRAINT engy_powerstoragesystem_fk;
+ALTER TABLE ng_powerstoragesystem
+    DROP CONSTRAINT ng_powerstoragesystem_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_reflectance 
+-- ng_reflectance 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_reflectance
-    DROP CONSTRAINT engy_reflec_optic_refle_fk;
+ALTER TABLE ng_reflectance
+    DROP CONSTRAINT ng_reflec_optic_refle_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_refurbishmentmeasure 
+-- ng_refurbishmentmeasure 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_refurbishmentmeasure
-    DROP CONSTRAINT engy_refurb_build_refur_fk;
+ALTER TABLE ng_refurbishmentmeasure
+    DROP CONSTRAINT ng_refurb_build_refur_fk;
 
-ALTER TABLE engy_refurbishmentmeasure
-    DROP CONSTRAINT engy_refurbishment_date_fk;
+ALTER TABLE ng_refurbishmentmeasure
+    DROP CONSTRAINT ng_refurbishment_date_fk;
 
-ALTER TABLE engy_refurbishmentmeasure
-    DROP CONSTRAINT engy_refurb_therm_refur_fk;
+ALTER TABLE ng_refurbishmentmeasure
+    DROP CONSTRAINT ng_refurb_therm_refur_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_regulartimeseries 
+-- ng_regulartimeseries 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_regulartimeseries
-    DROP CONSTRAINT engy_regulartimeseries_fk;
+ALTER TABLE ng_regulartimeseries
+    DROP CONSTRAINT ng_regulartimeseries_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_regulartimeseriesfil 
+-- ng_regulartimeseriesfil 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_regulartimeseriesfil
-    DROP CONSTRAINT engy_regulartimeseriesf_fk;
+ALTER TABLE ng_regulartimeseriesfil
+    DROP CONSTRAINT ng_regulartimeseriesf_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_schedule 
+-- ng_schedule 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_schedule
-    DROP CONSTRAINT engy_schedule_objectcla_fk;
+ALTER TABLE ng_schedule
+    DROP CONSTRAINT ng_schedule_objectcla_fk;
 
-ALTER TABLE engy_schedule
-    DROP CONSTRAINT engy_schedule_fk;
+ALTER TABLE ng_schedule
+    DROP CONSTRAINT ng_schedule_fk;
 
-ALTER TABLE engy_schedule
-    DROP CONSTRAINT engy_schedule_timedepen_fk;
+ALTER TABLE ng_schedule
+    DROP CONSTRAINT ng_schedule_timedepen_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_servicelife 
+-- ng_servicelife 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_servicelife
-    DROP CONSTRAINT engy_servicelife_fk;
+ALTER TABLE ng_servicelife
+    DROP CONSTRAINT ng_servicelife_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_shadingtype 
+-- ng_shadingtype 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_shadingtype
-    DROP CONSTRAINT engy_shadingty_transmit_fk;
+ALTER TABLE ng_shadingtype
+    DROP CONSTRAINT ng_shadingty_transmit_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_solarenergysystem 
+-- ng_solarenergysystem 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_solarenergysystem
-    DROP CONSTRAINT engy_solarenergysystem_fk;
+ALTER TABLE ng_solarenergysystem
+    DROP CONSTRAINT ng_solarenergysystem_fk;
 
-ALTER TABLE engy_solarenergysystem
-    DROP CONSTRAINT engy_solarener_objectcl_fk;
+ALTER TABLE ng_solarenergysystem
+    DROP CONSTRAINT ng_solarener_objectcl_fk;
 
-ALTER TABLE engy_solarenergysystem
-    DROP CONSTRAINT engy_solarener_installe_fk;
+ALTER TABLE ng_solarenergysystem
+    DROP CONSTRAINT ng_solarener_installe_fk;
 
-ALTER TABLE engy_solarenergysystem
-    DROP CONSTRAINT engy_solarene_install_fk_1;
+ALTER TABLE ng_solarenergysystem
+    DROP CONSTRAINT ng_solarene_install_fk_1;
 
-ALTER TABLE engy_solarenergysystem
-    DROP CONSTRAINT engy_solarener_surfaceg_fk;
+ALTER TABLE ng_solarenergysystem
+    DROP CONSTRAINT ng_solarener_surfaceg_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_solarthermalsystem 
+-- ng_solarthermalsystem 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_solarthermalsystem
-    DROP CONSTRAINT engy_solarthermalsystem_fk;
+ALTER TABLE ng_solarthermalsystem
+    DROP CONSTRAINT ng_solarthermalsystem_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_solidmaterial 
+-- ng_solidmaterial 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_solidmaterial
-    DROP CONSTRAINT engy_solidmaterial_fk;
+ALTER TABLE ng_solidmaterial
+    DROP CONSTRAINT ng_solidmaterial_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_storagesystem 
+-- ng_storagesystem 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_storagesystem
-    DROP CONSTRAINT engy_storagesystem_fk;
+ALTER TABLE ng_storagesystem
+    DROP CONSTRAINT ng_storagesystem_fk;
 
-ALTER TABLE engy_storagesystem
-    DROP CONSTRAINT engy_storagesy_objectcl_fk;
+ALTER TABLE ng_storagesystem
+    DROP CONSTRAINT ng_storagesy_objectcl_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_systemoperation 
+-- ng_systemoperation 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_systemoperation
-    DROP CONSTRAINT engy_systemoperation_fk;
+ALTER TABLE ng_systemoperation
+    DROP CONSTRAINT ng_systemoperation_fk;
 
-ALTER TABLE engy_systemoperation
-    DROP CONSTRAINT engy_systemope_operatio_fk;
+ALTER TABLE ng_systemoperation
+    DROP CONSTRAINT ng_systemope_operatio_fk;
 
-ALTER TABLE engy_systemoperation
-    DROP CONSTRAINT engy_systemo_energy_has_fk;
+ALTER TABLE ng_systemoperation
+    DROP CONSTRAINT ng_systemo_energy_has_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_ther_deli_to_the_bou 
+-- ng_ther_deli_to_the_bou 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_ther_deli_to_the_bou
-    DROP CONSTRAINT engy_the_del_to_the_bou_fk;
+ALTER TABLE ng_ther_deli_to_the_bou
+    DROP CONSTRAINT ng_the_del_to_the_bou_fk;
 
-ALTER TABLE engy_ther_deli_to_the_bou
+ALTER TABLE ng_ther_deli_to_the_bou
     DROP CONSTRAINT eng_the_del_to_the_bo_fk_1;
 
 -- -------------------------------------------------------------------- 
--- engy_therm_to_thema_surfa 
+-- ng_therm_to_thema_surfa 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_therm_to_thema_surfa
-    DROP CONSTRAINT engy_ther_to_them_surf_fk1;
+ALTER TABLE ng_therm_to_thema_surfa
+    DROP CONSTRAINT ng_ther_to_them_surf_fk1;
 
-ALTER TABLE engy_therm_to_thema_surfa
-    DROP CONSTRAINT engy_ther_to_them_surf_fk2;
-
--- -------------------------------------------------------------------- 
--- engy_thermalboundary 
--- -------------------------------------------------------------------- 
-ALTER TABLE engy_thermalboundary
-    DROP CONSTRAINT engy_thermalboundary_fk;
-
-ALTER TABLE engy_thermalboundary
-    DROP CONSTRAINT engy_thermalbo_construc_fk;
-
-ALTER TABLE engy_thermalboundary
-    DROP CONSTRAINT engy_thermalbo_surfaceg_fk;
+ALTER TABLE ng_therm_to_thema_surfa
+    DROP CONSTRAINT ng_ther_to_them_surf_fk2;
 
 -- -------------------------------------------------------------------- 
--- engy_thermaldistributions 
+-- ng_thermalboundary 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_thermaldistributions
-    DROP CONSTRAINT engy_thermaldistributio_fk;
+ALTER TABLE ng_thermalboundary
+    DROP CONSTRAINT ng_thermalboundary_fk;
 
--- -------------------------------------------------------------------- 
--- engy_thermalop_to_opening 
--- -------------------------------------------------------------------- 
-ALTER TABLE engy_thermalop_to_opening
-    DROP CONSTRAINT engy_thermal_to_openin_fk1;
+ALTER TABLE ng_thermalboundary
+    DROP CONSTRAINT ng_thermalbo_construc_fk;
 
-ALTER TABLE engy_thermalop_to_opening
-    DROP CONSTRAINT engy_thermal_to_openin_fk2;
+ALTER TABLE ng_thermalboundary
+    DROP CONSTRAINT ng_thermalbo_surfaceg_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_thermalopening 
+-- ng_thermaldistributions 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_thermalopening
-    DROP CONSTRAINT engy_thermalopening_fk;
-
-ALTER TABLE engy_thermalopening
-    DROP CONSTRAINT engy_thermalop_construc_fk;
-
-ALTER TABLE engy_thermalopening
-    DROP CONSTRAINT engy_thermalop_indoorsh_fk;
-
-ALTER TABLE engy_thermalopening
-    DROP CONSTRAINT engy_thermalop_outdoors_fk;
-
-ALTER TABLE engy_thermalopening
-    DROP CONSTRAINT engy_therma_therm_conta_fk;
-
-ALTER TABLE engy_thermalopening
-    DROP CONSTRAINT engy_thermalop_surfaceg_fk;
+ALTER TABLE ng_thermaldistributions
+    DROP CONSTRAINT ng_thermaldistributio_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_thermalstoragesystem 
+-- ng_thermalop_to_opening 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_thermalstoragesystem
-    DROP CONSTRAINT engy_thermalstoragesyst_fk;
+ALTER TABLE ng_thermalop_to_opening
+    DROP CONSTRAINT ng_thermal_to_openin_fk1;
 
--- -------------------------------------------------------------------- 
--- engy_thermalzone 
--- -------------------------------------------------------------------- 
-ALTER TABLE engy_thermalzone
-    DROP CONSTRAINT engy_thermalzone_fk;
-
-ALTER TABLE engy_thermalzone
-    DROP CONSTRAINT engy_therma_build_therm_fk;
-
-ALTER TABLE engy_thermalzone
-    DROP CONSTRAINT engy_thermalzo_volumege_fk;
+ALTER TABLE ng_thermalop_to_opening
+    DROP CONSTRAINT ng_thermal_to_openin_fk2;
 
 -- -------------------------------------------------------------------- 
--- engy_thermalzone_to_room 
+-- ng_thermalopening 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_thermalzone_to_room
-    DROP CONSTRAINT engy_thermalzo_to_room_fk1;
+ALTER TABLE ng_thermalopening
+    DROP CONSTRAINT ng_thermalopening_fk;
 
-ALTER TABLE engy_thermalzone_to_room
-    DROP CONSTRAINT engy_thermalzo_to_room_fk2;
+ALTER TABLE ng_thermalopening
+    DROP CONSTRAINT ng_thermalop_construc_fk;
 
--- -------------------------------------------------------------------- 
--- engy_timeseries 
--- -------------------------------------------------------------------- 
-ALTER TABLE engy_timeseries
-    DROP CONSTRAINT engy_timeseries_fk;
+ALTER TABLE ng_thermalopening
+    DROP CONSTRAINT ng_thermalop_indoorsh_fk;
 
-ALTER TABLE engy_timeseries
-    DROP CONSTRAINT engy_timeserie_objectcl_fk;
+ALTER TABLE ng_thermalopening
+    DROP CONSTRAINT ng_thermalop_outdoors_fk;
 
--- -------------------------------------------------------------------- 
--- engy_transmittance 
--- -------------------------------------------------------------------- 
-ALTER TABLE engy_transmittance
-    DROP CONSTRAINT engy_transm_optic_trans_fk;
+ALTER TABLE ng_thermalopening
+    DROP CONSTRAINT ng_therma_therm_conta_fk;
+
+ALTER TABLE ng_thermalopening
+    DROP CONSTRAINT ng_thermalop_surfaceg_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_usagezone 
+-- ng_thermalstoragesystem 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_usagezone
-    DROP CONSTRAINT engy_usagezone_fk;
-
-ALTER TABLE engy_usagezone
-    DROP CONSTRAINT engy_usagez_build_usage_fk;
-
-ALTER TABLE engy_usagezone
-    DROP CONSTRAINT engy_usagez_therm_conta_fk;
-
-ALTER TABLE engy_usagezone
-    DROP CONSTRAINT engy_usagezone_averagei_fk;
-
-ALTER TABLE engy_usagezone
-    DROP CONSTRAINT engy_usagezone_coolings_fk;
-
-ALTER TABLE engy_usagezone
-    DROP CONSTRAINT engy_usagezone_heatings_fk;
-
-ALTER TABLE engy_usagezone
-    DROP CONSTRAINT engy_usagezone_ventilat_fk;
-
-ALTER TABLE engy_usagezone
-    DROP CONSTRAINT engy_usagezone_volumege_fk;
+ALTER TABLE ng_thermalstoragesystem
+    DROP CONSTRAINT ng_thermalstoragesyst_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_volumetype 
+-- ng_thermalzone 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_volumetype
-    DROP CONSTRAINT engy_volume_build_volum_fk;
+ALTER TABLE ng_thermalzone
+    DROP CONSTRAINT ng_thermalzone_fk;
 
-ALTER TABLE engy_volumetype
-    DROP CONSTRAINT engy_volume_therm_volum_fk;
+ALTER TABLE ng_thermalzone
+    DROP CONSTRAINT ng_therma_build_therm_fk;
 
--- -------------------------------------------------------------------- 
--- engy_weatherdata 
--- -------------------------------------------------------------------- 
-ALTER TABLE engy_weatherdata
-    DROP CONSTRAINT engy_weatherdata_fk;
-
-ALTER TABLE engy_weatherdata
-    DROP CONSTRAINT engy_weatherdata_values_fk;
-
-ALTER TABLE engy_weatherdata
-    DROP CONSTRAINT engy_weathe_cityo_weath_fk;
-
-ALTER TABLE engy_weatherdata
-    DROP CONSTRAINT engy_weathe_weath_param_fk;
+ALTER TABLE ng_thermalzone
+    DROP CONSTRAINT ng_thermalzo_volumege_fk;
 
 -- -------------------------------------------------------------------- 
--- engy_weatherstation 
+-- ng_thermalzone_to_room 
 -- -------------------------------------------------------------------- 
-ALTER TABLE engy_weatherstation
-    DROP CONSTRAINT engy_weatherstation_fk;
+ALTER TABLE ng_thermalzone_to_room
+    DROP CONSTRAINT ng_thermalzo_to_room_fk1;
+
+ALTER TABLE ng_thermalzone_to_room
+    DROP CONSTRAINT ng_thermalzo_to_room_fk2;
+
+-- -------------------------------------------------------------------- 
+-- ng_timeseries 
+-- -------------------------------------------------------------------- 
+ALTER TABLE ng_timeseries
+    DROP CONSTRAINT ng_timeseries_fk;
+
+ALTER TABLE ng_timeseries
+    DROP CONSTRAINT ng_timeserie_objectcl_fk;
+
+-- -------------------------------------------------------------------- 
+-- ng_transmittance 
+-- -------------------------------------------------------------------- 
+ALTER TABLE ng_transmittance
+    DROP CONSTRAINT ng_transm_optic_trans_fk;
+
+-- -------------------------------------------------------------------- 
+-- ng_usagezone 
+-- -------------------------------------------------------------------- 
+ALTER TABLE ng_usagezone
+    DROP CONSTRAINT ng_usagezone_fk;
+
+ALTER TABLE ng_usagezone
+    DROP CONSTRAINT ng_usagez_build_usage_fk;
+
+ALTER TABLE ng_usagezone
+    DROP CONSTRAINT ng_usagez_therm_conta_fk;
+
+ALTER TABLE ng_usagezone
+    DROP CONSTRAINT ng_usagezone_averagei_fk;
+
+ALTER TABLE ng_usagezone
+    DROP CONSTRAINT ng_usagezone_coolings_fk;
+
+ALTER TABLE ng_usagezone
+    DROP CONSTRAINT ng_usagezone_heatings_fk;
+
+ALTER TABLE ng_usagezone
+    DROP CONSTRAINT ng_usagezone_ventilat_fk;
+
+ALTER TABLE ng_usagezone
+    DROP CONSTRAINT ng_usagezone_volumege_fk;
+
+-- -------------------------------------------------------------------- 
+-- ng_volumetype 
+-- -------------------------------------------------------------------- 
+ALTER TABLE ng_volumetype
+    DROP CONSTRAINT ng_volume_build_volum_fk;
+
+ALTER TABLE ng_volumetype
+    DROP CONSTRAINT ng_volume_therm_volum_fk;
+
+-- -------------------------------------------------------------------- 
+-- ng_weatherdata 
+-- -------------------------------------------------------------------- 
+ALTER TABLE ng_weatherdata
+    DROP CONSTRAINT ng_weatherdata_fk;
+
+ALTER TABLE ng_weatherdata
+    DROP CONSTRAINT ng_weatherdata_values_fk;
+
+ALTER TABLE ng_weatherdata
+    DROP CONSTRAINT ng_weathe_cityo_weath_fk;
+
+ALTER TABLE ng_weatherdata
+    DROP CONSTRAINT ng_weathe_weath_param_fk;
+
+-- -------------------------------------------------------------------- 
+-- ng_weatherstation 
+-- -------------------------------------------------------------------- 
+ALTER TABLE ng_weatherstation
+    DROP CONSTRAINT ng_weatherstation_fk;
 
 -- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 -- *********************************** Drop tables *************************************** 
 -- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 -- -------------------------------------------------------------------- 
--- engy_aircompressor 
+-- ng_aircompressor 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_aircompressor;
+DROP TABLE ng_aircompressor;
 
 -- -------------------------------------------------------------------- 
--- engy_building 
+-- ng_building 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_building;
+DROP TABLE ng_building;
 
 -- -------------------------------------------------------------------- 
--- engy_buildingu_to_address 
+-- ng_buildingu_to_address 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_buildingu_to_address;
+DROP TABLE ng_buildingu_to_address;
 
 -- -------------------------------------------------------------------- 
--- engy_buildingunit 
+-- ng_buildingunit 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_buildingunit;
+DROP TABLE ng_buildingunit;
 
 -- -------------------------------------------------------------------- 
--- engy_chiller 
+-- ng_chiller 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_chiller;
+DROP TABLE ng_chiller;
 
 -- -------------------------------------------------------------------- 
--- engy_cityobject 
+-- ng_cityobject 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_cityobject;
+DROP TABLE ng_cityobject;
 
 -- -------------------------------------------------------------------- 
--- engy_combinedheatpower 
+-- ng_combinedheatpower 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_combinedheatpower;
+DROP TABLE ng_combinedheatpower;
 
 -- -------------------------------------------------------------------- 
--- engy_construction 
+-- ng_construction 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_construction;
+DROP TABLE ng_construction;
 
 -- -------------------------------------------------------------------- 
--- engy_construction_1 
+-- ng_construction_1 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_construction_1;
+DROP TABLE ng_construction_1;
 
 -- -------------------------------------------------------------------- 
--- engy_dailyschedule 
+-- ng_dailyschedule 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_dailyschedule;
+DROP TABLE ng_dailyschedule;
 
 -- -------------------------------------------------------------------- 
--- engy_dateofevent 
+-- ng_dateofevent 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_dateofevent;
+DROP TABLE ng_dateofevent;
 
 -- -------------------------------------------------------------------- 
--- engy_dhwfacilities 
+-- ng_dhwfacilities 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_dhwfacilities;
+DROP TABLE ng_dhwfacilities;
 
 -- -------------------------------------------------------------------- 
--- engy_dualvalueschedule 
+-- ng_dualvalueschedule 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_dualvalueschedule;
+DROP TABLE ng_dualvalueschedule;
 
 -- -------------------------------------------------------------------- 
--- engy_emissivity 
+-- ng_emissivity 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_emissivity;
+DROP TABLE ng_emissivity;
 
 -- -------------------------------------------------------------------- 
--- engy_emit_emit_to_ene_ise 
+-- ng_emit_emit_to_ene_ise 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_emit_emit_to_ene_ise;
+DROP TABLE ng_emit_emit_to_ene_ise;
 
 -- -------------------------------------------------------------------- 
--- engy_emittersystem 
+-- ng_emittersystem 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_emittersystem;
+DROP TABLE ng_emittersystem;
 
 -- -------------------------------------------------------------------- 
--- engy_ener_dist_to_ene_isd 
+-- ng_ener_dist_to_ene_isd 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_ener_dist_to_ene_isd;
+DROP TABLE ng_ener_dist_to_ene_isd;
 
 -- -------------------------------------------------------------------- 
--- engy_ener_isst_to_sto_sto 
+-- ng_ener_isst_to_sto_sto 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_ener_isst_to_sto_sto;
+DROP TABLE ng_ener_isst_to_sto_sto;
 
 -- -------------------------------------------------------------------- 
--- engy_ener_prov_to_ene_isp 
+-- ng_ener_prov_to_ene_isp 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_ener_prov_to_ene_isp;
+DROP TABLE ng_ener_prov_to_ene_isp;
 
 -- -------------------------------------------------------------------- 
--- engy_energyconversionsyst 
+-- ng_energyconversionsyst 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_energyconversionsyst;
+DROP TABLE ng_energyconversionsyst;
 
 -- -------------------------------------------------------------------- 
--- engy_energyde_to_cityobje 
+-- ng_energyde_to_cityobje 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_energyde_to_cityobje;
+DROP TABLE ng_energyde_to_cityobje;
 
 -- -------------------------------------------------------------------- 
--- engy_energydemand 
+-- ng_energydemand 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_energydemand;
+DROP TABLE ng_energydemand;
 
 -- -------------------------------------------------------------------- 
--- engy_energydistributionsy 
+-- ng_energydistributionsy 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_energydistributionsy;
+DROP TABLE ng_energydistributionsy;
 
 -- -------------------------------------------------------------------- 
--- engy_energyflow 
+-- ng_energyflow 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_energyflow;
+DROP TABLE ng_energyflow;
 
 -- -------------------------------------------------------------------- 
--- engy_energyperformancecer 
+-- ng_energyperformancecer 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_energyperformancecer;
+DROP TABLE ng_energyperformancecer;
 
 -- -------------------------------------------------------------------- 
--- engy_energysource 
+-- ng_energysource 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_energysource;
+DROP TABLE ng_energysource;
 
 -- -------------------------------------------------------------------- 
--- engy_energysy_to_cityobje 
+-- ng_energysy_to_cityobje 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_energysy_to_cityobje;
+DROP TABLE ng_energysy_to_cityobje;
 
 -- -------------------------------------------------------------------- 
--- engy_energysystem 
+-- ng_energysystem 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_energysystem;
+DROP TABLE ng_energysystem;
 
 -- -------------------------------------------------------------------- 
--- engy_facilities 
+-- ng_facilities 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_facilities;
+DROP TABLE ng_facilities;
 
 -- -------------------------------------------------------------------- 
--- engy_floorarea 
+-- ng_floorarea 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_floorarea;
+DROP TABLE ng_floorarea;
 
 -- -------------------------------------------------------------------- 
--- engy_gas 
+-- ng_gas 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_gas;
+DROP TABLE ng_gas;
 
 -- -------------------------------------------------------------------- 
--- engy_heatexchanger 
+-- ng_heatexchanger 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_heatexchanger;
+DROP TABLE ng_heatexchanger;
 
 -- -------------------------------------------------------------------- 
--- engy_heatexchangetype 
+-- ng_heatexchangetype 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_heatexchangetype;
+DROP TABLE ng_heatexchangetype;
 
 -- -------------------------------------------------------------------- 
--- engy_heatpump 
+-- ng_heatpump 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_heatpump;
+DROP TABLE ng_heatpump;
 
 -- -------------------------------------------------------------------- 
--- engy_heightaboveground 
+-- ng_heightaboveground 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_heightaboveground;
+DROP TABLE ng_heightaboveground;
 
 -- -------------------------------------------------------------------- 
--- engy_household 
+-- ng_household 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_household;
+DROP TABLE ng_household;
 
 -- -------------------------------------------------------------------- 
--- engy_imagetexture 
+-- ng_imagetexture 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_imagetexture;
+DROP TABLE ng_imagetexture;
 
 -- -------------------------------------------------------------------- 
--- engy_irregulartimeseries 
+-- ng_irregulartimeseries 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_irregulartimeseries;
+DROP TABLE ng_irregulartimeseries;
 
 -- -------------------------------------------------------------------- 
--- engy_irregulartimeseriesf 
+-- ng_irregulartimeseriesf 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_irregulartimeseriesf;
+DROP TABLE ng_irregulartimeseriesf;
 
 -- -------------------------------------------------------------------- 
--- engy_layer 
+-- ng_layer 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_layer;
+DROP TABLE ng_layer;
 
 -- -------------------------------------------------------------------- 
--- engy_layercomponent 
+-- ng_layercomponent 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_layercomponent;
+DROP TABLE ng_layercomponent;
 
 -- -------------------------------------------------------------------- 
--- engy_material 
+-- ng_material 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_material;
+DROP TABLE ng_material;
 
 -- -------------------------------------------------------------------- 
--- engy_measurementpoint 
+-- ng_measurementpoint 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_measurementpoint;
+DROP TABLE ng_measurementpoint;
 
 -- -------------------------------------------------------------------- 
--- engy_mechanicalventilatio 
+-- ng_mechanicalventilatio 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_mechanicalventilatio;
+DROP TABLE ng_mechanicalventilatio;
 
 -- -------------------------------------------------------------------- 
--- engy_occupants 
+-- ng_occupants 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_occupants;
+DROP TABLE ng_occupants;
 
 -- -------------------------------------------------------------------- 
--- engy_opticalproperties 
+-- ng_opticalproperties 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_opticalproperties;
+DROP TABLE ng_opticalproperties;
 
 -- -------------------------------------------------------------------- 
--- engy_periodofyear 
+-- ng_periodofyear 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_periodofyear;
+DROP TABLE ng_periodofyear;
 
 -- -------------------------------------------------------------------- 
--- engy_photovoltaicsystem 
+-- ng_photovoltaicsystem 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_photovoltaicsystem;
+DROP TABLE ng_photovoltaicsystem;
 
 -- -------------------------------------------------------------------- 
--- engy_photovoltaicthermals 
+-- ng_photovoltaicthermals 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_photovoltaicthermals;
+DROP TABLE ng_photovoltaicthermals;
 
 -- -------------------------------------------------------------------- 
--- engy_powerdistributionsys 
+-- ng_powerdistributionsys 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_powerdistributionsys;
+DROP TABLE ng_powerdistributionsys;
 
 -- -------------------------------------------------------------------- 
--- engy_powerstoragesystem 
+-- ng_powerstoragesystem 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_powerstoragesystem;
+DROP TABLE ng_powerstoragesystem;
 
 -- -------------------------------------------------------------------- 
--- engy_reflectance 
+-- ng_reflectance 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_reflectance;
+DROP TABLE ng_reflectance;
 
 -- -------------------------------------------------------------------- 
--- engy_refurbishmentmeasure 
+-- ng_refurbishmentmeasure 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_refurbishmentmeasure;
+DROP TABLE ng_refurbishmentmeasure;
 
 -- -------------------------------------------------------------------- 
--- engy_regulartimeseries 
+-- ng_regulartimeseries 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_regulartimeseries;
+DROP TABLE ng_regulartimeseries;
 
 -- -------------------------------------------------------------------- 
--- engy_regulartimeseriesfil 
+-- ng_regulartimeseriesfil 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_regulartimeseriesfil;
+DROP TABLE ng_regulartimeseriesfil;
 
 -- -------------------------------------------------------------------- 
--- engy_schedule 
+-- ng_schedule 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_schedule;
+DROP TABLE ng_schedule;
 
 -- -------------------------------------------------------------------- 
--- engy_servicelife 
+-- ng_servicelife 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_servicelife;
+DROP TABLE ng_servicelife;
 
 -- -------------------------------------------------------------------- 
--- engy_shadingtype 
+-- ng_shadingtype 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_shadingtype;
+DROP TABLE ng_shadingtype;
 
 -- -------------------------------------------------------------------- 
--- engy_solarenergysystem 
+-- ng_solarenergysystem 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_solarenergysystem;
+DROP TABLE ng_solarenergysystem;
 
 -- -------------------------------------------------------------------- 
--- engy_solarthermalsystem 
+-- ng_solarthermalsystem 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_solarthermalsystem;
+DROP TABLE ng_solarthermalsystem;
 
 -- -------------------------------------------------------------------- 
--- engy_solidmaterial 
+-- ng_solidmaterial 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_solidmaterial;
+DROP TABLE ng_solidmaterial;
 
 -- -------------------------------------------------------------------- 
--- engy_storagesystem 
+-- ng_storagesystem 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_storagesystem;
+DROP TABLE ng_storagesystem;
 
 -- -------------------------------------------------------------------- 
--- engy_systemoperation 
+-- ng_systemoperation 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_systemoperation;
+DROP TABLE ng_systemoperation;
 
 -- -------------------------------------------------------------------- 
--- engy_ther_deli_to_the_bou 
+-- ng_ther_deli_to_the_bou 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_ther_deli_to_the_bou;
+DROP TABLE ng_ther_deli_to_the_bou;
 
 -- -------------------------------------------------------------------- 
--- engy_therm_to_thema_surfa 
+-- ng_therm_to_thema_surfa 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_therm_to_thema_surfa;
+DROP TABLE ng_therm_to_thema_surfa;
 
 -- -------------------------------------------------------------------- 
--- engy_thermalboundary 
+-- ng_thermalboundary 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_thermalboundary;
+DROP TABLE ng_thermalboundary;
 
 -- -------------------------------------------------------------------- 
--- engy_thermaldistributions 
+-- ng_thermaldistributions 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_thermaldistributions;
+DROP TABLE ng_thermaldistributions;
 
 -- -------------------------------------------------------------------- 
--- engy_thermalop_to_opening 
+-- ng_thermalop_to_opening 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_thermalop_to_opening;
+DROP TABLE ng_thermalop_to_opening;
 
 -- -------------------------------------------------------------------- 
--- engy_thermalopening 
+-- ng_thermalopening 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_thermalopening;
+DROP TABLE ng_thermalopening;
 
 -- -------------------------------------------------------------------- 
--- engy_thermalstoragesystem 
+-- ng_thermalstoragesystem 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_thermalstoragesystem;
+DROP TABLE ng_thermalstoragesystem;
 
 -- -------------------------------------------------------------------- 
--- engy_thermalzone 
+-- ng_thermalzone 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_thermalzone;
+DROP TABLE ng_thermalzone;
 
 -- -------------------------------------------------------------------- 
--- engy_thermalzone_to_room 
+-- ng_thermalzone_to_room 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_thermalzone_to_room;
+DROP TABLE ng_thermalzone_to_room;
 
 -- -------------------------------------------------------------------- 
--- engy_timeseries 
+-- ng_timeseries 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_timeseries;
+DROP TABLE ng_timeseries;
 
 -- -------------------------------------------------------------------- 
--- engy_timevaluesproperties 
+-- ng_timevaluesproperties 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_timevaluesproperties;
+DROP TABLE ng_timevaluesproperties;
 
 -- -------------------------------------------------------------------- 
--- engy_transmittance 
+-- ng_transmittance 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_transmittance;
+DROP TABLE ng_transmittance;
 
 -- -------------------------------------------------------------------- 
--- engy_usagezone 
+-- ng_usagezone 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_usagezone;
+DROP TABLE ng_usagezone;
 
 -- -------------------------------------------------------------------- 
--- engy_volumetype 
+-- ng_volumetype 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_volumetype;
+DROP TABLE ng_volumetype;
 
 -- -------------------------------------------------------------------- 
--- engy_weatherdata 
+-- ng_weatherdata 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_weatherdata;
+DROP TABLE ng_weatherdata;
 
 -- -------------------------------------------------------------------- 
--- engy_weatherstation 
+-- ng_weatherstation 
 -- -------------------------------------------------------------------- 
-DROP TABLE engy_weatherstation;
+DROP TABLE ng_weatherstation;
 
 -- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 -- *********************************** Drop Sequences ************************************* 
 -- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-DROP SEQUENCE engy_energyperformanc_seq;
+DROP SEQUENCE ng_energyperformanc_seq;
 
-DROP SEQUENCE engy_volumetype_seq;
+DROP SEQUENCE ng_volumetype_seq;
 
-DROP SEQUENCE engy_refurbishmentmea_seq;
+DROP SEQUENCE ng_refurbishmentmea_seq;
 
-DROP SEQUENCE engy_floorarea_seq;
+DROP SEQUENCE ng_floorarea_seq;
 
-DROP SEQUENCE engy_heightabovegroun_seq;
+DROP SEQUENCE ng_heightabovegroun_seq;
 
-DROP SEQUENCE engy_dateofevent_seq;
+DROP SEQUENCE ng_dateofevent_seq;
 
-DROP SEQUENCE engy_heatexchangetype_seq;
+DROP SEQUENCE ng_heatexchangetype_seq;
 
-DROP SEQUENCE engy_shadingtype_seq;
+DROP SEQUENCE ng_shadingtype_seq;
 
-DROP SEQUENCE engy_transmittance_seq;
+DROP SEQUENCE ng_transmittance_seq;
 
-DROP SEQUENCE engy_opticalpropertie_seq;
+DROP SEQUENCE ng_opticalpropertie_seq;
 
-DROP SEQUENCE engy_emissivity_seq;
+DROP SEQUENCE ng_emissivity_seq;
 
-DROP SEQUENCE engy_reflectance_seq;
+DROP SEQUENCE ng_reflectance_seq;
 
-DROP SEQUENCE engy_timevaluesproper_seq;
+DROP SEQUENCE ng_timevaluesproper_seq;
 
-DROP SEQUENCE engy_periodofyear_seq;
+DROP SEQUENCE ng_periodofyear_seq;
 
-DROP SEQUENCE engy_dailyschedule_seq;
+DROP SEQUENCE ng_dailyschedule_seq;
 
-DROP SEQUENCE engy_measurementpoint_seq;
+DROP SEQUENCE ng_measurementpoint_seq;
 
 PURGE RECYCLEBIN;

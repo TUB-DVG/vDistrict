@@ -4,383 +4,383 @@
         <name>energy</name>
         <version>1.0</version>
         <description>Energy ADE for CityGML </description>
-        <dbPrefix>engy</dbPrefix>
+        <dbPrefix>ng</dbPrefix>
     </metadata>
     <applicationSchemas>
-        <schema id="engy" isADERoot="true">
+        <schema id="ng" isADERoot="true">
             <namespace context="citygml-2.0">http://www.sig3d.org/citygml/2.0/energy/1.0</namespace>
         </schema>
     </applicationSchemas>
     <complexTypes>
-        <complexType id="engy_EnergyPerformanceCertificationType" table="engy_energyperformancecer" objectClassId="10000" path="EnergyPerformanceCertification" schema="engy">
-            <attribute column="rating" type="string" minOccurs="1" maxOccurs="1" path="rating" schema="engy"/>
-            <attribute column="name" type="string" minOccurs="1" maxOccurs="1" path="name" schema="engy"/>
-            <attribute column="certificationid" type="string" maxOccurs="1" path="certificationId" schema="engy"/>
+        <complexType id="ng_EnergyPerformanceCertificationType" table="ng_energyperformancecer" objectClassId="10000" path="EnergyPerformanceCertification" schema="ng">
+            <attribute column="rating" type="string" minOccurs="1" maxOccurs="1" path="rating" schema="ng"/>
+            <attribute column="name" type="string" minOccurs="1" maxOccurs="1" path="name" schema="ng"/>
+            <attribute column="certificationid" type="string" maxOccurs="1" path="certificationId" schema="ng"/>
         </complexType>
-        <complexType id="engy_VolumeTypeType" table="engy_volumetype" objectClassId="10001" path="VolumeType" schema="engy">
-            <attribute column="type" type="string" minOccurs="1" maxOccurs="1" path="type" schema="engy"/>
-            <complexAttribute minOccurs="1" maxOccurs="1" path="value" schema="engy">
-                <attribute column="value_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="value" type="double" path="." schema="engy"/>
+        <complexType id="ng_VolumeTypeType" table="ng_volumetype" objectClassId="10001" path="VolumeType" schema="ng">
+            <attribute column="type" type="string" minOccurs="1" maxOccurs="1" path="type" schema="ng"/>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="value" schema="ng">
+                <attribute column="value_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="value" type="double" path="." schema="ng"/>
             </complexAttribute>
         </complexType>
-        <complexType id="engy_RefurbishmentMeasureType" table="engy_refurbishmentmeasure" objectClassId="10002" path="RefurbishmentMeasure" schema="engy">
-            <complexProperty refType="engy_DateOfEventType" minOccurs="1" maxOccurs="1" path="date" schema="engy">
-                <join table="engy_dateofevent" fromColumn="date_id" toColumn="id" toRole="parent"/>
+        <complexType id="ng_RefurbishmentMeasureType" table="ng_refurbishmentmeasure" objectClassId="10002" path="RefurbishmentMeasure" schema="ng">
+            <complexProperty refType="ng_DateOfEventType" minOccurs="1" maxOccurs="1" path="date" schema="ng">
+                <join table="ng_dateofevent" fromColumn="date_id" toColumn="id" toRole="parent"/>
             </complexProperty>
-            <complexAttribute minOccurs="1" maxOccurs="1" path="level" schema="engy">
-                <attribute column="level_codespace" type="string" path="@codespace" schema="engy"/>
-                <attribute column="level_" type="string" path="." schema="engy"/>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="level" schema="ng">
+                <attribute column="level_codespace" type="string" path="@codespace" schema="ng"/>
+                <attribute column="level_" type="string" path="." schema="ng"/>
             </complexAttribute>
-            <attribute column="description" type="string" maxOccurs="1" path="description" schema="engy"/>
+            <attribute column="description" type="string" maxOccurs="1" path="description" schema="ng"/>
         </complexType>
-        <complexType id="engy_FloorAreaType" table="engy_floorarea" objectClassId="10005" path="FloorArea" schema="engy">
-            <attribute column="type" type="string" minOccurs="1" maxOccurs="1" path="type" schema="engy"/>
-            <complexAttribute minOccurs="1" maxOccurs="1" path="value" schema="engy">
-                <attribute column="value_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="value" type="double" path="." schema="engy"/>
-            </complexAttribute>
-        </complexType>
-        <complexType id="engy_HeightAboveGroundType" table="engy_heightaboveground" objectClassId="10006" path="HeightAboveGround" schema="engy">
-            <attribute column="heightreference" type="string" minOccurs="1" maxOccurs="1" path="heightReference" schema="engy"/>
-            <complexAttribute minOccurs="1" maxOccurs="1" path="value" schema="engy">
-                <attribute column="value_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="value" type="double" path="." schema="engy"/>
+        <complexType id="ng_FloorAreaType" table="ng_floorarea" objectClassId="10005" path="FloorArea" schema="ng">
+            <attribute column="type" type="string" minOccurs="1" maxOccurs="1" path="type" schema="ng"/>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="value" schema="ng">
+                <attribute column="value_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="value" type="double" path="." schema="ng"/>
             </complexAttribute>
         </complexType>
-        <complexType id="engy_DateOfEventType" table="engy_dateofevent" objectClassId="10008" path="DateOfEvent" schema="engy">
-            <complexAttribute minOccurs="1" maxOccurs="1" path="instant" schema="engy">
-                <attribute column="instant_frame" type="string" path="@frame" schema="engy"/>
-                <attribute column="instant_calendareraname" type="string" path="@calendarEraName" schema="engy"/>
-                <attribute column="instant_indeterminatepositio" type="string" path="@indeterminatePosition" schema="engy"/>
-                <attribute column="instant" type="string" path="." schema="engy"/>
+        <complexType id="ng_HeightAboveGroundType" table="ng_heightaboveground" objectClassId="10006" path="HeightAboveGround" schema="ng">
+            <attribute column="heightreference" type="string" minOccurs="1" maxOccurs="1" path="heightReference" schema="ng"/>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="value" schema="ng">
+                <attribute column="value_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="value" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexProperty minOccurs="1" maxOccurs="1" path="period" schema="engy">
-                <type path="TimePeriod" schema="engy">
-                    <attribute column="timeperiodprop_beginposition" type="timestamp" minOccurs="1" maxOccurs="1" path="beginPosition" schema="engy"/>
-                    <attribute column="timeperiodproper_endposition" type="timestamp" minOccurs="1" maxOccurs="1" path="endPosition" schema="engy"/>
+        </complexType>
+        <complexType id="ng_DateOfEventType" table="ng_dateofevent" objectClassId="10008" path="DateOfEvent" schema="ng">
+            <complexAttribute minOccurs="1" maxOccurs="1" path="instant" schema="ng">
+                <attribute column="instant_frame" type="string" path="@frame" schema="ng"/>
+                <attribute column="instant_calendareraname" type="string" path="@calendarEraName" schema="ng"/>
+                <attribute column="instant_indeterminatepositio" type="string" path="@indeterminatePosition" schema="ng"/>
+                <attribute column="instant" type="string" path="." schema="ng"/>
+            </complexAttribute>
+            <complexProperty minOccurs="1" maxOccurs="1" path="period" schema="ng">
+                <type path="TimePeriod" schema="ng">
+                    <attribute column="timeperiodprop_beginposition" type="timestamp" minOccurs="1" maxOccurs="1" path="beginPosition" schema="ng"/>
+                    <attribute column="timeperiodproper_endposition" type="timestamp" minOccurs="1" maxOccurs="1" path="endPosition" schema="ng"/>
                 </type>
             </complexProperty>
         </complexType>
-        <complexType id="engy_HeatExchangeTypeType" table="engy_heatexchangetype" objectClassId="10014" path="HeatExchangeType" schema="engy">
-            <complexAttribute maxOccurs="1" path="convectiveFraction" schema="engy">
-                <attribute column="convectivefraction_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="convectivefraction" type="double" path="." schema="engy"/>
+        <complexType id="ng_HeatExchangeTypeType" table="ng_heatexchangetype" objectClassId="10014" path="HeatExchangeType" schema="ng">
+            <complexAttribute maxOccurs="1" path="convectiveFraction" schema="ng">
+                <attribute column="convectivefraction_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="convectivefraction" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="latentFraction" schema="engy">
-                <attribute column="latentfraction_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="latentfraction" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="latentFraction" schema="ng">
+                <attribute column="latentfraction_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="latentfraction" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="radiantFraction" schema="engy">
-                <attribute column="radiantfraction_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="radiantfraction" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="radiantFraction" schema="ng">
+                <attribute column="radiantfraction_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="radiantfraction" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute minOccurs="1" maxOccurs="1" path="totalValue" schema="engy">
-                <attribute column="totalvalue_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="totalvalue" type="double" path="." schema="engy"/>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="totalValue" schema="ng">
+                <attribute column="totalvalue_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="totalvalue" type="double" path="." schema="ng"/>
             </complexAttribute>
         </complexType>
-        <complexType id="engy_ShadingTypeType" table="engy_shadingtype" objectClassId="10015" path="ShadingType" schema="engy">
-            <complexAttribute minOccurs="1" maxOccurs="1" path="maximumCoverRatio" schema="engy">
-                <attribute column="maximumcoverratio_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="maximumcoverratio" type="double" path="." schema="engy"/>
+        <complexType id="ng_ShadingTypeType" table="ng_shadingtype" objectClassId="10015" path="ShadingType" schema="ng">
+            <complexAttribute minOccurs="1" maxOccurs="1" path="maximumCoverRatio" schema="ng">
+                <attribute column="maximumcoverratio_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="maximumcoverratio" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <attribute column="name" type="string" maxOccurs="1" path="name" schema="engy"/>
-            <complexProperty refType="engy_TransmittanceType" minOccurs="1" maxOccurs="1" path="transmittance" schema="engy">
-                <join table="engy_transmittance" fromColumn="transmittance_id" toColumn="id" toRole="parent"/>
+            <attribute column="name" type="string" maxOccurs="1" path="name" schema="ng"/>
+            <complexProperty refType="ng_TransmittanceType" minOccurs="1" maxOccurs="1" path="transmittance" schema="ng">
+                <join table="ng_transmittance" fromColumn="transmittance_id" toColumn="id" toRole="parent"/>
             </complexProperty>
         </complexType>
-        <complexType id="engy_TransmittanceType" table="engy_transmittance" objectClassId="10016" path="Transmittance" schema="engy">
-            <complexAttribute minOccurs="1" maxOccurs="1" path="fraction" schema="engy">
-                <attribute column="fraction_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="fraction" type="double" path="." schema="engy"/>
+        <complexType id="ng_TransmittanceType" table="ng_transmittance" objectClassId="10016" path="Transmittance" schema="ng">
+            <complexAttribute minOccurs="1" maxOccurs="1" path="fraction" schema="ng">
+                <attribute column="fraction_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="fraction" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <attribute column="wavelengthrange" type="string" minOccurs="1" maxOccurs="1" path="wavelengthRange" schema="engy"/>
+            <attribute column="wavelengthrange" type="string" minOccurs="1" maxOccurs="1" path="wavelengthRange" schema="ng"/>
         </complexType>
-        <complexType id="engy_OpticalPropertiesType" table="engy_opticalproperties" objectClassId="10048" path="OpticalProperties" schema="engy">
-            <complexProperty refType="engy_EmissivityType" path="emissivity" schema="engy">
-                <join table="engy_emissivity" fromColumn="id" toColumn="opticalpropert_emissivity_id" toRole="child"/>
+        <complexType id="ng_OpticalPropertiesType" table="ng_opticalproperties" objectClassId="10048" path="OpticalProperties" schema="ng">
+            <complexProperty refType="ng_EmissivityType" path="emissivity" schema="ng">
+                <join table="ng_emissivity" fromColumn="id" toColumn="opticalpropert_emissivity_id" toRole="child"/>
             </complexProperty>
-            <complexProperty refType="engy_ReflectanceType" path="reflectance" schema="engy">
-                <join table="engy_reflectance" fromColumn="id" toColumn="opticalproper_reflectance_id" toRole="child"/>
+            <complexProperty refType="ng_ReflectanceType" path="reflectance" schema="ng">
+                <join table="ng_reflectance" fromColumn="id" toColumn="opticalproper_reflectance_id" toRole="child"/>
             </complexProperty>
-            <complexProperty refType="engy_TransmittanceType" path="transmittance" schema="engy">
-                <join table="engy_transmittance" fromColumn="id" toColumn="opticalprope_transmittanc_id" toRole="child"/>
+            <complexProperty refType="ng_TransmittanceType" path="transmittance" schema="ng">
+                <join table="ng_transmittance" fromColumn="id" toColumn="opticalprope_transmittanc_id" toRole="child"/>
             </complexProperty>
-            <complexAttribute maxOccurs="1" path="glazingRatio" schema="engy">
-                <attribute column="glazingratio_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="glazingratio" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="glazingRatio" schema="ng">
+                <attribute column="glazingratio_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="glazingratio" type="double" path="." schema="ng"/>
             </complexAttribute>
         </complexType>
-        <complexType id="engy_EmissivityType" table="engy_emissivity" objectClassId="10050" path="Emissivity" schema="engy">
-            <complexAttribute minOccurs="1" maxOccurs="1" path="fraction" schema="engy">
-                <attribute column="fraction_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="fraction" type="double" path="." schema="engy"/>
+        <complexType id="ng_EmissivityType" table="ng_emissivity" objectClassId="10050" path="Emissivity" schema="ng">
+            <complexAttribute minOccurs="1" maxOccurs="1" path="fraction" schema="ng">
+                <attribute column="fraction_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="fraction" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <attribute column="surface" type="string" minOccurs="1" maxOccurs="1" path="surface" schema="engy"/>
+            <attribute column="surface" type="string" minOccurs="1" maxOccurs="1" path="surface" schema="ng"/>
         </complexType>
-        <complexType id="engy_ReflectanceType" table="engy_reflectance" objectClassId="10051" path="Reflectance" schema="engy">
-            <complexAttribute minOccurs="1" maxOccurs="1" path="fraction" schema="engy">
-                <attribute column="fraction_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="fraction" type="double" path="." schema="engy"/>
+        <complexType id="ng_ReflectanceType" table="ng_reflectance" objectClassId="10051" path="Reflectance" schema="ng">
+            <complexAttribute minOccurs="1" maxOccurs="1" path="fraction" schema="ng">
+                <attribute column="fraction_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="fraction" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <attribute column="surface" type="string" minOccurs="1" maxOccurs="1" path="surface" schema="engy"/>
-            <attribute column="wavelengthrange" type="string" minOccurs="1" maxOccurs="1" path="wavelengthRange" schema="engy"/>
+            <attribute column="surface" type="string" minOccurs="1" maxOccurs="1" path="surface" schema="ng"/>
+            <attribute column="wavelengthrange" type="string" minOccurs="1" maxOccurs="1" path="wavelengthRange" schema="ng"/>
         </complexType>
-        <complexType id="engy_TimeValuesPropertiesType" table="engy_timevaluesproperties" objectClassId="10064" path="TimeValuesProperties" schema="engy">
-            <attribute column="acquisitionmethod" type="string" minOccurs="1" maxOccurs="1" path="acquisitionMethod" schema="engy"/>
-            <attribute column="interpolationtype" type="string" minOccurs="1" maxOccurs="1" path="interpolationType" schema="engy"/>
-            <attribute column="qualitydescription" type="string" maxOccurs="1" path="qualityDescription" schema="engy"/>
-            <attribute column="source" type="string" maxOccurs="1" path="source" schema="engy"/>
-            <attribute column="thematicdescription" type="string" maxOccurs="1" path="thematicDescription" schema="engy"/>
+        <complexType id="ng_TimeValuesPropertiesType" table="ng_timevaluesproperties" objectClassId="10064" path="TimeValuesProperties" schema="ng">
+            <attribute column="acquisitionmethod" type="string" minOccurs="1" maxOccurs="1" path="acquisitionMethod" schema="ng"/>
+            <attribute column="interpolationtype" type="string" minOccurs="1" maxOccurs="1" path="interpolationType" schema="ng"/>
+            <attribute column="qualitydescription" type="string" maxOccurs="1" path="qualityDescription" schema="ng"/>
+            <attribute column="source" type="string" maxOccurs="1" path="source" schema="ng"/>
+            <attribute column="thematicdescription" type="string" maxOccurs="1" path="thematicDescription" schema="ng"/>
         </complexType>
-        <complexType id="engy_PeriodOfYearType" table="engy_periodofyear" objectClassId="10067" path="PeriodOfYear" schema="engy">
-            <complexProperty refType="engy_DailyScheduleType" minOccurs="1" path="dailySchedule" schema="engy">
-                <join table="engy_dailyschedule" fromColumn="id" toColumn="periodofyear_dailyschedul_id" toRole="child"/>
+        <complexType id="ng_PeriodOfYearType" table="ng_periodofyear" objectClassId="10067" path="PeriodOfYear" schema="ng">
+            <complexProperty refType="ng_DailyScheduleType" minOccurs="1" path="dailySchedule" schema="ng">
+                <join table="ng_dailyschedule" fromColumn="id" toColumn="periodofyear_dailyschedul_id" toRole="child"/>
             </complexProperty>
-            <complexProperty minOccurs="1" maxOccurs="1" path="period" schema="engy">
-                <type path="TimePeriod" schema="engy">
-                    <attribute column="timeperiodprop_beginposition" type="timestamp" minOccurs="1" maxOccurs="1" path="beginPosition" schema="engy"/>
-                    <attribute column="timeperiodproper_endposition" type="timestamp" minOccurs="1" maxOccurs="1" path="endPosition" schema="engy"/>
+            <complexProperty minOccurs="1" maxOccurs="1" path="period" schema="ng">
+                <type path="TimePeriod" schema="ng">
+                    <attribute column="timeperiodprop_beginposition" type="timestamp" minOccurs="1" maxOccurs="1" path="beginPosition" schema="ng"/>
+                    <attribute column="timeperiodproper_endposition" type="timestamp" minOccurs="1" maxOccurs="1" path="endPosition" schema="ng"/>
                 </type>
             </complexProperty>
         </complexType>
-        <complexType id="engy_DailyScheduleType" table="engy_dailyschedule" objectClassId="10068" path="DailySchedule" schema="engy">
-            <attribute column="daytype" type="string" minOccurs="1" maxOccurs="1" path="dayType" schema="engy"/>
-            <objectProperty target="engy_AbstractTimeSeriesType" minOccurs="1" maxOccurs="1" path="schedule" schema="engy">
-                <join table="engy_timeseries" fromColumn="schedule_id" toColumn="id" toRole="parent">
+        <complexType id="ng_DailyScheduleType" table="ng_dailyschedule" objectClassId="10068" path="DailySchedule" schema="ng">
+            <attribute column="daytype" type="string" minOccurs="1" maxOccurs="1" path="dayType" schema="ng"/>
+            <objectProperty target="ng_AbstractTimeSeriesType" minOccurs="1" maxOccurs="1" path="schedule" schema="ng">
+                <join table="ng_timeseries" fromColumn="schedule_id" toColumn="id" toRole="parent">
                     <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
                 </join>
             </objectProperty>
         </complexType>
-        <complexType id="engy_MeasurementPointType" table="engy_measurementpoint" objectClassId="10071" path="MeasurementPoint" schema="engy">
-            <complexAttribute minOccurs="1" maxOccurs="1" path="time" schema="engy">
-                <attribute column="time_frame" type="string" path="@frame" schema="engy"/>
-                <attribute column="time_calendareraname" type="string" path="@calendarEraName" schema="engy"/>
-                <attribute column="time_indeterminateposition" type="string" path="@indeterminatePosition" schema="engy"/>
-                <attribute column="time" type="string" path="." schema="engy"/>
+        <complexType id="ng_MeasurementPointType" table="ng_measurementpoint" objectClassId="10071" path="MeasurementPoint" schema="ng">
+            <complexAttribute minOccurs="1" maxOccurs="1" path="time" schema="ng">
+                <attribute column="time_frame" type="string" path="@frame" schema="ng"/>
+                <attribute column="time_calendareraname" type="string" path="@calendarEraName" schema="ng"/>
+                <attribute column="time_indeterminateposition" type="string" path="@indeterminatePosition" schema="ng"/>
+                <attribute column="time" type="string" path="." schema="ng"/>
             </complexAttribute>
-            <attribute column="value" type="double" minOccurs="1" maxOccurs="1" path="value" schema="engy"/>
+            <attribute column="value" type="double" minOccurs="1" maxOccurs="1" path="value" schema="ng"/>
         </complexType>
     </complexTypes>
     <objectTypes>
-        <objectType id="engy_WeatherDataType" table="engy_weatherdata" objectClassId="10009" path="WeatherData" schema="engy">
+        <objectType id="ng_WeatherDataType" table="ng_weatherdata" objectClassId="10009" path="WeatherData" schema="ng">
             <extension base="AbstractGMLType">
                 <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="weatherdatatype" type="string" minOccurs="1" maxOccurs="1" path="weatherDataType" schema="engy"/>
-            <objectProperty target="engy_AbstractTimeSeriesType" minOccurs="1" maxOccurs="1" path="values" schema="engy">
-                <join table="engy_timeseries" fromColumn="values_id" toColumn="id" toRole="parent">
+            <attribute column="weatherdatatype" type="string" minOccurs="1" maxOccurs="1" path="weatherDataType" schema="ng"/>
+            <objectProperty target="ng_AbstractTimeSeriesType" minOccurs="1" maxOccurs="1" path="values" schema="ng">
+                <join table="ng_timeseries" fromColumn="values_id" toColumn="id" toRole="parent">
                     <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
                 </join>
             </objectProperty>
-            <geometryProperty inlineColumn="position" type="Point" maxOccurs="1" path="position" schema="engy"/>
+            <geometryProperty inlineColumn="position" type="Point" maxOccurs="1" path="position" schema="ng"/>
         </objectType>
-        <objectType abstract="true" id="engy_AbstractTimeSeriesType" table="engy_timeseries" objectClassId="10011" path="AbstractTimeSeries" schema="engy">
+        <objectType abstract="true" id="ng_AbstractTimeSeriesType" table="ng_timeseries" objectClassId="10011" path="AbstractTimeSeries" schema="ng">
             <extension base="AbstractGMLType">
                 <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <complexProperty minOccurs="1" maxOccurs="1" path="variableProperties" schema="engy">
-                <type path="TimeValuesProperties" schema="engy">
-                    <attribute column="timevaluesprop_acquisitionme" type="string" minOccurs="1" maxOccurs="1" path="acquisitionMethod" schema="engy"/>
-                    <attribute column="timevaluesprop_interpolation" type="string" minOccurs="1" maxOccurs="1" path="interpolationType" schema="engy"/>
-                    <attribute column="timevaluesprop_qualitydescri" type="string" maxOccurs="1" path="qualityDescription" schema="engy"/>
-                    <attribute column="timevaluespropertiest_source" type="string" maxOccurs="1" path="source" schema="engy"/>
-                    <attribute column="timevaluesprop_thematicdescr" type="string" maxOccurs="1" path="thematicDescription" schema="engy"/>
+            <complexProperty minOccurs="1" maxOccurs="1" path="variableProperties" schema="ng">
+                <type path="TimeValuesProperties" schema="ng">
+                    <attribute column="timevaluesprop_acquisitionme" type="string" minOccurs="1" maxOccurs="1" path="acquisitionMethod" schema="ng"/>
+                    <attribute column="timevaluesprop_interpolation" type="string" minOccurs="1" maxOccurs="1" path="interpolationType" schema="ng"/>
+                    <attribute column="timevaluesprop_qualitydescri" type="string" maxOccurs="1" path="qualityDescription" schema="ng"/>
+                    <attribute column="timevaluespropertiest_source" type="string" maxOccurs="1" path="source" schema="ng"/>
+                    <attribute column="timevaluesprop_thematicdescr" type="string" maxOccurs="1" path="thematicDescription" schema="ng"/>
                 </type>
             </complexProperty>
         </objectType>
-        <objectType id="engy_ServiceLifeType" table="engy_servicelife" objectClassId="10013" path="ServiceLife" schema="engy">
+        <objectType id="ng_ServiceLifeType" table="ng_servicelife" objectClassId="10013" path="ServiceLife" schema="ng">
             <extension base="AbstractGMLType">
                 <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <complexAttribute maxOccurs="1" path="startOfLife" schema="engy">
-                <attribute column="startoflife_frame" type="string" path="@frame" schema="engy"/>
-                <attribute column="startoflife_calendareraname" type="string" path="@calendarEraName" schema="engy"/>
-                <attribute column="startoflife_indeterminatepos" type="string" path="@indeterminatePosition" schema="engy"/>
-                <attribute column="startoflife" type="string" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="startOfLife" schema="ng">
+                <attribute column="startoflife_frame" type="string" path="@frame" schema="ng"/>
+                <attribute column="startoflife_calendareraname" type="string" path="@calendarEraName" schema="ng"/>
+                <attribute column="startoflife_indeterminatepos" type="string" path="@indeterminatePosition" schema="ng"/>
+                <attribute column="startoflife" type="string" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="lifeExpectancy" schema="engy">
-                <attribute column="lifeexpectancy_unit" type="string" path="@unit" schema="engy"/>
-                <attribute column="lifeexpectancy_radix" type="integer" path="@radix" schema="engy"/>
-                <attribute column="lifeexpectancy_factor" type="integer" path="@factor" schema="engy"/>
-                <attribute column="lifeexpectancy" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="lifeExpectancy" schema="ng">
+                <attribute column="lifeexpectancy_unit" type="string" path="@unit" schema="ng"/>
+                <attribute column="lifeexpectancy_radix" type="integer" path="@radix" schema="ng"/>
+                <attribute column="lifeexpectancy_factor" type="integer" path="@factor" schema="ng"/>
+                <attribute column="lifeexpectancy" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="mainMaintenanceInterval" schema="engy">
-                <attribute column="mainmaintenanceinterval_unit" type="string" path="@unit" schema="engy"/>
-                <attribute column="mainmaintenanceinterva_radix" type="integer" path="@radix" schema="engy"/>
-                <attribute column="mainmaintenanceinterv_factor" type="integer" path="@factor" schema="engy"/>
-                <attribute column="mainmaintenanceinterval" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="mainMaintenanceInterval" schema="ng">
+                <attribute column="mainmaintenanceinterval_unit" type="string" path="@unit" schema="ng"/>
+                <attribute column="mainmaintenanceinterva_radix" type="integer" path="@radix" schema="ng"/>
+                <attribute column="mainmaintenanceinterv_factor" type="integer" path="@factor" schema="ng"/>
+                <attribute column="mainmaintenanceinterval" type="double" path="." schema="ng"/>
             </complexAttribute>
         </objectType>
-        <objectType abstract="true" id="engy_AbstractScheduleType" table="engy_schedule" objectClassId="10023" path="AbstractSchedule" schema="engy">
+        <objectType abstract="true" id="ng_AbstractScheduleType" table="ng_schedule" objectClassId="10023" path="AbstractSchedule" schema="ng">
             <extension base="AbstractGMLType">
                 <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
         </objectType>
-        <objectType id="engy_ConstantValueScheduleType" table="engy_schedule" objectClassId="10065" path="ConstantValueSchedule" schema="engy">
-            <extension base="engy_AbstractScheduleType"/>
-            <complexAttribute minOccurs="1" maxOccurs="1" path="averageValue" schema="engy">
-                <attribute column="averagevalue_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="averagevalue" type="double" path="." schema="engy"/>
+        <objectType id="ng_ConstantValueScheduleType" table="ng_schedule" objectClassId="10065" path="ConstantValueSchedule" schema="ng">
+            <extension base="ng_AbstractScheduleType"/>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="averageValue" schema="ng">
+                <attribute column="averagevalue_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="averagevalue" type="double" path="." schema="ng"/>
             </complexAttribute>
         </objectType>
-        <objectType id="engy_DailyPatternScheduleType" table="engy_schedule" objectClassId="10066" path="DailyPatternSchedule" schema="engy">
-            <extension base="engy_AbstractScheduleType"/>
-            <complexProperty refType="engy_PeriodOfYearType" minOccurs="1" path="periodOfYear" schema="engy">
-                <join table="engy_periodofyear" fromColumn="id" toColumn="schedule_periodofyear_id" toRole="child"/>
+        <objectType id="ng_DailyPatternScheduleType" table="ng_schedule" objectClassId="10066" path="DailyPatternSchedule" schema="ng">
+            <extension base="ng_AbstractScheduleType"/>
+            <complexProperty refType="ng_PeriodOfYearType" minOccurs="1" path="periodOfYear" schema="ng">
+                <join table="ng_periodofyear" fromColumn="id" toColumn="schedule_periodofyear_id" toRole="child"/>
             </complexProperty>
         </objectType>
-        <objectType id="engy_DualValueScheduleType" table="engy_dualvalueschedule" objectClassId="10069" path="DualValueSchedule" schema="engy">
-            <extension base="engy_AbstractScheduleType">
-                <join table="engy_schedule" fromColumn="id" toColumn="id" toRole="parent"/>
+        <objectType id="ng_DualValueScheduleType" table="ng_dualvalueschedule" objectClassId="10069" path="DualValueSchedule" schema="ng">
+            <extension base="ng_AbstractScheduleType">
+                <join table="ng_schedule" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="usagehoursperday" type="double" maxOccurs="1" path="usageHoursPerDay" schema="engy"/>
-            <attribute column="usagedaysperyear" type="double" maxOccurs="1" path="usageDaysPerYear" schema="engy"/>
-            <complexAttribute minOccurs="1" maxOccurs="1" path="usageValue" schema="engy">
-                <attribute column="usagevalue_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="usagevalue" type="double" path="." schema="engy"/>
+            <attribute column="usagehoursperday" type="double" maxOccurs="1" path="usageHoursPerDay" schema="ng"/>
+            <attribute column="usagedaysperyear" type="double" maxOccurs="1" path="usageDaysPerYear" schema="ng"/>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="usageValue" schema="ng">
+                <attribute column="usagevalue_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="usagevalue" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute minOccurs="1" maxOccurs="1" path="idleValue" schema="engy">
-                <attribute column="idlevalue_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="idlevalue" type="double" path="." schema="engy"/>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="idleValue" schema="ng">
+                <attribute column="idlevalue_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="idlevalue" type="double" path="." schema="ng"/>
             </complexAttribute>
         </objectType>
-        <objectType id="engy_IrregularTimeSeriesType" table="engy_irregulartimeseries" objectClassId="10070" path="IrregularTimeSeries" schema="engy">
-            <extension base="engy_AbstractTimeSeriesType">
-                <join table="engy_timeseries" fromColumn="id" toColumn="id" toRole="parent"/>
+        <objectType id="ng_IrregularTimeSeriesType" table="ng_irregulartimeseries" objectClassId="10070" path="IrregularTimeSeries" schema="ng">
+            <extension base="ng_AbstractTimeSeriesType">
+                <join table="ng_timeseries" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="uom" type="string" minOccurs="1" maxOccurs="1" path="uom" schema="engy"/>
-            <complexProperty refType="engy_MeasurementPointType" path="contains" schema="engy">
-                <join table="engy_measurementpoint" fromColumn="id" toColumn="irregulartimeser_contains_id" toRole="child"/>
+            <attribute column="uom" type="string" minOccurs="1" maxOccurs="1" path="uom" schema="ng"/>
+            <complexProperty refType="ng_MeasurementPointType" path="contains" schema="ng">
+                <join table="ng_measurementpoint" fromColumn="id" toColumn="irregulartimeser_contains_id" toRole="child"/>
             </complexProperty>
         </objectType>
-        <objectType id="engy_IrregularTimeSeriesFileType" table="engy_irregulartimeseriesf" objectClassId="10072" path="IrregularTimeSeriesFile" schema="engy">
-            <extension base="engy_AbstractTimeSeriesType">
-                <join table="engy_timeseries" fromColumn="id" toColumn="id" toRole="parent"/>
+        <objectType id="ng_IrregularTimeSeriesFileType" table="ng_irregulartimeseriesf" objectClassId="10072" path="IrregularTimeSeriesFile" schema="ng">
+            <extension base="ng_AbstractTimeSeriesType">
+                <join table="ng_timeseries" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="uom" type="string" minOccurs="1" maxOccurs="1" path="uom" schema="engy"/>
-            <attribute column="file_" type="string" minOccurs="1" maxOccurs="1" path="file" schema="engy"/>
-            <attribute column="numberofheaderlines" type="integer" maxOccurs="1" path="numberOfHeaderLines" schema="engy"/>
-            <attribute column="fieldseparator" type="string" minOccurs="1" maxOccurs="1" path="fieldSeparator" schema="engy"/>
-            <attribute column="recordseparator" type="string" maxOccurs="1" path="recordSeparator" schema="engy"/>
-            <attribute column="decimalsymbol" type="string" maxOccurs="1" path="decimalSymbol" schema="engy"/>
-            <attribute column="timecolumnnumber" type="integer" maxOccurs="1" path="timeColumnNumber" schema="engy"/>
-            <attribute column="valuecolumnnumber" type="integer" maxOccurs="1" path="valueColumnNumber" schema="engy"/>
+            <attribute column="uom" type="string" minOccurs="1" maxOccurs="1" path="uom" schema="ng"/>
+            <attribute column="file_" type="string" minOccurs="1" maxOccurs="1" path="file" schema="ng"/>
+            <attribute column="numberofheaderlines" type="integer" maxOccurs="1" path="numberOfHeaderLines" schema="ng"/>
+            <attribute column="fieldseparator" type="string" minOccurs="1" maxOccurs="1" path="fieldSeparator" schema="ng"/>
+            <attribute column="recordseparator" type="string" maxOccurs="1" path="recordSeparator" schema="ng"/>
+            <attribute column="decimalsymbol" type="string" maxOccurs="1" path="decimalSymbol" schema="ng"/>
+            <attribute column="timecolumnnumber" type="integer" maxOccurs="1" path="timeColumnNumber" schema="ng"/>
+            <attribute column="valuecolumnnumber" type="integer" maxOccurs="1" path="valueColumnNumber" schema="ng"/>
         </objectType>
-        <objectType id="engy_RegularTimeSeriesType" table="engy_regulartimeseries" objectClassId="10073" path="RegularTimeSeries" schema="engy">
-            <extension base="engy_AbstractTimeSeriesType">
-                <join table="engy_timeseries" fromColumn="id" toColumn="id" toRole="parent"/>
+        <objectType id="ng_RegularTimeSeriesType" table="ng_regulartimeseries" objectClassId="10073" path="RegularTimeSeries" schema="ng">
+            <extension base="ng_AbstractTimeSeriesType">
+                <join table="ng_timeseries" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <complexAttribute minOccurs="1" maxOccurs="1" path="timeInterval" schema="engy">
-                <attribute column="timeinterval_unit" type="string" path="@unit" schema="engy"/>
-                <attribute column="timeinterval_radix" type="integer" path="@radix" schema="engy"/>
-                <attribute column="timeinterval_factor" type="integer" path="@factor" schema="engy"/>
-                <attribute column="timeinterval" type="double" path="." schema="engy"/>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="timeInterval" schema="ng">
+                <attribute column="timeinterval_unit" type="string" path="@unit" schema="ng"/>
+                <attribute column="timeinterval_radix" type="integer" path="@radix" schema="ng"/>
+                <attribute column="timeinterval_factor" type="integer" path="@factor" schema="ng"/>
+                <attribute column="timeinterval" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute minOccurs="1" maxOccurs="1" path="values" schema="engy">
-                <attribute column="values_" type="clob" path="." schema="engy"/>
-                <attribute column="values_uom" type="string" path="@uom" schema="engy"/>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="values" schema="ng">
+                <attribute column="values_" type="clob" path="." schema="ng"/>
+                <attribute column="values_uom" type="string" path="@uom" schema="ng"/>
             </complexAttribute>
-            <complexProperty minOccurs="1" maxOccurs="1" path="temporalExtent" schema="engy">
-                <type path="TimePeriod" schema="engy">
-                    <attribute column="timeperiodprop_beginposition" type="timestamp" minOccurs="1" maxOccurs="1" path="beginPosition" schema="engy"/>
-                    <attribute column="timeperiodproper_endposition" type="timestamp" minOccurs="1" maxOccurs="1" path="endPosition" schema="engy"/>
+            <complexProperty minOccurs="1" maxOccurs="1" path="temporalExtent" schema="ng">
+                <type path="TimePeriod" schema="ng">
+                    <attribute column="timeperiodprop_beginposition" type="timestamp" minOccurs="1" maxOccurs="1" path="beginPosition" schema="ng"/>
+                    <attribute column="timeperiodproper_endposition" type="timestamp" minOccurs="1" maxOccurs="1" path="endPosition" schema="ng"/>
                 </type>
             </complexProperty>
         </objectType>
-        <objectType id="engy_RegularTimeSeriesFileType" table="engy_regulartimeseriesfil" objectClassId="10074" path="RegularTimeSeriesFile" schema="engy">
-            <extension base="engy_AbstractTimeSeriesType">
-                <join table="engy_timeseries" fromColumn="id" toColumn="id" toRole="parent"/>
+        <objectType id="ng_RegularTimeSeriesFileType" table="ng_regulartimeseriesfil" objectClassId="10074" path="RegularTimeSeriesFile" schema="ng">
+            <extension base="ng_AbstractTimeSeriesType">
+                <join table="ng_timeseries" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="uom" type="string" minOccurs="1" maxOccurs="1" path="uom" schema="engy"/>
-            <attribute column="file_" type="string" minOccurs="1" maxOccurs="1" path="file" schema="engy"/>
-            <complexAttribute minOccurs="1" maxOccurs="1" path="timeInterval" schema="engy">
-                <attribute column="timeinterval_unit" type="string" path="@unit" schema="engy"/>
-                <attribute column="timeinterval_radix" type="integer" path="@radix" schema="engy"/>
-                <attribute column="timeinterval_factor" type="integer" path="@factor" schema="engy"/>
-                <attribute column="timeinterval" type="double" path="." schema="engy"/>
+            <attribute column="uom" type="string" minOccurs="1" maxOccurs="1" path="uom" schema="ng"/>
+            <attribute column="file_" type="string" minOccurs="1" maxOccurs="1" path="file" schema="ng"/>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="timeInterval" schema="ng">
+                <attribute column="timeinterval_unit" type="string" path="@unit" schema="ng"/>
+                <attribute column="timeinterval_radix" type="integer" path="@radix" schema="ng"/>
+                <attribute column="timeinterval_factor" type="integer" path="@factor" schema="ng"/>
+                <attribute column="timeinterval" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <attribute column="numberofheaderlines" type="integer" maxOccurs="1" path="numberOfHeaderLines" schema="engy"/>
-            <attribute column="fieldseparator" type="string" minOccurs="1" maxOccurs="1" path="fieldSeparator" schema="engy"/>
-            <attribute column="recordseparator" type="string" maxOccurs="1" path="recordSeparator" schema="engy"/>
-            <attribute column="decimalsymbol" type="string" maxOccurs="1" path="decimalSymbol" schema="engy"/>
-            <attribute column="valuecolumnnumber" type="integer" maxOccurs="1" path="valueColumnNumber" schema="engy"/>
-            <complexProperty minOccurs="1" maxOccurs="1" path="temporalExtent" schema="engy">
-                <type path="TimePeriod" schema="engy">
-                    <attribute column="timeperiodprop_beginposition" type="timestamp" minOccurs="1" maxOccurs="1" path="beginPosition" schema="engy"/>
-                    <attribute column="timeperiodproper_endposition" type="timestamp" minOccurs="1" maxOccurs="1" path="endPosition" schema="engy"/>
+            <attribute column="numberofheaderlines" type="integer" maxOccurs="1" path="numberOfHeaderLines" schema="ng"/>
+            <attribute column="fieldseparator" type="string" minOccurs="1" maxOccurs="1" path="fieldSeparator" schema="ng"/>
+            <attribute column="recordseparator" type="string" maxOccurs="1" path="recordSeparator" schema="ng"/>
+            <attribute column="decimalsymbol" type="string" maxOccurs="1" path="decimalSymbol" schema="ng"/>
+            <attribute column="valuecolumnnumber" type="integer" maxOccurs="1" path="valueColumnNumber" schema="ng"/>
+            <complexProperty minOccurs="1" maxOccurs="1" path="temporalExtent" schema="ng">
+                <type path="TimePeriod" schema="ng">
+                    <attribute column="timeperiodprop_beginposition" type="timestamp" minOccurs="1" maxOccurs="1" path="beginPosition" schema="ng"/>
+                    <attribute column="timeperiodproper_endposition" type="timestamp" minOccurs="1" maxOccurs="1" path="endPosition" schema="ng"/>
                 </type>
             </complexProperty>
         </objectType>
-        <objectType id="engy_TimeSeriesScheduleType" table="engy_schedule" objectClassId="10075" path="TimeSeriesSchedule" schema="engy">
-            <extension base="engy_AbstractScheduleType"/>
-            <objectProperty target="engy_AbstractTimeSeriesType" minOccurs="1" maxOccurs="1" path="timeDependingValues" schema="engy">
-                <join table="engy_timeseries" fromColumn="timedependingvalues_id" toColumn="id" toRole="parent">
+        <objectType id="ng_TimeSeriesScheduleType" table="ng_schedule" objectClassId="10075" path="TimeSeriesSchedule" schema="ng">
+            <extension base="ng_AbstractScheduleType"/>
+            <objectProperty target="ng_AbstractTimeSeriesType" minOccurs="1" maxOccurs="1" path="timeDependingValues" schema="ng">
+                <join table="ng_timeseries" fromColumn="timedependingvalues_id" toColumn="id" toRole="parent">
                     <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
                 </join>
             </objectProperty>
         </objectType>
     </objectTypes>
     <featureTypes>
-        <featureType abstract="true" id="engy_AbstractThermalZoneType" table="engy_thermalzone" objectClassId="10003" path="AbstractThermalZone" schema="engy">
+        <featureType abstract="true" id="ng_AbstractThermalZoneType" table="ng_thermalzone" objectClassId="10003" path="AbstractThermalZone" schema="ng">
             <extension base="AbstractCityObjectType">
                 <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <featureProperty target="engy_AbstractUsageZoneType" path="contains" schema="engy">
-                <join table="engy_usagezone" fromColumn="id" toColumn="thermalzone_contains_id" toRole="child"/>
+            <featureProperty target="ng_AbstractUsageZoneType" path="contains" schema="ng">
+                <join table="ng_usagezone" fromColumn="id" toColumn="thermalzone_contains_id" toRole="child"/>
             </featureProperty>
         </featureType>
-        <featureType abstract="true" id="engy_AbstractUsageZoneType" table="engy_usagezone" objectClassId="10004" path="AbstractUsageZone" schema="engy">
+        <featureType abstract="true" id="ng_AbstractUsageZoneType" table="ng_usagezone" objectClassId="10004" path="AbstractUsageZone" schema="ng">
             <extension base="AbstractCityObjectType">
                 <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
         </featureType>
-        <featureType abstract="true" id="engy_AbstractConstructionType" table="engy_construction" objectClassId="10007" path="AbstractConstruction" schema="engy">
+        <featureType abstract="true" id="ng_AbstractConstructionType" table="ng_construction" objectClassId="10007" path="AbstractConstruction" schema="ng">
             <extension base="AbstractFeatureType">
                 <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
         </featureType>
-        <featureType id="engy_EnergyDemandType" table="engy_energydemand" objectClassId="10010" path="EnergyDemand" schema="engy">
+        <featureType id="ng_EnergyDemandType" table="ng_energydemand" objectClassId="10010" path="EnergyDemand" schema="ng">
             <extension base="AbstractFeatureType">
                 <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <objectProperty target="engy_AbstractTimeSeriesType" minOccurs="1" maxOccurs="1" path="energyAmount" schema="engy">
-                <join table="engy_timeseries" fromColumn="energyamount_id" toColumn="id" toRole="parent">
+            <objectProperty target="ng_AbstractTimeSeriesType" minOccurs="1" maxOccurs="1" path="energyAmount" schema="ng">
+                <join table="ng_timeseries" fromColumn="energyamount_id" toColumn="id" toRole="parent">
                     <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
                 </join>
             </objectProperty>
-            <attribute column="enduse" type="string" minOccurs="1" maxOccurs="1" path="endUse" schema="engy"/>
-            <complexAttribute maxOccurs="1" path="maximumLoad" schema="engy">
-                <attribute column="maximumload_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="maximumload" type="double" path="." schema="engy"/>
+            <attribute column="enduse" type="string" minOccurs="1" maxOccurs="1" path="endUse" schema="ng"/>
+            <complexAttribute maxOccurs="1" path="maximumLoad" schema="ng">
+                <attribute column="maximumload_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="maximumload" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="energyCarrierType" schema="engy">
-                <attribute column="energycarriertype_codespace" type="string" path="@codespace" schema="engy"/>
-                <attribute column="energycarriertype" type="string" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="energyCarrierType" schema="ng">
+                <attribute column="energycarriertype_codespace" type="string" path="@codespace" schema="ng"/>
+                <attribute column="energycarriertype" type="string" path="." schema="ng"/>
             </complexAttribute>
-            <featureProperty target="AbstractCityObjectType" path="demandedBy" schema="engy">
-                <joinTable table="engy_energyde_to_cityobje">
-                    <join table="engy_energydemand" fromColumn="energydemand_id" toColumn="id" toRole="parent"/>
+            <featureProperty target="AbstractCityObjectType" path="demandedBy" schema="ng">
+                <joinTable table="ng_energyde_to_cityobje">
+                    <join table="ng_energydemand" fromColumn="energydemand_id" toColumn="id" toRole="parent"/>
                     <inverseJoin table="cityobject" fromColumn="cityobject_id" toColumn="id" toRole="parent">
                         <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
                     </inverseJoin>
                 </joinTable>
             </featureProperty>
         </featureType>
-        <featureType abstract="true" id="engy_AbstractEnergySystemType" table="engy_energysystem" objectClassId="10012" path="AbstractEnergySystem" schema="engy">
+        <featureType abstract="true" id="ng_AbstractEnergySystemType" table="ng_energysystem" objectClassId="10012" path="AbstractEnergySystem" schema="ng">
             <extension base="AbstractCityObjectType">
                 <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="numberofdevices" type="integer" maxOccurs="1" path="numberOfDevices" schema="engy"/>
-            <attribute column="model" type="string" maxOccurs="1" path="model" schema="engy"/>
-            <objectProperty target="engy_ServiceLifeType" maxOccurs="1" path="serviceLife" schema="engy">
-                <join table="engy_servicelife" fromColumn="servicelife_id" toColumn="id" toRole="parent"/>
+            <attribute column="numberofdevices" type="integer" maxOccurs="1" path="numberOfDevices" schema="ng"/>
+            <attribute column="model" type="string" maxOccurs="1" path="model" schema="ng"/>
+            <objectProperty target="ng_ServiceLifeType" maxOccurs="1" path="serviceLife" schema="ng">
+                <join table="ng_servicelife" fromColumn="servicelife_id" toColumn="id" toRole="parent"/>
             </objectProperty>
-            <attribute column="yearofmanufacure" type="date" maxOccurs="1" path="yearOfManufacure" schema="engy"/>
-            <featureProperty target="AbstractCityObjectType" path="installedIn" schema="engy">
-                <joinTable table="engy_energysy_to_cityobje">
-                    <join table="engy_energysystem" fromColumn="energysystem_id" toColumn="id" toRole="parent">
+            <attribute column="yearofmanufacure" type="date" maxOccurs="1" path="yearOfManufacure" schema="ng"/>
+            <featureProperty target="AbstractCityObjectType" path="installedIn" schema="ng">
+                <joinTable table="ng_energysy_to_cityobje">
+                    <join table="ng_energysystem" fromColumn="energysystem_id" toColumn="id" toRole="parent">
                         <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
                     </join>
                     <inverseJoin table="cityobject" fromColumn="cityobject_id" toColumn="id" toRole="parent">
@@ -389,758 +389,758 @@
                 </joinTable>
             </featureProperty>
         </featureType>
-        <featureType id="engy_ThermalBoundaryType" table="engy_thermalboundary" objectClassId="10017" path="ThermalBoundary" schema="engy">
+        <featureType id="ng_ThermalBoundaryType" table="ng_thermalboundary" objectClassId="10017" path="ThermalBoundary" schema="ng">
             <extension base="AbstractCityObjectType">
                 <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="thermalboundarytype" type="string" minOccurs="1" maxOccurs="1" path="thermalBoundaryType" schema="engy"/>
-            <complexAttribute maxOccurs="1" path="azimuth" schema="engy">
-                <attribute column="azimuth_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="azimuth" type="double" path="." schema="engy"/>
+            <attribute column="thermalboundarytype" type="string" minOccurs="1" maxOccurs="1" path="thermalBoundaryType" schema="ng"/>
+            <complexAttribute maxOccurs="1" path="azimuth" schema="ng">
+                <attribute column="azimuth_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="azimuth" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="inclination" schema="engy">
-                <attribute column="inclination_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="inclination" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="inclination" schema="ng">
+                <attribute column="inclination_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="inclination" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="area" schema="engy">
-                <attribute column="area_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="area" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="area" schema="ng">
+                <attribute column="area_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="area" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <geometryProperty refColumn="surfacegeometry_id" type="MultiSurface" maxOccurs="1" path="surfaceGeometry" schema="engy"/>
-            <complexProperty refType="engy_RefurbishmentMeasureType" path="refurbishmentMeasure" schema="engy">
-                <join table="engy_refurbishmentmeasure" fromColumn="id" toColumn="thermalbound_refurbishmen_id" toRole="child"/>
+            <geometryProperty refColumn="surfacegeometry_id" type="MultiSurface" maxOccurs="1" path="surfaceGeometry" schema="ng"/>
+            <complexProperty refType="ng_RefurbishmentMeasureType" path="refurbishmentMeasure" schema="ng">
+                <join table="ng_refurbishmentmeasure" fromColumn="id" toColumn="thermalbound_refurbishmen_id" toRole="child"/>
             </complexProperty>
-            <featureProperty target="engy_AbstractConstructionType" maxOccurs="1" path="construction" schema="engy">
-                <join table="engy_construction" fromColumn="construction_id" toColumn="id" toRole="parent"/>
+            <featureProperty target="ng_AbstractConstructionType" maxOccurs="1" path="construction" schema="ng">
+                <join table="ng_construction" fromColumn="construction_id" toColumn="id" toRole="parent"/>
             </featureProperty>
-            <featureProperty target="engy_ThermalOpeningType" path="contains" schema="engy">
-                <join table="engy_thermalopening" fromColumn="id" toColumn="thermalboundary_contains_id" toRole="child"/>
+            <featureProperty target="ng_ThermalOpeningType" path="contains" schema="ng">
+                <join table="ng_thermalopening" fromColumn="id" toColumn="thermalboundary_contains_id" toRole="child"/>
             </featureProperty>
-            <featureProperty target="engy_ThermalZoneType" minOccurs="1" maxOccurs="2" path="delimits" schema="engy">
-                <joinTable table="engy_ther_deli_to_the_bou">
-                    <join table="engy_thermalboundary" fromColumn="thermalboundary_delimits_id" toColumn="id" toRole="parent"/>
-                    <inverseJoin table="engy_thermalzone" fromColumn="thermalzone_boundedby_id" toColumn="id" toRole="parent"/>
+            <featureProperty target="ng_ThermalZoneType" minOccurs="1" maxOccurs="2" path="delimits" schema="ng">
+                <joinTable table="ng_ther_deli_to_the_bou">
+                    <join table="ng_thermalboundary" fromColumn="thermalboundary_delimits_id" toColumn="id" toRole="parent"/>
+                    <inverseJoin table="ng_thermalzone" fromColumn="thermalzone_boundedby_id" toColumn="id" toRole="parent"/>
                 </joinTable>
             </featureProperty>
-            <featureProperty target="AbstractBoundarySurfaceType" path="relatesTo" schema="engy">
-                <joinTable table="engy_therm_to_thema_surfa">
-                    <join table="engy_thermalboundary" fromColumn="thermalboundary_id" toColumn="id" toRole="parent"/>
+            <featureProperty target="AbstractBoundarySurfaceType" path="relatesTo" schema="ng">
+                <joinTable table="ng_therm_to_thema_surfa">
+                    <join table="ng_thermalboundary" fromColumn="thermalboundary_id" toColumn="id" toRole="parent"/>
                     <inverseJoin table="thematic_surface" fromColumn="thematic_surface_id" toColumn="id" toRole="parent"/>
                 </joinTable>
             </featureProperty>
         </featureType>
-        <featureType id="engy_ThermalOpeningType" table="engy_thermalopening" objectClassId="10018" path="ThermalOpening" schema="engy">
+        <featureType id="ng_ThermalOpeningType" table="ng_thermalopening" objectClassId="10018" path="ThermalOpening" schema="ng">
             <extension base="AbstractCityObjectType">
                 <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <complexAttribute maxOccurs="1" path="area" schema="engy">
-                <attribute column="area_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="area" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="area" schema="ng">
+                <attribute column="area_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="area" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <featureProperty target="engy_AbstractConstructionType" maxOccurs="1" path="construction" schema="engy">
-                <join table="engy_construction" fromColumn="construction_id" toColumn="id" toRole="parent"/>
+            <featureProperty target="ng_AbstractConstructionType" maxOccurs="1" path="construction" schema="ng">
+                <join table="ng_construction" fromColumn="construction_id" toColumn="id" toRole="parent"/>
             </featureProperty>
-            <complexProperty refType="engy_ShadingTypeType" maxOccurs="1" path="indoorShading" schema="engy">
-                <join table="engy_shadingtype" fromColumn="indoorshading_id" toColumn="id" toRole="parent"/>
+            <complexProperty refType="ng_ShadingTypeType" maxOccurs="1" path="indoorShading" schema="ng">
+                <join table="ng_shadingtype" fromColumn="indoorshading_id" toColumn="id" toRole="parent"/>
             </complexProperty>
-            <complexProperty refType="engy_ShadingTypeType" maxOccurs="1" path="outdoorShading" schema="engy">
-                <join table="engy_shadingtype" fromColumn="outdoorshading_id" toColumn="id" toRole="parent"/>
+            <complexProperty refType="ng_ShadingTypeType" maxOccurs="1" path="outdoorShading" schema="ng">
+                <join table="ng_shadingtype" fromColumn="outdoorshading_id" toColumn="id" toRole="parent"/>
             </complexProperty>
-            <complexAttribute maxOccurs="1" path="openableRatio" schema="engy">
-                <attribute column="openableratio_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="openableratio" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="openableRatio" schema="ng">
+                <attribute column="openableratio_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="openableratio" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <geometryProperty refColumn="surfacegeometry_id" type="MultiSurface" maxOccurs="1" path="surfaceGeometry" schema="engy"/>
-            <featureProperty target="AbstractOpeningType" path="relatesTo" schema="engy">
-                <joinTable table="engy_thermalop_to_opening">
-                    <join table="engy_thermalopening" fromColumn="thermalopening_id" toColumn="id" toRole="parent"/>
+            <geometryProperty refColumn="surfacegeometry_id" type="MultiSurface" maxOccurs="1" path="surfaceGeometry" schema="ng"/>
+            <featureProperty target="AbstractOpeningType" path="relatesTo" schema="ng">
+                <joinTable table="ng_thermalop_to_opening">
+                    <join table="ng_thermalopening" fromColumn="thermalopening_id" toColumn="id" toRole="parent"/>
                     <inverseJoin table="opening" fromColumn="opening_id" toColumn="id" toRole="parent"/>
                 </joinTable>
             </featureProperty>
         </featureType>
-        <featureType id="engy_ThermalZoneType" table="engy_thermalzone" objectClassId="10019" path="ThermalZone" schema="engy">
-            <extension base="engy_AbstractThermalZoneType"/>
-            <complexAttribute maxOccurs="1" path="additionalThermalBridgeUValue" schema="engy">
-                <attribute column="additionalthermalbridgeu_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="additionalthermalbridgeuvalu" type="double" path="." schema="engy"/>
+        <featureType id="ng_ThermalZoneType" table="ng_thermalzone" objectClassId="10019" path="ThermalZone" schema="ng">
+            <extension base="ng_AbstractThermalZoneType"/>
+            <complexAttribute maxOccurs="1" path="additionalThermalBridgeUValue" schema="ng">
+                <attribute column="additionalthermalbridgeu_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="additionalthermalbridgeuvalu" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="effectiveThermalCapacity" schema="engy">
-                <attribute column="effectivethermalcapacity_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="effectivethermalcapacity" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="effectiveThermalCapacity" schema="ng">
+                <attribute column="effectivethermalcapacity_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="effectivethermalcapacity" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexProperty refType="engy_FloorAreaType" path="floorArea" schema="engy">
-                <join table="engy_floorarea" fromColumn="id" toColumn="thermalzone_floorarea_id" toRole="child"/>
+            <complexProperty refType="ng_FloorAreaType" path="floorArea" schema="ng">
+                <join table="ng_floorarea" fromColumn="id" toColumn="thermalzone_floorarea_id" toRole="child"/>
             </complexProperty>
-            <complexProperty refType="engy_VolumeTypeType" path="volume" schema="engy">
-                <join table="engy_volumetype" fromColumn="id" toColumn="thermalzone_volume_id" toRole="child"/>
+            <complexProperty refType="ng_VolumeTypeType" path="volume" schema="ng">
+                <join table="ng_volumetype" fromColumn="id" toColumn="thermalzone_volume_id" toRole="child"/>
             </complexProperty>
-            <complexAttribute maxOccurs="1" path="indirectlyHeatedAreaRatio" schema="engy">
-                <attribute column="indirectlyheatedarearati_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="indirectlyheatedarearatio" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="indirectlyHeatedAreaRatio" schema="ng">
+                <attribute column="indirectlyheatedarearati_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="indirectlyheatedarearatio" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="infiltrationRate" schema="engy">
-                <attribute column="infiltrationrate_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="infiltrationrate" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="infiltrationRate" schema="ng">
+                <attribute column="infiltrationrate_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="infiltrationrate" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <attribute column="iscooled" type="boolean" minOccurs="1" maxOccurs="1" path="isCooled" schema="engy"/>
-            <attribute column="isheated" type="boolean" minOccurs="1" maxOccurs="1" path="isHeated" schema="engy"/>
-            <geometryProperty refColumn="volumegeometry_id" type="AbstractSolid" maxOccurs="1" path="volumeGeometry" schema="engy"/>
-            <featureProperty target="RoomType" path="interiorRoom" schema="engy">
-                <joinTable table="engy_thermalzone_to_room">
-                    <join table="engy_thermalzone" fromColumn="thermalzone_id" toColumn="id" toRole="parent"/>
+            <attribute column="iscooled" type="boolean" minOccurs="1" maxOccurs="1" path="isCooled" schema="ng"/>
+            <attribute column="isheated" type="boolean" minOccurs="1" maxOccurs="1" path="isHeated" schema="ng"/>
+            <geometryProperty refColumn="volumegeometry_id" type="AbstractSolid" maxOccurs="1" path="volumeGeometry" schema="ng"/>
+            <featureProperty target="RoomType" path="interiorRoom" schema="ng">
+                <joinTable table="ng_thermalzone_to_room">
+                    <join table="ng_thermalzone" fromColumn="thermalzone_id" toColumn="id" toRole="parent"/>
                     <inverseJoin table="room" fromColumn="room_id" toColumn="id" toRole="parent"/>
                 </joinTable>
             </featureProperty>
-            <featureProperty target="engy_ThermalBoundaryType" path="boundedBy" schema="engy">
-                <joinTable table="engy_ther_deli_to_the_bou">
-                    <join table="engy_thermalzone" fromColumn="thermalzone_boundedby_id" toColumn="id" toRole="parent"/>
-                    <inverseJoin table="engy_thermalboundary" fromColumn="thermalboundary_delimits_id" toColumn="id" toRole="parent"/>
+            <featureProperty target="ng_ThermalBoundaryType" path="boundedBy" schema="ng">
+                <joinTable table="ng_ther_deli_to_the_bou">
+                    <join table="ng_thermalzone" fromColumn="thermalzone_boundedby_id" toColumn="id" toRole="parent"/>
+                    <inverseJoin table="ng_thermalboundary" fromColumn="thermalboundary_delimits_id" toColumn="id" toRole="parent"/>
                 </joinTable>
             </featureProperty>
         </featureType>
-        <featureType abstract="true" id="engy_AbstractEnergyConversionSystemType" table="engy_energyconversionsyst" objectClassId="10020" path="AbstractEnergyConversionSystem" schema="engy">
-            <extension base="engy_AbstractEnergySystemType">
-                <join table="engy_energysystem" fromColumn="id" toColumn="id" toRole="parent"/>
+        <featureType abstract="true" id="ng_AbstractEnergyConversionSystemType" table="ng_energyconversionsyst" objectClassId="10020" path="AbstractEnergyConversionSystem" schema="ng">
+            <extension base="ng_AbstractEnergySystemType">
+                <join table="ng_energysystem" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="efficiencyindicator" type="string" maxOccurs="1" path="efficiencyIndicator" schema="engy"/>
-            <complexAttribute maxOccurs="1" path="installedPower" schema="engy">
-                <attribute column="installedpower_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="installedpower" type="double" path="." schema="engy"/>
+            <attribute column="efficiencyindicator" type="string" maxOccurs="1" path="efficiencyIndicator" schema="ng"/>
+            <complexAttribute maxOccurs="1" path="installedPower" schema="ng">
+                <attribute column="installedpower_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="installedpower" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="nominalEfficiency" schema="engy">
-                <attribute column="nominalefficiency_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="nominalefficiency" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="nominalEfficiency" schema="ng">
+                <attribute column="nominalefficiency_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="nominalefficiency" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <featureProperty target="engy_SystemOperationType" path="has" schema="engy">
-                <join table="engy_systemoperation" fromColumn="id" toColumn="energyconversionsyste_has_id" toRole="child"/>
+            <featureProperty target="ng_SystemOperationType" path="has" schema="ng">
+                <join table="ng_systemoperation" fromColumn="id" toColumn="energyconversionsyste_has_id" toRole="child"/>
             </featureProperty>
-            <featureProperty target="engy_EnergyFlowType" path="provides" schema="engy">
-                <joinTable table="engy_ener_prov_to_ene_isp">
-                    <join table="engy_energyconversionsyst" fromColumn="energyconversion_provides_id" toColumn="id" toRole="parent">
+            <featureProperty target="ng_EnergyFlowType" path="provides" schema="ng">
+                <joinTable table="ng_ener_prov_to_ene_isp">
+                    <join table="ng_energyconversionsyst" fromColumn="energyconversion_provides_id" toColumn="id" toRole="parent">
                         <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
                     </join>
-                    <inverseJoin table="engy_energyflow" fromColumn="energyflow_isprovidedby_id" toColumn="id" toRole="parent"/>
+                    <inverseJoin table="ng_energyflow" fromColumn="energyflow_isprovidedby_id" toColumn="id" toRole="parent"/>
                 </joinTable>
             </featureProperty>
         </featureType>
-        <featureType id="engy_SystemOperationType" table="engy_systemoperation" objectClassId="10021" path="SystemOperation" schema="engy">
+        <featureType id="ng_SystemOperationType" table="ng_systemoperation" objectClassId="10021" path="SystemOperation" schema="ng">
             <extension base="AbstractFeatureType">
                 <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="enduse" type="string" minOccurs="1" maxOccurs="1" path="endUse" schema="engy"/>
-            <objectProperty target="engy_AbstractScheduleType" maxOccurs="1" path="operationTime" schema="engy">
-                <join table="engy_schedule" fromColumn="operationtime_id" toColumn="id" toRole="parent">
+            <attribute column="enduse" type="string" minOccurs="1" maxOccurs="1" path="endUse" schema="ng"/>
+            <objectProperty target="ng_AbstractScheduleType" maxOccurs="1" path="operationTime" schema="ng">
+                <join table="ng_schedule" fromColumn="operationtime_id" toColumn="id" toRole="parent">
                     <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
                 </join>
             </objectProperty>
-            <attribute column="yearlyglobalefficiency" type="double" maxOccurs="1" path="yearlyGlobalEfficiency" schema="engy"/>
+            <attribute column="yearlyglobalefficiency" type="double" maxOccurs="1" path="yearlyGlobalEfficiency" schema="ng"/>
         </featureType>
-        <featureType id="engy_EnergyFlowType" table="engy_energyflow" objectClassId="10022" path="EnergyFlow" schema="engy">
+        <featureType id="ng_EnergyFlowType" table="ng_energyflow" objectClassId="10022" path="EnergyFlow" schema="ng">
             <extension base="AbstractFeatureType">
                 <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <objectProperty target="engy_AbstractTimeSeriesType" minOccurs="1" maxOccurs="1" path="energyAmount" schema="engy">
-                <join table="engy_timeseries" fromColumn="energyamount_id" toColumn="id" toRole="parent">
+            <objectProperty target="ng_AbstractTimeSeriesType" minOccurs="1" maxOccurs="1" path="energyAmount" schema="ng">
+                <join table="ng_timeseries" fromColumn="energyamount_id" toColumn="id" toRole="parent">
                     <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
                 </join>
             </objectProperty>
-            <complexAttribute maxOccurs="1" path="energyCarrierType" schema="engy">
-                <attribute column="energycarriertype_codespace" type="string" path="@codespace" schema="engy"/>
-                <attribute column="energycarriertype" type="string" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="energyCarrierType" schema="ng">
+                <attribute column="energycarriertype_codespace" type="string" path="@codespace" schema="ng"/>
+                <attribute column="energycarriertype" type="string" path="." schema="ng"/>
             </complexAttribute>
-            <featureProperty target="engy_AbstractEnergyConversionSystemType" path="isProvidedBy" schema="engy">
-                <joinTable table="engy_ener_prov_to_ene_isp">
-                    <join table="engy_energyflow" fromColumn="energyflow_isprovidedby_id" toColumn="id" toRole="parent"/>
-                    <inverseJoin table="engy_energyconversionsyst" fromColumn="energyconversion_provides_id" toColumn="id" toRole="parent">
+            <featureProperty target="ng_AbstractEnergyConversionSystemType" path="isProvidedBy" schema="ng">
+                <joinTable table="ng_ener_prov_to_ene_isp">
+                    <join table="ng_energyflow" fromColumn="energyflow_isprovidedby_id" toColumn="id" toRole="parent"/>
+                    <inverseJoin table="ng_energyconversionsyst" fromColumn="energyconversion_provides_id" toColumn="id" toRole="parent">
                         <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
                     </inverseJoin>
                 </joinTable>
             </featureProperty>
-            <featureProperty target="engy_AbstractEnergyDistributionSystemType" path="isDistributedBy" schema="engy">
-                <joinTable table="engy_ener_dist_to_ene_isd">
-                    <join table="engy_energyflow" fromColumn="energyflow_isdistributedb_id" toColumn="id" toRole="parent"/>
-                    <inverseJoin table="engy_energydistributionsy" fromColumn="energydistrib_distributes_id" toColumn="id" toRole="parent">
+            <featureProperty target="ng_AbstractEnergyDistributionSystemType" path="isDistributedBy" schema="ng">
+                <joinTable table="ng_ener_dist_to_ene_isd">
+                    <join table="ng_energyflow" fromColumn="energyflow_isdistributedb_id" toColumn="id" toRole="parent"/>
+                    <inverseJoin table="ng_energydistributionsy" fromColumn="energydistrib_distributes_id" toColumn="id" toRole="parent">
                         <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
                     </inverseJoin>
                 </joinTable>
             </featureProperty>
-            <featureProperty target="engy_EmitterSystemType" path="isEmittedBy" schema="engy">
-                <joinTable table="engy_emit_emit_to_ene_ise">
-                    <join table="engy_energyflow" fromColumn="energyflow_isemittedby_id" toColumn="id" toRole="parent"/>
-                    <inverseJoin table="engy_emittersystem" fromColumn="emittersystem_emitts_id" toColumn="id" toRole="parent"/>
+            <featureProperty target="ng_EmitterSystemType" path="isEmittedBy" schema="ng">
+                <joinTable table="ng_emit_emit_to_ene_ise">
+                    <join table="ng_energyflow" fromColumn="energyflow_isemittedby_id" toColumn="id" toRole="parent"/>
+                    <inverseJoin table="ng_emittersystem" fromColumn="emittersystem_emitts_id" toColumn="id" toRole="parent"/>
                 </joinTable>
             </featureProperty>
-            <featureProperty target="engy_AbstractStorageSystemType" path="isStoredBy" schema="engy">
-                <joinTable table="engy_ener_isst_to_sto_sto">
-                    <join table="engy_energyflow" fromColumn="energyflow_isstoredby_id" toColumn="id" toRole="parent"/>
-                    <inverseJoin table="engy_storagesystem" fromColumn="storagesystem_stores_id" toColumn="id" toRole="parent">
+            <featureProperty target="ng_AbstractStorageSystemType" path="isStoredBy" schema="ng">
+                <joinTable table="ng_ener_isst_to_sto_sto">
+                    <join table="ng_energyflow" fromColumn="energyflow_isstoredby_id" toColumn="id" toRole="parent"/>
+                    <inverseJoin table="ng_storagesystem" fromColumn="storagesystem_stores_id" toColumn="id" toRole="parent">
                         <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
                     </inverseJoin>
                 </joinTable>
             </featureProperty>
         </featureType>
-        <featureType abstract="true" id="engy_AbstractEnergyDistributionSystemType" table="engy_energydistributionsy" objectClassId="10024" path="AbstractEnergyDistributionSystem" schema="engy">
-            <extension base="engy_AbstractEnergySystemType">
-                <join table="engy_energysystem" fromColumn="id" toColumn="id" toRole="parent"/>
+        <featureType abstract="true" id="ng_AbstractEnergyDistributionSystemType" table="ng_energydistributionsy" objectClassId="10024" path="AbstractEnergyDistributionSystem" schema="ng">
+            <extension base="ng_AbstractEnergySystemType">
+                <join table="ng_energysystem" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="distributionperimeter" type="string" maxOccurs="1" path="distributionPerimeter" schema="engy"/>
-            <featureProperty target="engy_EnergyFlowType" path="distributes" schema="engy">
-                <joinTable table="engy_ener_dist_to_ene_isd">
-                    <join table="engy_energydistributionsy" fromColumn="energydistrib_distributes_id" toColumn="id" toRole="parent">
+            <attribute column="distributionperimeter" type="string" maxOccurs="1" path="distributionPerimeter" schema="ng"/>
+            <featureProperty target="ng_EnergyFlowType" path="distributes" schema="ng">
+                <joinTable table="ng_ener_dist_to_ene_isd">
+                    <join table="ng_energydistributionsy" fromColumn="energydistrib_distributes_id" toColumn="id" toRole="parent">
                         <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
                     </join>
-                    <inverseJoin table="engy_energyflow" fromColumn="energyflow_isdistributedb_id" toColumn="id" toRole="parent"/>
+                    <inverseJoin table="ng_energyflow" fromColumn="energyflow_isdistributedb_id" toColumn="id" toRole="parent"/>
                 </joinTable>
             </featureProperty>
         </featureType>
-        <featureType id="engy_EmitterSystemType" table="engy_emittersystem" objectClassId="10025" path="EmitterSystem" schema="engy">
-            <extension base="engy_AbstractEnergySystemType">
-                <join table="engy_energysystem" fromColumn="id" toColumn="id" toRole="parent"/>
+        <featureType id="ng_EmitterSystemType" table="ng_emittersystem" objectClassId="10025" path="EmitterSystem" schema="ng">
+            <extension base="ng_AbstractEnergySystemType">
+                <join table="ng_energysystem" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="emittertype" type="string" maxOccurs="1" path="emitterType" schema="engy"/>
-            <complexAttribute maxOccurs="1" path="installedPower" schema="engy">
-                <attribute column="installedpower_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="installedpower" type="double" path="." schema="engy"/>
+            <attribute column="emittertype" type="string" maxOccurs="1" path="emitterType" schema="ng"/>
+            <complexAttribute maxOccurs="1" path="installedPower" schema="ng">
+                <attribute column="installedpower_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="installedpower" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexProperty refType="engy_HeatExchangeTypeType" maxOccurs="1" path="thermalExchange" schema="engy">
-                <join table="engy_heatexchangetype" fromColumn="thermalexchange_id" toColumn="id" toRole="parent"/>
+            <complexProperty refType="ng_HeatExchangeTypeType" maxOccurs="1" path="thermalExchange" schema="ng">
+                <join table="ng_heatexchangetype" fromColumn="thermalexchange_id" toColumn="id" toRole="parent"/>
             </complexProperty>
-            <featureProperty target="engy_EnergyFlowType" path="emitts" schema="engy">
-                <joinTable table="engy_emit_emit_to_ene_ise">
-                    <join table="engy_emittersystem" fromColumn="emittersystem_emitts_id" toColumn="id" toRole="parent"/>
-                    <inverseJoin table="engy_energyflow" fromColumn="energyflow_isemittedby_id" toColumn="id" toRole="parent"/>
+            <featureProperty target="ng_EnergyFlowType" path="emitts" schema="ng">
+                <joinTable table="ng_emit_emit_to_ene_ise">
+                    <join table="ng_emittersystem" fromColumn="emittersystem_emitts_id" toColumn="id" toRole="parent"/>
+                    <inverseJoin table="ng_energyflow" fromColumn="energyflow_isemittedby_id" toColumn="id" toRole="parent"/>
                 </joinTable>
             </featureProperty>
         </featureType>
-        <featureType abstract="true" id="engy_AbstractStorageSystemType" table="engy_storagesystem" objectClassId="10026" path="AbstractStorageSystem" schema="engy">
-            <extension base="engy_AbstractEnergySystemType">
-                <join table="engy_energysystem" fromColumn="id" toColumn="id" toRole="parent"/>
+        <featureType abstract="true" id="ng_AbstractStorageSystemType" table="ng_storagesystem" objectClassId="10026" path="AbstractStorageSystem" schema="ng">
+            <extension base="ng_AbstractEnergySystemType">
+                <join table="ng_energysystem" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <featureProperty target="engy_EnergyFlowType" path="stores" schema="engy">
-                <joinTable table="engy_ener_isst_to_sto_sto">
-                    <join table="engy_storagesystem" fromColumn="storagesystem_stores_id" toColumn="id" toRole="parent">
+            <featureProperty target="ng_EnergyFlowType" path="stores" schema="ng">
+                <joinTable table="ng_ener_isst_to_sto_sto">
+                    <join table="ng_storagesystem" fromColumn="storagesystem_stores_id" toColumn="id" toRole="parent">
                         <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
                     </join>
-                    <inverseJoin table="engy_energyflow" fromColumn="energyflow_isstoredby_id" toColumn="id" toRole="parent"/>
+                    <inverseJoin table="ng_energyflow" fromColumn="energyflow_isstoredby_id" toColumn="id" toRole="parent"/>
                 </joinTable>
             </featureProperty>
         </featureType>
-        <featureType abstract="true" id="engy_AbstractSolarEnergySystemType" table="engy_solarenergysystem" objectClassId="10027" path="AbstractSolarEnergySystem" schema="engy">
-            <extension base="engy_AbstractEnergyConversionSystemType">
-                <join table="engy_energyconversionsyst" fromColumn="id" toColumn="id" toRole="parent"/>
+        <featureType abstract="true" id="ng_AbstractSolarEnergySystemType" table="ng_solarenergysystem" objectClassId="10027" path="AbstractSolarEnergySystem" schema="ng">
+            <extension base="ng_AbstractEnergyConversionSystemType">
+                <join table="ng_energyconversionsyst" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <geometryProperty refColumn="surfacegeometry_id" type="MultiSurface" maxOccurs="1" path="surfaceGeometry" schema="engy"/>
-            <featureProperty target="AbstractBoundarySurfaceType" maxOccurs="1" path="installedOnBoundarySurface" schema="engy">
+            <geometryProperty refColumn="surfacegeometry_id" type="MultiSurface" maxOccurs="1" path="surfaceGeometry" schema="ng"/>
+            <featureProperty target="AbstractBoundarySurfaceType" maxOccurs="1" path="installedOnBoundarySurface" schema="ng">
                 <join table="thematic_surface" fromColumn="installedonboundarysurfac_id" toColumn="id" toRole="parent"/>
             </featureProperty>
-            <featureProperty target="BuildingInstallationType" maxOccurs="1" path="installedOnBuildingInstallation" schema="engy">
+            <featureProperty target="BuildingInstallationType" maxOccurs="1" path="installedOnBuildingInstallation" schema="ng">
                 <join table="building_installation" fromColumn="installedonbuildinginstal_id" toColumn="id" toRole="parent"/>
             </featureProperty>
         </featureType>
-        <featureType id="engy_AirCompressorType" table="engy_aircompressor" objectClassId="10028" path="AirCompressor" schema="engy">
-            <extension base="engy_AbstractEnergyConversionSystemType">
-                <join table="engy_energyconversionsyst" fromColumn="id" toColumn="id" toRole="parent"/>
+        <featureType id="ng_AirCompressorType" table="ng_aircompressor" objectClassId="10028" path="AirCompressor" schema="ng">
+            <extension base="ng_AbstractEnergyConversionSystemType">
+                <join table="ng_energyconversionsyst" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="compressortype" type="string" minOccurs="1" maxOccurs="1" path="compressorType" schema="engy"/>
-            <complexAttribute maxOccurs="1" path="pressure" schema="engy">
-                <attribute column="pressure_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="pressure" type="double" path="." schema="engy"/>
+            <attribute column="compressortype" type="string" minOccurs="1" maxOccurs="1" path="compressorType" schema="ng"/>
+            <complexAttribute maxOccurs="1" path="pressure" schema="ng">
+                <attribute column="pressure_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="pressure" type="double" path="." schema="ng"/>
             </complexAttribute>
         </featureType>
-        <featureType id="engy_BoilerType" table="engy_energyconversionsyst" objectClassId="10029" path="Boiler" schema="engy">
-            <extension base="engy_AbstractEnergyConversionSystemType"/>
-            <attribute column="hascondensation" type="boolean" minOccurs="1" maxOccurs="1" path="hasCondensation" schema="engy"/>
+        <featureType id="ng_BoilerType" table="ng_energyconversionsyst" objectClassId="10029" path="Boiler" schema="ng">
+            <extension base="ng_AbstractEnergyConversionSystemType"/>
+            <attribute column="hascondensation" type="boolean" minOccurs="1" maxOccurs="1" path="hasCondensation" schema="ng"/>
         </featureType>
-        <featureType id="engy_ChillerType" table="engy_chiller" objectClassId="10030" path="Chiller" schema="engy">
-            <extension base="engy_AbstractEnergyConversionSystemType">
-                <join table="engy_energyconversionsyst" fromColumn="id" toColumn="id" toRole="parent"/>
+        <featureType id="ng_ChillerType" table="ng_chiller" objectClassId="10030" path="Chiller" schema="ng">
+            <extension base="ng_AbstractEnergyConversionSystemType">
+                <join table="ng_energyconversionsyst" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="condensationtype" type="string" minOccurs="1" maxOccurs="1" path="condensationType" schema="engy"/>
-            <attribute column="compressortype" type="string" minOccurs="1" maxOccurs="1" path="compressorType" schema="engy"/>
-            <attribute column="refrigerant" type="string" maxOccurs="1" path="refrigerant" schema="engy"/>
+            <attribute column="condensationtype" type="string" minOccurs="1" maxOccurs="1" path="condensationType" schema="ng"/>
+            <attribute column="compressortype" type="string" minOccurs="1" maxOccurs="1" path="compressorType" schema="ng"/>
+            <attribute column="refrigerant" type="string" maxOccurs="1" path="refrigerant" schema="ng"/>
         </featureType>
-        <featureType id="engy_CombinedHeatPowerType" table="engy_combinedheatpower" objectClassId="10031" path="CombinedHeatPower" schema="engy">
-            <extension base="engy_AbstractEnergyConversionSystemType">
-                <join table="engy_energyconversionsyst" fromColumn="id" toColumn="id" toRole="parent"/>
+        <featureType id="ng_CombinedHeatPowerType" table="ng_combinedheatpower" objectClassId="10031" path="CombinedHeatPower" schema="ng">
+            <extension base="ng_AbstractEnergyConversionSystemType">
+                <join table="ng_energyconversionsyst" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="technologytype" type="string" minOccurs="1" maxOccurs="1" path="technologyType" schema="engy"/>
-            <complexAttribute maxOccurs="1" path="thermalEfficiency" schema="engy">
-                <attribute column="thermalefficiency_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="thermalefficiency" type="double" path="." schema="engy"/>
+            <attribute column="technologytype" type="string" minOccurs="1" maxOccurs="1" path="technologyType" schema="ng"/>
+            <complexAttribute maxOccurs="1" path="thermalEfficiency" schema="ng">
+                <attribute column="thermalefficiency_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="thermalefficiency" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="electricalEfficiency" schema="engy">
-                <attribute column="electricalefficiency_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="electricalefficiency" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="electricalEfficiency" schema="ng">
+                <attribute column="electricalefficiency_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="electricalefficiency" type="double" path="." schema="ng"/>
             </complexAttribute>
         </featureType>
-        <featureType id="engy_ElectricalResistanceType" table="engy_energyconversionsyst" objectClassId="10032" path="ElectricalResistance" schema="engy">
-            <extension base="engy_AbstractEnergyConversionSystemType"/>
+        <featureType id="ng_ElectricalResistanceType" table="ng_energyconversionsyst" objectClassId="10032" path="ElectricalResistance" schema="ng">
+            <extension base="ng_AbstractEnergyConversionSystemType"/>
         </featureType>
-        <featureType id="engy_EnergySourceType" table="engy_energysource" objectClassId="10033" path="EnergySource" schema="engy">
-            <extension base="engy_EnergyFlowType">
-                <join table="engy_energyflow" fromColumn="id" toColumn="id" toRole="parent"/>
+        <featureType id="ng_EnergySourceType" table="ng_energysource" objectClassId="10033" path="EnergySource" schema="ng">
+            <extension base="ng_EnergyFlowType">
+                <join table="ng_energyflow" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <complexAttribute minOccurs="1" maxOccurs="1" path="co2EmissionFactor" schema="engy">
-                <attribute column="co2emissionfactor_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="co2emissionfactor" type="double" path="." schema="engy"/>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="co2EmissionFactor" schema="ng">
+                <attribute column="co2emissionfactor_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="co2emissionfactor" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="energyDensity" schema="engy">
-                <attribute column="energydensity_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="energydensity" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="energyDensity" schema="ng">
+                <attribute column="energydensity_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="energydensity" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute minOccurs="1" maxOccurs="1" path="primaryEnergyFactor" schema="engy">
-                <attribute column="primaryenergyfactor_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="primaryenergyfactor" type="double" path="." schema="engy"/>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="primaryEnergyFactor" schema="ng">
+                <attribute column="primaryenergyfactor_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="primaryenergyfactor" type="double" path="." schema="ng"/>
             </complexAttribute>
         </featureType>
-        <featureType id="engy_GenericConversionSystemType" table="engy_energyconversionsyst" objectClassId="10034" path="GenericConversionSystem" schema="engy">
-            <extension base="engy_AbstractEnergyConversionSystemType"/>
+        <featureType id="ng_GenericConversionSystemType" table="ng_energyconversionsyst" objectClassId="10034" path="GenericConversionSystem" schema="ng">
+            <extension base="ng_AbstractEnergyConversionSystemType"/>
         </featureType>
-        <featureType id="engy_HeatExchangerType" table="engy_heatexchanger" objectClassId="10035" path="HeatExchanger" schema="engy">
-            <extension base="engy_AbstractEnergyConversionSystemType">
-                <join table="engy_energyconversionsyst" fromColumn="id" toColumn="id" toRole="parent"/>
+        <featureType id="ng_HeatExchangerType" table="ng_heatexchanger" objectClassId="10035" path="HeatExchanger" schema="ng">
+            <extension base="ng_AbstractEnergyConversionSystemType">
+                <join table="ng_energyconversionsyst" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="networkid" type="string" minOccurs="1" maxOccurs="1" path="networkId" schema="engy"/>
-            <attribute column="networknodeid" type="string" minOccurs="1" maxOccurs="1" path="networkNodeId" schema="engy"/>
-            <attribute column="primaryheatsupplier" type="string" maxOccurs="1" path="primaryHeatSupplier" schema="engy"/>
+            <attribute column="networkid" type="string" minOccurs="1" maxOccurs="1" path="networkId" schema="ng"/>
+            <attribute column="networknodeid" type="string" minOccurs="1" maxOccurs="1" path="networkNodeId" schema="ng"/>
+            <attribute column="primaryheatsupplier" type="string" maxOccurs="1" path="primaryHeatSupplier" schema="ng"/>
         </featureType>
-        <featureType id="engy_HeatPumpType" table="engy_heatpump" objectClassId="10036" path="HeatPump" schema="engy">
-            <extension base="engy_AbstractEnergyConversionSystemType">
-                <join table="engy_energyconversionsyst" fromColumn="id" toColumn="id" toRole="parent"/>
+        <featureType id="ng_HeatPumpType" table="ng_heatpump" objectClassId="10036" path="HeatPump" schema="ng">
+            <extension base="ng_AbstractEnergyConversionSystemType">
+                <join table="ng_energyconversionsyst" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="heatsource" type="string" minOccurs="1" maxOccurs="1" path="heatSource" schema="engy"/>
-            <complexAttribute maxOccurs="1" path="copSourceTemperature" schema="engy">
-                <attribute column="copsourcetemperature_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="copsourcetemperature" type="double" path="." schema="engy"/>
+            <attribute column="heatsource" type="string" minOccurs="1" maxOccurs="1" path="heatSource" schema="ng"/>
+            <complexAttribute maxOccurs="1" path="copSourceTemperature" schema="ng">
+                <attribute column="copsourcetemperature_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="copsourcetemperature" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="copOperationTemperature" schema="engy">
-                <attribute column="copoperationtemperature_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="copoperationtemperature" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="copOperationTemperature" schema="ng">
+                <attribute column="copoperationtemperature_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="copoperationtemperature" type="double" path="." schema="ng"/>
             </complexAttribute>
         </featureType>
-        <featureType id="engy_MechanicalVentilationType" table="engy_mechanicalventilatio" objectClassId="10037" path="MechanicalVentilation" schema="engy">
-            <extension base="engy_AbstractEnergyConversionSystemType">
-                <join table="engy_energyconversionsyst" fromColumn="id" toColumn="id" toRole="parent"/>
+        <featureType id="ng_MechanicalVentilationType" table="ng_mechanicalventilatio" objectClassId="10037" path="MechanicalVentilation" schema="ng">
+            <extension base="ng_AbstractEnergyConversionSystemType">
+                <join table="ng_energyconversionsyst" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="hasheatrecovery" type="boolean" minOccurs="1" maxOccurs="1" path="hasHeatRecovery" schema="engy"/>
-            <complexAttribute minOccurs="1" maxOccurs="1" path="recuperationFactor" schema="engy">
-                <attribute column="recuperationfactor_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="recuperationfactor" type="double" path="." schema="engy"/>
+            <attribute column="hasheatrecovery" type="boolean" minOccurs="1" maxOccurs="1" path="hasHeatRecovery" schema="ng"/>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="recuperationFactor" schema="ng">
+                <attribute column="recuperationfactor_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="recuperationfactor" type="double" path="." schema="ng"/>
             </complexAttribute>
         </featureType>
-        <featureType id="engy_PhotovoltaicSystemType" table="engy_photovoltaicsystem" objectClassId="10038" path="PhotovoltaicSystem" schema="engy">
-            <extension base="engy_AbstractSolarEnergySystemType">
-                <join table="engy_solarenergysystem" fromColumn="id" toColumn="id" toRole="parent"/>
+        <featureType id="ng_PhotovoltaicSystemType" table="ng_photovoltaicsystem" objectClassId="10038" path="PhotovoltaicSystem" schema="ng">
+            <extension base="ng_AbstractSolarEnergySystemType">
+                <join table="ng_solarenergysystem" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="celltype" type="string" minOccurs="1" maxOccurs="1" path="cellType" schema="engy"/>
-            <complexAttribute maxOccurs="1" path="moduleArea" schema="engy">
-                <attribute column="modulearea_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="modulearea" type="double" path="." schema="engy"/>
+            <attribute column="celltype" type="string" minOccurs="1" maxOccurs="1" path="cellType" schema="ng"/>
+            <complexAttribute maxOccurs="1" path="moduleArea" schema="ng">
+                <attribute column="modulearea_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="modulearea" type="double" path="." schema="ng"/>
             </complexAttribute>
         </featureType>
-        <featureType id="engy_PhotovoltaicThermalSystemType" table="engy_photovoltaicthermals" objectClassId="10039" path="PhotovoltaicThermalSystem" schema="engy">
-            <extension base="engy_AbstractSolarEnergySystemType">
-                <join table="engy_solarenergysystem" fromColumn="id" toColumn="id" toRole="parent"/>
+        <featureType id="ng_PhotovoltaicThermalSystemType" table="ng_photovoltaicthermals" objectClassId="10039" path="PhotovoltaicThermalSystem" schema="ng">
+            <extension base="ng_AbstractSolarEnergySystemType">
+                <join table="ng_solarenergysystem" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="celltype" type="string" minOccurs="1" maxOccurs="1" path="cellType" schema="engy"/>
-            <attribute column="collectortype" type="string" minOccurs="1" maxOccurs="1" path="collectorType" schema="engy"/>
-            <complexAttribute maxOccurs="1" path="moduleArea" schema="engy">
-                <attribute column="modulearea_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="modulearea" type="double" path="." schema="engy"/>
+            <attribute column="celltype" type="string" minOccurs="1" maxOccurs="1" path="cellType" schema="ng"/>
+            <attribute column="collectortype" type="string" minOccurs="1" maxOccurs="1" path="collectorType" schema="ng"/>
+            <complexAttribute maxOccurs="1" path="moduleArea" schema="ng">
+                <attribute column="modulearea_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="modulearea" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="apertureArea" schema="engy">
-                <attribute column="aperturearea_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="aperturearea" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="apertureArea" schema="ng">
+                <attribute column="aperturearea_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="aperturearea" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="opticalEfficiency" schema="engy">
-                <attribute column="opticalefficiency_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="opticalefficiency" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="opticalEfficiency" schema="ng">
+                <attribute column="opticalefficiency_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="opticalefficiency" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <attribute column="linearheatlosscoefficient" type="double" maxOccurs="1" path="linearHeatLossCoefficient" schema="engy"/>
-            <attribute column="quadraticheatlosscoefficient" type="double" maxOccurs="1" path="quadraticHeatLossCoefficient" schema="engy"/>
+            <attribute column="linearheatlosscoefficient" type="double" maxOccurs="1" path="linearHeatLossCoefficient" schema="ng"/>
+            <attribute column="quadraticheatlosscoefficient" type="double" maxOccurs="1" path="quadraticHeatLossCoefficient" schema="ng"/>
         </featureType>
-        <featureType id="engy_PowerDistributionSystemType" table="engy_powerdistributionsys" objectClassId="10040" path="PowerDistributionSystem" schema="engy">
-            <extension base="engy_AbstractEnergyDistributionSystemType">
-                <join table="engy_energydistributionsy" fromColumn="id" toColumn="id" toRole="parent"/>
+        <featureType id="ng_PowerDistributionSystemType" table="ng_powerdistributionsys" objectClassId="10040" path="PowerDistributionSystem" schema="ng">
+            <extension base="ng_AbstractEnergyDistributionSystemType">
+                <join table="ng_energydistributionsy" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <complexAttribute maxOccurs="1" path="current" schema="engy">
-                <attribute column="current_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="current_" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="current" schema="ng">
+                <attribute column="current_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="current_" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="voltage" schema="engy">
-                <attribute column="voltage_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="voltage" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="voltage" schema="ng">
+                <attribute column="voltage_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="voltage" type="double" path="." schema="ng"/>
             </complexAttribute>
         </featureType>
-        <featureType id="engy_PowerStorageSystemType" table="engy_powerstoragesystem" objectClassId="10041" path="PowerStorageSystem" schema="engy">
-            <extension base="engy_AbstractStorageSystemType">
-                <join table="engy_storagesystem" fromColumn="id" toColumn="id" toRole="parent"/>
+        <featureType id="ng_PowerStorageSystemType" table="ng_powerstoragesystem" objectClassId="10041" path="PowerStorageSystem" schema="ng">
+            <extension base="ng_AbstractStorageSystemType">
+                <join table="ng_storagesystem" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="batterytechnology" type="string" maxOccurs="1" path="batteryTechnology" schema="engy"/>
-            <complexAttribute maxOccurs="1" path="powerCapacity" schema="engy">
-                <attribute column="powercapacity_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="powercapacity" type="double" path="." schema="engy"/>
+            <attribute column="batterytechnology" type="string" maxOccurs="1" path="batteryTechnology" schema="ng"/>
+            <complexAttribute maxOccurs="1" path="powerCapacity" schema="ng">
+                <attribute column="powercapacity_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="powercapacity" type="double" path="." schema="ng"/>
             </complexAttribute>
         </featureType>
-        <featureType id="engy_SolarThermalSystemType" table="engy_solarthermalsystem" objectClassId="10042" path="SolarThermalSystem" schema="engy">
-            <extension base="engy_AbstractSolarEnergySystemType">
-                <join table="engy_solarenergysystem" fromColumn="id" toColumn="id" toRole="parent"/>
+        <featureType id="ng_SolarThermalSystemType" table="ng_solarthermalsystem" objectClassId="10042" path="SolarThermalSystem" schema="ng">
+            <extension base="ng_AbstractSolarEnergySystemType">
+                <join table="ng_solarenergysystem" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="collectortype" type="string" minOccurs="1" maxOccurs="1" path="collectorType" schema="engy"/>
-            <complexAttribute maxOccurs="1" path="apertureArea" schema="engy">
-                <attribute column="aperturearea_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="aperturearea" type="double" path="." schema="engy"/>
+            <attribute column="collectortype" type="string" minOccurs="1" maxOccurs="1" path="collectorType" schema="ng"/>
+            <complexAttribute maxOccurs="1" path="apertureArea" schema="ng">
+                <attribute column="aperturearea_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="aperturearea" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <attribute column="eta0" type="double" maxOccurs="1" path="eta0" schema="engy"/>
-            <attribute column="a1" type="double" maxOccurs="1" path="a1" schema="engy"/>
-            <attribute column="a2" type="double" maxOccurs="1" path="a2" schema="engy"/>
+            <attribute column="eta0" type="double" maxOccurs="1" path="eta0" schema="ng"/>
+            <attribute column="a1" type="double" maxOccurs="1" path="a1" schema="ng"/>
+            <attribute column="a2" type="double" maxOccurs="1" path="a2" schema="ng"/>
         </featureType>
-        <featureType id="engy_ThermalDistributionSystemType" table="engy_thermaldistributions" objectClassId="10043" path="ThermalDistributionSystem" schema="engy">
-            <extension base="engy_AbstractEnergyDistributionSystemType">
-                <join table="engy_energydistributionsy" fromColumn="id" toColumn="id" toRole="parent"/>
+        <featureType id="ng_ThermalDistributionSystemType" table="ng_thermaldistributions" objectClassId="10043" path="ThermalDistributionSystem" schema="ng">
+            <extension base="ng_AbstractEnergyDistributionSystemType">
+                <join table="ng_energydistributionsy" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="iscirculation" type="boolean" maxOccurs="1" path="isCirculation" schema="engy"/>
-            <attribute column="medium" type="string" maxOccurs="1" path="medium" schema="engy"/>
-            <complexAttribute maxOccurs="1" path="nominalFlow" schema="engy">
-                <attribute column="nominalflow_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="nominalflow" type="double" path="." schema="engy"/>
+            <attribute column="iscirculation" type="boolean" maxOccurs="1" path="isCirculation" schema="ng"/>
+            <attribute column="medium" type="string" maxOccurs="1" path="medium" schema="ng"/>
+            <complexAttribute maxOccurs="1" path="nominalFlow" schema="ng">
+                <attribute column="nominalflow_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="nominalflow" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="returnTemperature" schema="engy">
-                <attribute column="returntemperature_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="returntemperature" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="returnTemperature" schema="ng">
+                <attribute column="returntemperature_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="returntemperature" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="supplyTemperature" schema="engy">
-                <attribute column="supplytemperature_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="supplytemperature" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="supplyTemperature" schema="ng">
+                <attribute column="supplytemperature_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="supplytemperature" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="thermalLossesFactor" schema="engy">
-                <attribute column="thermallossesfactor_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="thermallossesfactor" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="thermalLossesFactor" schema="ng">
+                <attribute column="thermallossesfactor_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="thermallossesfactor" type="double" path="." schema="ng"/>
             </complexAttribute>
         </featureType>
-        <featureType id="engy_ThermalStorageSystemType" table="engy_thermalstoragesystem" objectClassId="10044" path="ThermalStorageSystem" schema="engy">
-            <extension base="engy_AbstractStorageSystemType">
-                <join table="engy_storagesystem" fromColumn="id" toColumn="id" toRole="parent"/>
+        <featureType id="ng_ThermalStorageSystemType" table="ng_thermalstoragesystem" objectClassId="10044" path="ThermalStorageSystem" schema="ng">
+            <extension base="ng_AbstractStorageSystemType">
+                <join table="ng_storagesystem" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <complexAttribute maxOccurs="1" path="preparationTemperature" schema="engy">
-                <attribute column="preparationtemperature_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="preparationtemperature" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="preparationTemperature" schema="ng">
+                <attribute column="preparationtemperature_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="preparationtemperature" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <attribute column="medium" type="string" maxOccurs="1" path="medium" schema="engy"/>
-            <complexAttribute maxOccurs="1" path="thermalLossesFactor" schema="engy">
-                <attribute column="thermallossesfactor_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="thermallossesfactor" type="double" path="." schema="engy"/>
+            <attribute column="medium" type="string" maxOccurs="1" path="medium" schema="ng"/>
+            <complexAttribute maxOccurs="1" path="thermalLossesFactor" schema="ng">
+                <attribute column="thermallossesfactor_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="thermallossesfactor" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="volume" schema="engy">
-                <attribute column="volume_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="volume" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="volume" schema="ng">
+                <attribute column="volume_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="volume" type="double" path="." schema="ng"/>
             </complexAttribute>
         </featureType>
-        <featureType abstract="true" id="engy_AbstractMaterialType" table="engy_material" objectClassId="10045" path="AbstractMaterial" schema="engy">
+        <featureType abstract="true" id="ng_AbstractMaterialType" table="ng_material" objectClassId="10045" path="AbstractMaterial" schema="ng">
             <extension base="AbstractFeatureType">
                 <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <featureProperty target="engy_ImageTextureType" maxOccurs="1" path="imageTexture" schema="engy">
-                <join table="engy_imagetexture" fromColumn="imagetexture_id" toColumn="id" toRole="parent"/>
+            <featureProperty target="ng_ImageTextureType" maxOccurs="1" path="imageTexture" schema="ng">
+                <join table="ng_imagetexture" fromColumn="imagetexture_id" toColumn="id" toRole="parent"/>
             </featureProperty>
         </featureType>
-        <featureType id="engy_ImageTextureType" table="engy_imagetexture" objectClassId="10046" path="ImageTexture" schema="engy">
+        <featureType id="ng_ImageTextureType" table="ng_imagetexture" objectClassId="10046" path="ImageTexture" schema="ng">
             <extension base="AbstractFeatureType">
                 <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="url" type="string" minOccurs="1" maxOccurs="1" path="url" schema="engy"/>
-            <attribute column="repeats" type="boolean" minOccurs="1" maxOccurs="1" path="repeatS" schema="engy"/>
-            <attribute column="repeatt" type="boolean" minOccurs="1" maxOccurs="1" path="repeatT" schema="engy"/>
+            <attribute column="url" type="string" minOccurs="1" maxOccurs="1" path="url" schema="ng"/>
+            <attribute column="repeats" type="boolean" minOccurs="1" maxOccurs="1" path="repeatS" schema="ng"/>
+            <attribute column="repeatt" type="boolean" minOccurs="1" maxOccurs="1" path="repeatT" schema="ng"/>
         </featureType>
-        <featureType id="engy_ConstructionType" table="engy_construction_1" objectClassId="10047" path="Construction" schema="engy">
-            <extension base="engy_AbstractConstructionType">
-                <join table="engy_construction" fromColumn="id" toColumn="id" toRole="parent"/>
+        <featureType id="ng_ConstructionType" table="ng_construction_1" objectClassId="10047" path="Construction" schema="ng">
+            <extension base="ng_AbstractConstructionType">
+                <join table="ng_construction" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <complexAttribute maxOccurs="1" path="uValue" schema="engy">
-                <attribute column="uvalue_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="uvalue" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="uValue" schema="ng">
+                <attribute column="uvalue_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="uvalue" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexProperty refType="engy_OpticalPropertiesType" maxOccurs="1" path="opticalProperties" schema="engy">
-                <join table="engy_opticalproperties" fromColumn="opticalproperties_id" toColumn="id" toRole="parent"/>
+            <complexProperty refType="ng_OpticalPropertiesType" maxOccurs="1" path="opticalProperties" schema="ng">
+                <join table="ng_opticalproperties" fromColumn="opticalproperties_id" toColumn="id" toRole="parent"/>
             </complexProperty>
-            <objectProperty target="engy_ServiceLifeType" maxOccurs="1" path="serviceLife" schema="engy">
-                <join table="engy_servicelife" fromColumn="servicelife_id" toColumn="id" toRole="parent"/>
+            <objectProperty target="ng_ServiceLifeType" maxOccurs="1" path="serviceLife" schema="ng">
+                <join table="ng_servicelife" fromColumn="servicelife_id" toColumn="id" toRole="parent"/>
             </objectProperty>
-            <featureProperty target="engy_LayerType" path="layer" schema="engy">
-                <join table="engy_layer" fromColumn="id" toColumn="construction_layer_id" toRole="child"/>
+            <featureProperty target="ng_LayerType" path="layer" schema="ng">
+                <join table="ng_layer" fromColumn="id" toColumn="construction_layer_id" toRole="child"/>
             </featureProperty>
         </featureType>
-        <featureType id="engy_LayerType" table="engy_layer" objectClassId="10049" path="Layer" schema="engy">
+        <featureType id="ng_LayerType" table="ng_layer" objectClassId="10049" path="Layer" schema="ng">
             <extension base="AbstractFeatureType">
                 <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <featureProperty target="engy_LayerComponentType" minOccurs="1" path="layerComponent" schema="engy">
-                <join table="engy_layercomponent" fromColumn="id" toColumn="layer_layercomponent_id" toRole="child"/>
+            <featureProperty target="ng_LayerComponentType" minOccurs="1" path="layerComponent" schema="ng">
+                <join table="ng_layercomponent" fromColumn="id" toColumn="layer_layercomponent_id" toRole="child"/>
             </featureProperty>
         </featureType>
-        <featureType id="engy_LayerComponentType" table="engy_layercomponent" objectClassId="10052" path="LayerComponent" schema="engy">
+        <featureType id="ng_LayerComponentType" table="ng_layercomponent" objectClassId="10052" path="LayerComponent" schema="ng">
             <extension base="AbstractFeatureType">
                 <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <complexAttribute maxOccurs="1" path="areaFraction" schema="engy">
-                <attribute column="areafraction_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="areafraction" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="areaFraction" schema="ng">
+                <attribute column="areafraction_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="areafraction" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="thickness" schema="engy">
-                <attribute column="thickness_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="thickness" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="thickness" schema="ng">
+                <attribute column="thickness_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="thickness" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <objectProperty target="engy_ServiceLifeType" maxOccurs="1" path="serviceLife" schema="engy">
-                <join table="engy_servicelife" fromColumn="servicelife_id" toColumn="id" toRole="parent"/>
+            <objectProperty target="ng_ServiceLifeType" maxOccurs="1" path="serviceLife" schema="ng">
+                <join table="ng_servicelife" fromColumn="servicelife_id" toColumn="id" toRole="parent"/>
             </objectProperty>
-            <featureProperty target="engy_AbstractMaterialType" minOccurs="1" maxOccurs="1" path="material" schema="engy">
-                <join table="engy_material" fromColumn="material_id" toColumn="id" toRole="parent">
+            <featureProperty target="ng_AbstractMaterialType" minOccurs="1" maxOccurs="1" path="material" schema="ng">
+                <join table="ng_material" fromColumn="material_id" toColumn="id" toRole="parent">
                     <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
                 </join>
             </featureProperty>
         </featureType>
-        <featureType id="engy_GasType" table="engy_gas" objectClassId="10053" path="Gas" schema="engy">
-            <extension base="engy_AbstractMaterialType">
-                <join table="engy_material" fromColumn="id" toColumn="id" toRole="parent"/>
+        <featureType id="ng_GasType" table="ng_gas" objectClassId="10053" path="Gas" schema="ng">
+            <extension base="ng_AbstractMaterialType">
+                <join table="ng_material" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="isventilated" type="boolean" maxOccurs="1" path="isVentilated" schema="engy"/>
-            <complexAttribute maxOccurs="1" path="rValue" schema="engy">
-                <attribute column="rvalue_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="rvalue" type="double" path="." schema="engy"/>
+            <attribute column="isventilated" type="boolean" maxOccurs="1" path="isVentilated" schema="ng"/>
+            <complexAttribute maxOccurs="1" path="rValue" schema="ng">
+                <attribute column="rvalue_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="rvalue" type="double" path="." schema="ng"/>
             </complexAttribute>
         </featureType>
-        <featureType id="engy_ReverseConstructionType" table="engy_construction" objectClassId="10054" path="ReverseConstruction" schema="engy">
-            <extension base="engy_AbstractConstructionType"/>
-            <featureProperty target="engy_ConstructionType" minOccurs="1" maxOccurs="1" path="baseConstruction" schema="engy">
-                <join table="engy_construction_1" fromColumn="baseconstruction_id" toColumn="id" toRole="parent"/>
+        <featureType id="ng_ReverseConstructionType" table="ng_construction" objectClassId="10054" path="ReverseConstruction" schema="ng">
+            <extension base="ng_AbstractConstructionType"/>
+            <featureProperty target="ng_ConstructionType" minOccurs="1" maxOccurs="1" path="baseConstruction" schema="ng">
+                <join table="ng_construction_1" fromColumn="baseconstruction_id" toColumn="id" toRole="parent"/>
             </featureProperty>
         </featureType>
-        <featureType id="engy_SolidMaterialType" table="engy_solidmaterial" objectClassId="10055" path="SolidMaterial" schema="engy">
-            <extension base="engy_AbstractMaterialType">
-                <join table="engy_material" fromColumn="id" toColumn="id" toRole="parent"/>
+        <featureType id="ng_SolidMaterialType" table="ng_solidmaterial" objectClassId="10055" path="SolidMaterial" schema="ng">
+            <extension base="ng_AbstractMaterialType">
+                <join table="ng_material" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <complexAttribute maxOccurs="1" path="conductivity" schema="engy">
-                <attribute column="conductivity_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="conductivity" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="conductivity" schema="ng">
+                <attribute column="conductivity_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="conductivity" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="density" schema="engy">
-                <attribute column="density_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="density" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="density" schema="ng">
+                <attribute column="density_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="density" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="permeance" schema="engy">
-                <attribute column="permeance_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="permeance" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="permeance" schema="ng">
+                <attribute column="permeance_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="permeance" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="porosity" schema="engy">
-                <attribute column="porosity_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="porosity" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="porosity" schema="ng">
+                <attribute column="porosity_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="porosity" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="specificHeat" schema="engy">
-                <attribute column="specificheat_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="specificheat" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="specificHeat" schema="ng">
+                <attribute column="specificheat_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="specificheat" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="embodiedCarbon" schema="engy">
-                <attribute column="embodiedcarbon_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="embodiedcarbon" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="embodiedCarbon" schema="ng">
+                <attribute column="embodiedcarbon_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="embodiedcarbon" type="double" path="." schema="ng"/>
             </complexAttribute>
-            <complexAttribute maxOccurs="1" path="embodiedEnergy" schema="engy">
-                <attribute column="embodiedenergy_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="embodiedenergy" type="double" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="embodiedEnergy" schema="ng">
+                <attribute column="embodiedenergy_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="embodiedenergy" type="double" path="." schema="ng"/>
             </complexAttribute>
         </featureType>
-        <featureType id="engy_BuildingUnitType" table="engy_buildingunit" objectClassId="10056" path="BuildingUnit" schema="engy">
+        <featureType id="ng_BuildingUnitType" table="ng_buildingunit" objectClassId="10056" path="BuildingUnit" schema="ng">
             <extension base="AbstractCityObjectType">
                 <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="numberofrooms" type="integer" maxOccurs="1" path="numberOfRooms" schema="engy"/>
-            <attribute column="ownername" type="string" maxOccurs="1" path="ownerName" schema="engy"/>
-            <complexAttribute maxOccurs="1" path="ownershipType" schema="engy">
-                <attribute column="ownershiptype_codespace" type="string" path="@codespace" schema="engy"/>
-                <attribute column="ownershiptype" type="string" path="." schema="engy"/>
+            <attribute column="numberofrooms" type="integer" maxOccurs="1" path="numberOfRooms" schema="ng"/>
+            <attribute column="ownername" type="string" maxOccurs="1" path="ownerName" schema="ng"/>
+            <complexAttribute maxOccurs="1" path="ownershipType" schema="ng">
+                <attribute column="ownershiptype_codespace" type="string" path="@codespace" schema="ng"/>
+                <attribute column="ownershiptype" type="string" path="." schema="ng"/>
             </complexAttribute>
-            <complexProperty refType="engy_FloorAreaType" path="floorArea" schema="engy">
-                <join table="engy_floorarea" fromColumn="id" toColumn="buildingunit_floorarea_id" toRole="child"/>
+            <complexProperty refType="ng_FloorAreaType" path="floorArea" schema="ng">
+                <join table="ng_floorarea" fromColumn="id" toColumn="buildingunit_floorarea_id" toRole="child"/>
             </complexProperty>
-            <complexProperty refType="engy_EnergyPerformanceCertificationType" path="energyPerformanceCertification" schema="engy">
-                <join table="engy_energyperformancecer" fromColumn="id" toColumn="buildingunit_energyperfor_id" toRole="child"/>
+            <complexProperty refType="ng_EnergyPerformanceCertificationType" path="energyPerformanceCertification" schema="ng">
+                <join table="ng_energyperformancecer" fromColumn="id" toColumn="buildingunit_energyperfor_id" toRole="child"/>
             </complexProperty>
-            <featureProperty target="engy_OccupantsType" path="occupiedBy" schema="engy">
-                <join table="engy_occupants" fromColumn="id" toColumn="buildingunit_occupiedby_id" toRole="child"/>
+            <featureProperty target="ng_OccupantsType" path="occupiedBy" schema="ng">
+                <join table="ng_occupants" fromColumn="id" toColumn="buildingunit_occupiedby_id" toRole="child"/>
             </featureProperty>
-            <featureProperty target="AddressType" path="address" schema="engy">
-                <joinTable table="engy_buildingu_to_address">
-                    <join table="engy_buildingunit" fromColumn="buildingunit_id" toColumn="id" toRole="parent"/>
+            <featureProperty target="AddressType" path="address" schema="ng">
+                <joinTable table="ng_buildingu_to_address">
+                    <join table="ng_buildingunit" fromColumn="buildingunit_id" toColumn="id" toRole="parent"/>
                     <inverseJoin table="address" fromColumn="address_id" toColumn="id" toRole="parent"/>
                 </joinTable>
             </featureProperty>
-            <featureProperty target="engy_FacilitiesType" path="equippedWith" schema="engy">
-                <join table="engy_facilities" fromColumn="id" toColumn="buildingunit_equippedwith_id" toRole="child">
+            <featureProperty target="ng_FacilitiesType" path="equippedWith" schema="ng">
+                <join table="ng_facilities" fromColumn="id" toColumn="buildingunit_equippedwith_id" toRole="child">
                     <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
                 </join>
             </featureProperty>
         </featureType>
-        <featureType id="engy_OccupantsType" table="engy_occupants" objectClassId="10057" path="Occupants" schema="engy">
+        <featureType id="ng_OccupantsType" table="ng_occupants" objectClassId="10057" path="Occupants" schema="ng">
             <extension base="AbstractFeatureType">
                 <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <complexProperty refType="engy_HeatExchangeTypeType" maxOccurs="1" path="heatDissipation" schema="engy">
-                <join table="engy_heatexchangetype" fromColumn="heatdissipation_id" toColumn="id" toRole="parent"/>
+            <complexProperty refType="ng_HeatExchangeTypeType" maxOccurs="1" path="heatDissipation" schema="ng">
+                <join table="ng_heatexchangetype" fromColumn="heatdissipation_id" toColumn="id" toRole="parent"/>
             </complexProperty>
-            <attribute column="numberofoccupants" type="integer" maxOccurs="1" path="numberOfOccupants" schema="engy"/>
-            <objectProperty target="engy_AbstractScheduleType" maxOccurs="1" path="occupancyRate" schema="engy">
-                <join table="engy_schedule" fromColumn="occupancyrate_id" toColumn="id" toRole="parent">
+            <attribute column="numberofoccupants" type="integer" maxOccurs="1" path="numberOfOccupants" schema="ng"/>
+            <objectProperty target="ng_AbstractScheduleType" maxOccurs="1" path="occupancyRate" schema="ng">
+                <join table="ng_schedule" fromColumn="occupancyrate_id" toColumn="id" toRole="parent">
                     <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
                 </join>
             </objectProperty>
-            <complexAttribute maxOccurs="1" path="occupantType" schema="engy">
-                <attribute column="occupanttype_codespace" type="string" path="@codespace" schema="engy"/>
-                <attribute column="occupanttype" type="string" path="." schema="engy"/>
+            <complexAttribute maxOccurs="1" path="occupantType" schema="ng">
+                <attribute column="occupanttype_codespace" type="string" path="@codespace" schema="ng"/>
+                <attribute column="occupanttype" type="string" path="." schema="ng"/>
             </complexAttribute>
-            <featureProperty target="engy_HouseholdType" path="household" schema="engy">
-                <join table="engy_household" fromColumn="id" toColumn="occupants_household_id" toRole="child"/>
+            <featureProperty target="ng_HouseholdType" path="household" schema="ng">
+                <join table="ng_household" fromColumn="id" toColumn="occupants_household_id" toRole="child"/>
             </featureProperty>
         </featureType>
-        <featureType id="engy_FacilitiesType" table="engy_facilities" objectClassId="10058" path="Facilities" schema="engy">
+        <featureType id="ng_FacilitiesType" table="ng_facilities" objectClassId="10058" path="Facilities" schema="ng">
             <extension base="AbstractCityObjectType">
                 <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <objectProperty target="engy_AbstractScheduleType" maxOccurs="1" path="operationSchedule" schema="engy">
-                <join table="engy_schedule" fromColumn="operationschedule_id" toColumn="id" toRole="parent">
+            <objectProperty target="ng_AbstractScheduleType" maxOccurs="1" path="operationSchedule" schema="ng">
+                <join table="ng_schedule" fromColumn="operationschedule_id" toColumn="id" toRole="parent">
                     <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
                 </join>
             </objectProperty>
-            <complexProperty refType="engy_HeatExchangeTypeType" maxOccurs="1" path="heatDissipation" schema="engy">
-                <join table="engy_heatexchangetype" fromColumn="heatdissipation_id" toColumn="id" toRole="parent"/>
+            <complexProperty refType="ng_HeatExchangeTypeType" maxOccurs="1" path="heatDissipation" schema="ng">
+                <join table="ng_heatexchangetype" fromColumn="heatdissipation_id" toColumn="id" toRole="parent"/>
             </complexProperty>
         </featureType>
-        <featureType id="engy_HouseholdType" table="engy_household" objectClassId="10059" path="Household" schema="engy">
+        <featureType id="ng_HouseholdType" table="ng_household" objectClassId="10059" path="Household" schema="ng">
             <extension base="AbstractFeatureType">
                 <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="residencetype" type="string" maxOccurs="1" path="residenceType" schema="engy"/>
-            <attribute column="householdtype" type="string" maxOccurs="1" path="householdType" schema="engy"/>
+            <attribute column="residencetype" type="string" maxOccurs="1" path="residenceType" schema="ng"/>
+            <attribute column="householdtype" type="string" maxOccurs="1" path="householdType" schema="ng"/>
         </featureType>
-        <featureType id="engy_DHWFacilitiesType" table="engy_dhwfacilities" objectClassId="10060" path="DHWFacilities" schema="engy">
-            <extension base="engy_FacilitiesType">
-                <join table="engy_facilities" fromColumn="id" toColumn="id" toRole="parent"/>
+        <featureType id="ng_DHWFacilitiesType" table="ng_dhwfacilities" objectClassId="10060" path="DHWFacilities" schema="ng">
+            <extension base="ng_FacilitiesType">
+                <join table="ng_facilities" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="numberofbaths" type="integer" maxOccurs="1" path="numberOfBaths" schema="engy"/>
-            <attribute column="numberofshowers" type="integer" maxOccurs="1" path="numberOfShowers" schema="engy"/>
-            <attribute column="numberofwashbasins" type="integer" maxOccurs="1" path="numberOfWashBasins" schema="engy"/>
-            <complexAttribute maxOccurs="1" path="waterStorageVolume" schema="engy">
-                <attribute column="waterstoragevolume_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="waterstoragevolume" type="double" path="." schema="engy"/>
+            <attribute column="numberofbaths" type="integer" maxOccurs="1" path="numberOfBaths" schema="ng"/>
+            <attribute column="numberofshowers" type="integer" maxOccurs="1" path="numberOfShowers" schema="ng"/>
+            <attribute column="numberofwashbasins" type="integer" maxOccurs="1" path="numberOfWashBasins" schema="ng"/>
+            <complexAttribute maxOccurs="1" path="waterStorageVolume" schema="ng">
+                <attribute column="waterstoragevolume_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="waterstoragevolume" type="double" path="." schema="ng"/>
             </complexAttribute>
         </featureType>
-        <featureType id="engy_ElectricalAppliancesType" table="engy_facilities" objectClassId="10061" path="ElectricalAppliances" schema="engy">
-            <extension base="engy_FacilitiesType"/>
-            <complexAttribute maxOccurs="1" path="electricalPower" schema="engy">
-                <attribute column="electricalpower_uom" type="string" path="@uom" schema="engy"/>
-                <attribute column="electricalpower" type="double" path="." schema="engy"/>
+        <featureType id="ng_ElectricalAppliancesType" table="ng_facilities" objectClassId="10061" path="ElectricalAppliances" schema="ng">
+            <extension base="ng_FacilitiesType"/>
+            <complexAttribute maxOccurs="1" path="electricalPower" schema="ng">
+                <attribute column="electricalpower_uom" type="string" path="@uom" schema="ng"/>
+                <attribute column="electricalpower" type="double" path="." schema="ng"/>
             </complexAttribute>
         </featureType>
-        <featureType id="engy_LightingFacilitiesType" table="engy_facilities" objectClassId="10062" path="LightingFacilities" schema="engy">
-            <extension base="engy_FacilitiesType"/>
-            <complexAttribute maxOccurs="1" path="electricalPower" schema="engy">
-                <attribute column="electricalpower_uom_1" type="string" path="@uom" schema="engy"/>
-                <attribute column="electricalpower_1" type="double" path="." schema="engy"/>
+        <featureType id="ng_LightingFacilitiesType" table="ng_facilities" objectClassId="10062" path="LightingFacilities" schema="ng">
+            <extension base="ng_FacilitiesType"/>
+            <complexAttribute maxOccurs="1" path="electricalPower" schema="ng">
+                <attribute column="electricalpower_uom_1" type="string" path="@uom" schema="ng"/>
+                <attribute column="electricalpower_1" type="double" path="." schema="ng"/>
             </complexAttribute>
         </featureType>
-        <featureType id="engy_UsageZoneType" table="engy_usagezone" objectClassId="10063" path="UsageZone" schema="engy">
-            <extension base="engy_AbstractUsageZoneType"/>
-            <objectProperty target="engy_AbstractScheduleType" maxOccurs="1" path="coolingSchedule" schema="engy">
-                <join table="engy_schedule" fromColumn="coolingschedule_id" toColumn="id" toRole="parent">
+        <featureType id="ng_UsageZoneType" table="ng_usagezone" objectClassId="10063" path="UsageZone" schema="ng">
+            <extension base="ng_AbstractUsageZoneType"/>
+            <objectProperty target="ng_AbstractScheduleType" maxOccurs="1" path="coolingSchedule" schema="ng">
+                <join table="ng_schedule" fromColumn="coolingschedule_id" toColumn="id" toRole="parent">
                     <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
                 </join>
             </objectProperty>
-            <objectProperty target="engy_AbstractScheduleType" maxOccurs="1" path="heatingSchedule" schema="engy">
-                <join table="engy_schedule" fromColumn="heatingschedule_id" toColumn="id" toRole="parent">
+            <objectProperty target="ng_AbstractScheduleType" maxOccurs="1" path="heatingSchedule" schema="ng">
+                <join table="ng_schedule" fromColumn="heatingschedule_id" toColumn="id" toRole="parent">
                     <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
                 </join>
             </objectProperty>
-            <complexAttribute minOccurs="1" maxOccurs="1" path="usageZoneType" schema="engy">
-                <attribute column="usagezonetype_codespace" type="string" path="@codespace" schema="engy"/>
-                <attribute column="usagezonetype" type="string" path="." schema="engy"/>
+            <complexAttribute minOccurs="1" maxOccurs="1" path="usageZoneType" schema="ng">
+                <attribute column="usagezonetype_codespace" type="string" path="@codespace" schema="ng"/>
+                <attribute column="usagezonetype" type="string" path="." schema="ng"/>
             </complexAttribute>
-            <attribute column="usedfloors" type="string" maxOccurs="1" path="usedFloors" schema="engy"/>
-            <objectProperty target="engy_AbstractScheduleType" maxOccurs="1" path="ventilationSchedule" schema="engy">
-                <join table="engy_schedule" fromColumn="ventilationschedule_id" toColumn="id" toRole="parent">
+            <attribute column="usedfloors" type="string" maxOccurs="1" path="usedFloors" schema="ng"/>
+            <objectProperty target="ng_AbstractScheduleType" maxOccurs="1" path="ventilationSchedule" schema="ng">
+                <join table="ng_schedule" fromColumn="ventilationschedule_id" toColumn="id" toRole="parent">
                     <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
                 </join>
             </objectProperty>
-            <complexProperty refType="engy_FloorAreaType" path="floorArea" schema="engy">
-                <join table="engy_floorarea" fromColumn="id" toColumn="usagezone_floorarea_id" toRole="child"/>
+            <complexProperty refType="ng_FloorAreaType" path="floorArea" schema="ng">
+                <join table="ng_floorarea" fromColumn="id" toColumn="usagezone_floorarea_id" toRole="child"/>
             </complexProperty>
-            <geometryProperty refColumn="volumegeometry_id" type="AbstractSolid" maxOccurs="1" path="volumeGeometry" schema="engy"/>
-            <complexProperty refType="engy_HeatExchangeTypeType" maxOccurs="1" path="averageInternalGains" schema="engy">
-                <join table="engy_heatexchangetype" fromColumn="averageinternalgains_id" toColumn="id" toRole="parent"/>
+            <geometryProperty refColumn="volumegeometry_id" type="AbstractSolid" maxOccurs="1" path="volumeGeometry" schema="ng"/>
+            <complexProperty refType="ng_HeatExchangeTypeType" maxOccurs="1" path="averageInternalGains" schema="ng">
+                <join table="ng_heatexchangetype" fromColumn="averageinternalgains_id" toColumn="id" toRole="parent"/>
             </complexProperty>
-            <featureProperty target="engy_BuildingUnitType" path="contains" schema="engy">
-                <join table="engy_buildingunit" fromColumn="id" toColumn="usagezone_contains_id" toRole="child"/>
+            <featureProperty target="ng_BuildingUnitType" path="contains" schema="ng">
+                <join table="ng_buildingunit" fromColumn="id" toColumn="usagezone_contains_id" toRole="child"/>
             </featureProperty>
-            <featureProperty target="engy_OccupantsType" path="occupiedBy" schema="engy">
-                <join table="engy_occupants" fromColumn="id" toColumn="usagezone_occupiedby_id" toRole="child"/>
+            <featureProperty target="ng_OccupantsType" path="occupiedBy" schema="ng">
+                <join table="ng_occupants" fromColumn="id" toColumn="usagezone_occupiedby_id" toRole="child"/>
             </featureProperty>
-            <featureProperty target="engy_FacilitiesType" path="equippedWith" schema="engy">
-                <join table="engy_facilities" fromColumn="id" toColumn="usagezone_equippedwith_id" toRole="child">
+            <featureProperty target="ng_FacilitiesType" path="equippedWith" schema="ng">
+                <join table="ng_facilities" fromColumn="id" toColumn="usagezone_equippedwith_id" toRole="child">
                     <condition column="objectclass_id" value="${target.objectclass_id}" type="integer"/>
                 </join>
             </featureProperty>
         </featureType>
-        <featureType id="engy_WeatherStationType" table="engy_weatherstation" objectClassId="10076" path="WeatherStation" schema="engy">
+        <featureType id="ng_WeatherStationType" table="ng_weatherstation" objectClassId="10076" path="WeatherStation" schema="ng">
             <extension base="AbstractCityObjectType">
                 <join table="cityobject" fromColumn="id" toColumn="id" toRole="parent"/>
             </extension>
-            <attribute column="stationname" type="string" maxOccurs="1" path="stationName" schema="engy"/>
-            <geometryProperty inlineColumn="position" type="Point" maxOccurs="1" path="position" schema="engy"/>
-            <objectProperty target="engy_WeatherDataType" path="parameter" schema="engy">
-                <join table="engy_weatherdata" fromColumn="id" toColumn="weatherstation_parameter_id" toRole="child"/>
+            <attribute column="stationname" type="string" maxOccurs="1" path="stationName" schema="ng"/>
+            <geometryProperty inlineColumn="position" type="Point" maxOccurs="1" path="position" schema="ng"/>
+            <objectProperty target="ng_WeatherDataType" path="parameter" schema="ng">
+                <join table="ng_weatherdata" fromColumn="id" toColumn="weatherstation_parameter_id" toRole="child"/>
             </objectProperty>
-            <attribute column="genericapplicationpropertyof" type="clob" path="_GenericApplicationPropertyOfWeatherStation" schema="engy"/>
+            <attribute column="genericapplicationpropertyof" type="clob" path="_GenericApplicationPropertyOfWeatherStation" schema="ng"/>
         </featureType>
     </featureTypes>
     <propertyInjections>
-        <propertyInjection table="engy_building" defaultBase="AbstractBuildingType">
-            <join table="engy_building" fromColumn="ID" toColumn="ID" toRole="child"/>
-            <complexAttribute path="buildingType" schema="engy">
-                <attribute column="buildingtype_codespace" type="string" path="@codespace" schema="engy"/>
-                <attribute column="buildingtype" type="string" path="." schema="engy"/>
+        <propertyInjection table="ng_building" defaultBase="AbstractBuildingType">
+            <join table="ng_building" fromColumn="ID" toColumn="ID" toRole="child"/>
+            <complexAttribute path="buildingType" schema="ng">
+                <attribute column="buildingtype_codespace" type="string" path="@codespace" schema="ng"/>
+                <attribute column="buildingtype" type="string" path="." schema="ng"/>
             </complexAttribute>
-            <attribute column="constructionweight" type="string" path="constructionWeight" schema="engy"/>
-            <complexProperty refType="engy_EnergyPerformanceCertificationType" path="energyPerformanceCertification" schema="engy">
-                <join table="engy_energyperformancecer" fromColumn="id" toColumn="building_energyperformanc_id" toRole="child"/>
+            <attribute column="constructionweight" type="string" path="constructionWeight" schema="ng"/>
+            <complexProperty refType="ng_EnergyPerformanceCertificationType" path="energyPerformanceCertification" schema="ng">
+                <join table="ng_energyperformancecer" fromColumn="id" toColumn="building_energyperformanc_id" toRole="child"/>
             </complexProperty>
-            <complexProperty refType="engy_VolumeTypeType" path="volume" schema="engy">
-                <join table="engy_volumetype" fromColumn="id" toColumn="building_volume_id" toRole="child"/>
+            <complexProperty refType="ng_VolumeTypeType" path="volume" schema="ng">
+                <join table="ng_volumetype" fromColumn="id" toColumn="building_volume_id" toRole="child"/>
             </complexProperty>
-            <attribute column="islandmarked" type="boolean" path="isLandmarked" schema="engy"/>
-            <geometryProperty inlineColumn="referencepoint" type="Point" path="referencePoint" schema="engy"/>
-            <complexProperty refType="engy_RefurbishmentMeasureType" path="refurbishmentMeasure" schema="engy">
-                <join table="engy_refurbishmentmeasure" fromColumn="id" toColumn="building_refurbishmentmea_id" toRole="child"/>
+            <attribute column="islandmarked" type="boolean" path="isLandmarked" schema="ng"/>
+            <geometryProperty inlineColumn="referencepoint" type="Point" path="referencePoint" schema="ng"/>
+            <complexProperty refType="ng_RefurbishmentMeasureType" path="refurbishmentMeasure" schema="ng">
+                <join table="ng_refurbishmentmeasure" fromColumn="id" toColumn="building_refurbishmentmea_id" toRole="child"/>
             </complexProperty>
-            <featureProperty target="engy_AbstractThermalZoneType" relationType="association" path="thermalZone" schema="engy">
-                <join table="engy_thermalzone" fromColumn="id" toColumn="building_thermalzone_id" toRole="child"/>
+            <featureProperty target="ng_AbstractThermalZoneType" relationType="association" path="thermalZone" schema="ng">
+                <join table="ng_thermalzone" fromColumn="id" toColumn="building_thermalzone_id" toRole="child"/>
             </featureProperty>
-            <featureProperty target="engy_AbstractUsageZoneType" relationType="association" path="usageZone" schema="engy">
-                <join table="engy_usagezone" fromColumn="id" toColumn="building_usagezone_id" toRole="child"/>
+            <featureProperty target="ng_AbstractUsageZoneType" relationType="association" path="usageZone" schema="ng">
+                <join table="ng_usagezone" fromColumn="id" toColumn="building_usagezone_id" toRole="child"/>
             </featureProperty>
-            <complexProperty refType="engy_FloorAreaType" path="floorArea" schema="engy">
-                <join table="engy_floorarea" fromColumn="id" toColumn="building_floorarea_id" toRole="child"/>
+            <complexProperty refType="ng_FloorAreaType" path="floorArea" schema="ng">
+                <join table="ng_floorarea" fromColumn="id" toColumn="building_floorarea_id" toRole="child"/>
             </complexProperty>
-            <complexProperty refType="engy_HeightAboveGroundType" path="heightAboveGround" schema="engy">
-                <join table="engy_heightaboveground" fromColumn="id" toColumn="building_heightabovegroun_id" toRole="child"/>
+            <complexProperty refType="ng_HeightAboveGroundType" path="heightAboveGround" schema="ng">
+                <join table="ng_heightaboveground" fromColumn="id" toColumn="building_heightabovegroun_id" toRole="child"/>
             </complexProperty>
-            <featureProperty target="engy_AbstractConstructionType" relationType="association" path="aggregatedBuildingConstruction" schema="engy">
-                <join table="engy_construction" fromColumn="id" toColumn="building_aggregatedbuildi_id" toRole="child"/>
+            <featureProperty target="ng_AbstractConstructionType" relationType="association" path="aggregatedBuildingConstruction" schema="ng">
+                <join table="ng_construction" fromColumn="id" toColumn="building_aggregatedbuildi_id" toRole="child"/>
             </featureProperty>
         </propertyInjection>
-        <propertyInjection table="engy_cityobject" defaultBase="AbstractCityObjectType">
-            <join table="engy_cityobject" fromColumn="ID" toColumn="ID" toRole="child"/>
-            <objectProperty target="engy_WeatherDataType" relationType="association" path="weatherData" schema="engy">
-                <join table="engy_weatherdata" fromColumn="id" toColumn="cityobject_weatherdata_id" toRole="child"/>
+        <propertyInjection table="ng_cityobject" defaultBase="AbstractCityObjectType">
+            <join table="ng_cityobject" fromColumn="ID" toColumn="ID" toRole="child"/>
+            <objectProperty target="ng_WeatherDataType" relationType="association" path="weatherData" schema="ng">
+                <join table="ng_weatherdata" fromColumn="id" toColumn="cityobject_weatherdata_id" toRole="child"/>
             </objectProperty>
-            <featureProperty target="engy_EnergyDemandType" relationType="association" path="demands" schema="engy">
-                <join table="engy_energydemand" fromColumn="id" toColumn="cityobject_demands_id" toRole="child"/>
+            <featureProperty target="ng_EnergyDemandType" relationType="association" path="demands" schema="ng">
+                <join table="ng_energydemand" fromColumn="id" toColumn="cityobject_demands_id" toRole="child"/>
             </featureProperty>
         </propertyInjection>
     </propertyInjections>
